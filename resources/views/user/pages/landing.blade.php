@@ -73,7 +73,7 @@
                 <p class="font-bold text-xl text-text-black">Standar 2</p>
                 <p class="text-xl text-text-blue">RP. 115.000</p>
             </div>
-            <div class="ml-6 ">
+            <div class="ml-6 mt-9">
                 <ul class="">
                     @php
                         $c = 0;
@@ -100,4 +100,50 @@
         @endfor
     </div>
 </div>
+
+{{-- BERITA --}}
+<div class="bg-white w-screen h-fit flex flex-col">
+    <div class="grid justify-items-center mt-24 mx-80">
+        <h2 class="text-text-black font-bold text-4xl">Berita terbaru dari <span class="text-text-blue">Muara Mbaduk</span></h2>
+    </div>
+    <div class="flex justify-center gap-24 mt-16">
+        <div class="card h-500 w-96  shadow rounded">
+            <img class="rounded-t" src="{{Vite::asset('resources\images\berita1.png')}}" alt="">
+            <div class="flex flex-col mx-5">
+                <div class="date mt-4">
+                    <p class="date text-text-gray text-base text-left">29 Desember 2022</p>
+                </div>
+                <div class="title h-20 flex-none">
+                    <p class="text-left font-bold text-text-black text-xl line-clamp-2" style="">Cara Seru Habiskan Akhir Tahun, Wisata
+                        Camping Ciamik di Banyuwangi Yuk!</p>
+                </div>
+                <div class="sumary">
+                    <p class=" text-base text-text-gray text-left line-clamp-2">Banyuwangi, sebuah kota di ujung timur Pulau Jawa, terkenal dengan keindahan alamnya yang memukau. Dari pantai-pantai eksotis hingga wisata alam pegunungan yang menakjubkan, Banyuwangi menawarkan pengalaman wisata yang tak terlupakan.</p>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card h-500 w-96 shadow rounded">
+            <img class="rounded-t" src="{{Vite::asset('resources\images\berita2.png')}}" alt="">
+            <div class="flex flex-col mx-5">
+                <div class="date mt-4">
+                    <p class="date text-text-gray text-base text-left">29 Desember 2022</p>
+                </div>
+                <div class="title h-20 flex-none">
+                    <p class="text-left font-bold text-text-black text-xl line-clamp-2" style="">Cara Seru Habiskan Akhir Tahun, Wisata
+                        Camping Ciamik di Banyuwangi Yuk!</p>
+                </div>
+                <div class="sumary">
+                    <p class=" text-base text-text-gray text-left line-clamp-2">Banyuwangi, sebuah kota di ujung timur Pulau Jawa, terkenal dengan keindahan alamnya yang memukau. Dari pantai-pantai eksotis hingga wisata alam pegunungan yang menakjubkan, Banyuwangi menawarkan pengalaman wisata yang tak terlupakan.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-12 mx-[512px] bg-text-blue flex-none rounded text-center px-7 py-4 mb-24">
+        <button class="text-text-white text-xl  font-bold">Muat Lebih Banyak</button>
+    </div>
+</div>
+
+{{-- PENGUNJUNG --}}
+<div class="w-scree h-screen bg-gray-100"></div>
 @endsection

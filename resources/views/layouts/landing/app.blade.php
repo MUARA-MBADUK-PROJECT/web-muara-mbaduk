@@ -13,7 +13,7 @@
     @yield('conten')
 
     {{-- footer --}}
-    <div class="max-w-screen-2xl mx-auto w-screen pt-28 px-8 p-10" style="background-color: #333333">
+    {{-- <div class="max-w-screen-2xl mx-auto w-screen pt-28 px-8 p-10" style="background-color: #333333">
         <div class="mt-6 grid grid-cols-12 md:gap-x-8 gap-y-12 ml-10">
             <div class="col-span-12 lg:col-span-4">
                 <div>
@@ -90,7 +90,7 @@
                 Code highlighting provided by <a href="https://torchlight.dev">Torchlight</a>
             </p>
         </div>
-    </div>
+    </div> --}}
 
 </body>
 </html>
