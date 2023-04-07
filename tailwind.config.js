@@ -8,10 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        'sub':'#939393'
+        'text-black':'#1E1E1E',
+        'text-gray':'#939393',
+        'text-blue':'#1570BF',
+        'text-white':'#FFFFFF'
       },
       spacing:{
-        '500':'500px'
+        '500':'500px',
+        '750':'750px',
+        '1000':'1000px',
       }
     },
   },
