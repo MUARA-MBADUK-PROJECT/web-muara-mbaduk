@@ -7,8 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors:{
+        'sub':'#939393'
+      },
       spacing:{
-        
+        '500':'500px'
       }
     },
   },
