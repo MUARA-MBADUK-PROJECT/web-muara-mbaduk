@@ -66,8 +66,7 @@
         </div>
     </div>
     <div class="flex gap-20 overflow-x-auto h-auto">
-        @for($i = 0; $i < 6; $i++)
-        <div class="w-80 h-750 flex-none bg-white">
+        @for($i = 0; $i < 6; $i++) <div class="w-80 h-750 flex-none bg-white">
             <img class="w-80 mx-0 " src="{{Vite::asset('resources\images\paket-1.png')}}" alt="">
             <div class="mt-9 mx-7 pb-7 grid justify-items-center border-b-2 border-text-gray">
                 <p class="font-bold text-xl text-text-black">Standar 2</p>
@@ -76,15 +75,22 @@
             <div class="ml-6 mt-9">
                 <ul class="">
                     @php
-                        $c = 0;
+                    $c = 0;
                     @endphp
-                    @while($c < 5)
-                    <li class="inline"><p><img class="inline" src="{{Vite::asset('resources\icon\check-circle.svg')}}" alt=""> alksdfh</p></li>
-                    @php($c++)
-                    @endwhile
-                    <li class="inline"><p><img class="inline" src="{{Vite::asset('resources\icon\check-circle.svg')}}" alt=""> alksdfh</p></li>
-                    <li class="inline"><p><img class="inline" src="{{Vite::asset('resources\icon\check-circle.svg')}}" alt=""> alksdfh</p></li>
-                    <li class="inline"><p><img class="inline" src="{{Vite::asset('resources\icon\check-circle.svg')}}" alt=""> alksdfh</p></li>
+                    @while($c < 5) <li class="inline">
+                        <p><img class="inline" src="{{Vite::asset('resources\icon\check-circle.svg')}}" alt=""> alksdfh</p>
+                        </li>
+                        @php($c++)
+                        @endwhile
+                        <li class="inline">
+                            <p><img class="inline" src="{{Vite::asset('resources\icon\check-circle.svg')}}" alt=""> alksdfh</p>
+                        </li>
+                        <li class="inline">
+                            <p><img class="inline" src="{{Vite::asset('resources\icon\check-circle.svg')}}" alt=""> alksdfh</p>
+                        </li>
+                        <li class="inline">
+                            <p><img class="inline" src="{{Vite::asset('resources\icon\check-circle.svg')}}" alt=""> alksdfh</p>
+                        </li>
                 </ul>
             </div>
 
@@ -92,13 +98,13 @@
                 <button class="bg-text-blue w-full h-full text-white rounded">
                     Selengkapnya
                 </button>
-    
-            </div>
-        </div>
 
-        
-        @endfor
+            </div>
     </div>
+
+
+    @endfor
+</div>
 </div>
 
 {{-- BERITA --}}
@@ -121,7 +127,7 @@
                     <p class=" text-base text-text-gray text-left line-clamp-2">Banyuwangi, sebuah kota di ujung timur Pulau Jawa, terkenal dengan keindahan alamnya yang memukau. Dari pantai-pantai eksotis hingga wisata alam pegunungan yang menakjubkan, Banyuwangi menawarkan pengalaman wisata yang tak terlupakan.</p>
                 </div>
             </div>
-            
+
         </div>
         <div class="card h-500 w-96 shadow rounded">
             <img class="rounded-t" src="{{Vite::asset('resources\images\berita2.png')}}" alt="">
@@ -145,5 +151,40 @@
 </div>
 
 {{-- PENGUNJUNG --}}
-<div class="w-scree h-screen bg-gray-100"></div>
+<div class="w-scree h-auto  py-44 px-32 bg-gray-100 ">
+    <div class="flex justify-center gap-36">
+        <div class="basis-1/2">
+            <div class="flex flex-col ">
+                <div>
+                    <h2 class="text-left font-bold text-4xl text-text-black">Kata <span class="text-text-blue">mereka</span> yang telah
+                        berkunjung</h2>
+                </div>
+                <div class="mt-16">
+                    <p class="text-xl text-text-gray text-left ">Saya benar-benar menikmati perjalanan saya ke
+                        Muara Mbaduk, dan saya sangat  merekomendasikan
+                        tempat ini untuk semua orang yang mencari
+                        pengalaman wisata yang berbeda dan menarik di
+                        Banyuwangi.</p>
+                </div>
+                <div class="mt-4">
+                    <p class="text-xl font-bold text-text-black"><img class="inline mr-1" src="{{Vite::asset('resources\icon\Rectangle.svg')}}" alt="">Indah Ratnasari</p>
+                </div>
+                
+            </div>
+        </div>
+        <div class="rounded basis-1/2 flex justify-end">
+            <img class="rounded" src="{{Vite::asset('resources\images\kata-mereka1.png')}}" alt="">
+        </div>
+    </div>
+    <div class="flex gap-2 justify-self-end">
+        <div class="rounded-full w-9 h-9 bg-text-blue grid place-items-center opacity-50">
+            <img class="mx-auto my-auto" src="{{Vite::asset('resources\icon\chevron-left.svg')}}" alt="">
+        </div>
+        <div class="rounded-full w-9 h-9 bg-text-blue grid place-items-center">
+            <img class="mx-auto my-auto" src="{{Vite::asset('resources\icon\chevron-right.svg')}}" alt="">
+        </div>
+    </div>
+</div>
+
+
 @endsection
