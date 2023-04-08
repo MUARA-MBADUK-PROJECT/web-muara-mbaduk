@@ -44,7 +44,7 @@
                     <li class="text-text-gray text-xl my-2">Tentang Kami</li>
                     <li class="text-text-gray text-xl my-2">Harga Tiket</li>
                     <li class="text-text-gray text-xl my-2">FAQ</li>
-                    <li class="text-text-gray text-xl my-2">Syarat dan Ketentuan</li>
+                    <a href="/policy"><li class="text-text-gray text-xl my-2">Syarat dan Ketentuan</li></a>
                     <li class="text-text-gray text-xl my-2">Kebijakan Prifasi</li>
 
                 </ul>

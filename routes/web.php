@@ -14,12 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('user.pages.landing');
+    return view('guest.pages.landing');
 })->name('home');
 
 Route::get('about',function(){
-    return view('user.pages.tentang');
+    return view('guest.pages.tentang');
 })->name('tentang');
 
+Route::get('policy',function(){
+    return view('guest.pages.syarat');
+});
 Route::view('tailwind','layouts.landing.app');
 
