@@ -13,84 +13,42 @@
     @yield('conten')
 
     {{-- footer --}}
-    {{-- <div class="max-w-screen-2xl mx-auto w-screen pt-28 px-8 p-10" style="background-color: #333333">
-        <div class="mt-6 grid grid-cols-12 md:gap-x-8 gap-y-12 ml-10">
-            <div class="col-span-12 lg:col-span-4">
-                <div>
-                    <a href="/" class="inline-flex">
-                        <img class="w-80 h-90" src="{{Vite::asset('resources\images\logo-muara-mbaduk-foot.png')}}" alt="Laravel" loading="lazy">
-                    </a>
-                </div>
-                <p class="max-w-sm text-xs text-gray-700 sm:text-sm dark:text-gray-500">Kawasan wisata alam yang
-                    menyajikan pantai, perbukitan
-                    hingga tempat berkemah</p>
-                <br>
-                <p>Telepon / Whatapps :</p>
-                <p>0853 3334 2050</p>
-                <ul class="mt-6 flex items-center sm:flex">
-                    <li>
-                        <a href="https://github.com/laravel">
-                            <img id="footer__github" class="inline-block dark:inline-block w-6 h-6 fill-current text-white sm:block" src="{{Vite::asset('resources\icon\facebook.svg')}}" alt="Facebook" width="24" height="24" loading="lazy">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/laravel">
-                            <img id="footer__github" class=" dark:inline-block w-6 h-6 fill-current text-white sm:block block" src="{{Vite::asset('resources\icon\instagram.svg')}}" alt="Facebook" width="24" height="24" loading="lazy">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/laravel">
-                            <img id="footer__github" class="inline-block dark:inline-block w-6 h-6 fill-current text-white sm:block" src="{{Vite::asset('resources\icon\mail.svg')}}" alt="Facebook" width="24" height="24" loading="lazy">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="text-xs col-span-6 md:col-span-3 lg:col-span-2 space-x-10">
-                <span class="text-white text-xl font-bold ">Packet Camping</span>
-                <div class="mt-5" style="margin-left: 0">
-                    <ul class="space-y-3 text-gray-700 dark:text-gray-500">
-                        @for($i = 0; $i < 5; $i++) <li>
-                            <a href="/" class="transition-colors hover:text-gray-100 text-gray-500 text-lg">Standart 2</a>
-                            </li>
-                            @endfor
-                    </ul>
-                </div>
-            </div>
-            <div class="text-xs col-span-6 md:col-span-3 ml-8  lg:col-span-2">
-                <span class="text-white text-xl font-bold">Bantuan</span>
-                <div class="mt-5">
-                    <ul class="space-y-3 text-gray-700 dark:text-gray-500">
-                        <li>
-                            <a href="" class="transition-colors hover:text-gray-100 text-gray-500 text-lg">Kontak</a>
-                        </li>
-                        <li>
-                            <a href="" class="transition-colors hover:text-gray-100 text-gray-500 text-lg">Tantangan Kami</a>
-                        </li>
-                        <li>
-                            <a href="" class="transition-colors hover:text-gray-100 text-gray-500 text-lg">Harga Tiket</a>
-                        </li>
-                        <li>
-                            <a href="" class="transition-colors hover:text-gray-100 text-gray-500 text-lg">FAQ</a>
-                        </li>
-                        <li>
-                            <a href="" class="transition-colors hover:text-gray-100 text-gray-500 text-lg">Syarat dan Ketentuan</a>
-                        </li>
-                        <li>
-                            <a href="" class="transition-colors hover:text-gray-100 text-gray-500 text-lg">Kebijakan Privasi</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="footer flex justify-center flex-wrap w-screen h-auto bg-footer pt-28 gap-24 px-20">
+        <div class="flex flex-col max-w-xs">
+            <img class="shrink" src="{{Vite::asset('resources\images\logo-muara-mbaduk-foot.png')}}" alt="logo muara mbaduk">
+            <p class="text-xl text-text-gray text-left ">Kawasan wisata alam yang
+                menyajikan pantai, perbukitan
+                hingga tempat berkemah</p>
+            <p class="text-xl text-text-gray text-left mt-5">Telepon / Whatapps : </p>
+            <p class="text-xl text-text-gray text-left ">0853 3334 2050</p>
+            <div class="flex mt-6 gap-4">
+                <img src="{{Vite::asset('resources\icon\facebook.svg')}}" alt="">
+                <img src="{{Vite::asset('resources\icon\instagram.svg')}}" alt="">
+                <img src="{{Vite::asset('resources\icon\mail.svg')}}" alt="">
             </div>
         </div>
-        <div class="mt-10 border-t pt-6 pb-16 border-gray-200 dark:border-dark-500">
-            <p class="text-xs text-gray-700 dark:text-gray-400">
-                Laravel is a Trademark of Taylor Otwell. Copyright © 2011-2023 Laravel LLC.
-            </p>
-            <p class="mt-6 text-xs text-gray-700 dark:text-gray-400">
-                Code highlighting provided by <a href="https://torchlight.dev">Torchlight</a>
-            </p>
+        <div class="">
+            <h3 class="text-xl font-bold text-text-white">Paket Camping</h3>
+            <ul class="mt-7">
+                <li class="text-text-gray text-xl my-2">standart</li>
+                <li class="text-text-gray text-xl my-2">standart</li>
+                <li class="text-text-gray text-xl my-2">standart</li>
+                <li class="text-text-gray text-xl my-2">standart</li>
+            </ul>
         </div>
-    </div> --}}
+        <div class="">
+            <h3 class="text-xl font-bold text-text-white">Bantuan</h3>
+            <ul class="mt-7">
+                <li class="text-text-gray text-xl my-2">Kontak</li>
+                <li class="text-text-gray text-xl my-2">Tentang Kami</li>
+                <li class="text-text-gray text-xl my-2">Harga Tiket</li>
+                <li class="text-text-gray text-xl my-2">FAQ</li>
+                <li class="text-text-gray text-xl my-2">Syarat dan Ketentuan</li>
+                <li class="text-text-gray text-xl my-2">Kebijakan Prifasi</li>
+
+            </ul>
+        </div>
+    </div>
 
 </body>
 </html>

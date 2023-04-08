@@ -12,7 +12,8 @@ module.exports = {
         'text-gray':'#939393',
         'text-blue':'#1570BF',
         'text-white':'#FFFFFF',
-        'text-darkblue':'#0B4981'
+        'text-darkblue':'#0B4981',
+        'footer':'#333333'
       },
       spacing:{
         '500':'500px',
