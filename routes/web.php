@@ -19,10 +19,14 @@ Route::get('/', function () {
 
 Route::get('about',function(){
     return view('guest.pages.tentang');
-})->name('tentang');
+})->name('about');
+
+Route::get('term',function(){
+    return view('guest.pages.syarat');
+})->name('term');
 
 Route::get('policy',function(){
-    return view('guest.pages.syarat');
-});
+    return view('guest.pages.privasi');
+})->name('policy');
 Route::view('tailwind','layouts.landing.app');
 
