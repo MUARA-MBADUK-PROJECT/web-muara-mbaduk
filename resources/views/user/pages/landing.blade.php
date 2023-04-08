@@ -186,5 +186,23 @@
     </div>
 </div>
 
+{{-- LETS GO --}}
+<div class="bg-white p-28 w-screen h-[528px]">
+    <div class="flex justify-center">
+        <div class="bg-text-blue w-full h-auto px-64 py-12 flex flex-col rounded">
+            <div>
+                <h2 class="text-4xl text-text-white font-bold text-center">Sekarang giliran kamu</h2>
+            </div>
+            <div class="mt-1">
+                <p class="text-2xl text-text-white text-center">untuk merasakan pengalaman wisata alam
+                    yang tak terlupakan di Muara Mbaduk</p>
+            </div>
+            <div class="inline-flex space-x-1.5 hover:bg-blue-800 hover:cursor-pointer items-center justify-center w-auto h-14 px-6 pt-3.5 pb-3 bg-blue-900 rounded mt-12">
+                <p class="text-xl font-bold text-white">Pesan Sekarang</p>
+                <img class="w-6 h-6 rounded-lg" src="{{Vite::asset('resources\icon\chevron-right.svg')}}"/>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
