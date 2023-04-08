@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('user.pages.landing');
 })->name('home');
 
-Route::get('/',function(){
+Route::get('about',function(){
     return view('user.pages.tentang');
 })->name('tentang');
 

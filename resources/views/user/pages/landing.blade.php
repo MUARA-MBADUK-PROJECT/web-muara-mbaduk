@@ -3,20 +3,7 @@
 
 {{-- header --}}
 <div class="w-screen h-screen bg-no-repeat bg-cover" style="background-image: url('{{Vite::asset('resources/images/header-image.png')}}')">
-    <div class="navbar w-full h-28 flex justify-between">
-        <div class="logo h-auto w-auto my-6 ml-32">
-            <img src="{{Vite::asset('resources\images\logo-muara-mbaduk.png')}}" alt="">
-        </div>
-        <div class="nav my-7 mr-28 flex">
-            <ul class="flex justify-center space-x-14 my-auto hover:cursor-pointer">
-                <li class="inline text-text-white my-auto">Beranda</li>
-                <li class="inline text-text-white ">Eksplore</li>
-                <li class="inline text-text-white ">Paket Camping</li>
-                <li class="inline text-text-white ">Tentang</li>
-            </ul>
-            <button class="text-text-white  font-bold ml-14 px-5 bg-text-blue my-2 rounded hover:bg-blue-800">masuk</button>
-        </div>
-    </div>
+    <x-navbar/>
     <div class="pt-40 pl-28">
         <h1 class="text-xl font-medium text-text-white ">Selamat Datang Di Muara Mbaduk</h1>
         <h2 class="font-bold text-left text-text-white text-5xl max-w-lg mt-1 leading-snug">Nikmati Liburan yang

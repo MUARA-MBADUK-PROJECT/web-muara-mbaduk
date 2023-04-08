@@ -1,7 +1,7 @@
-@extends('layout.user.konten')
+@extends('layouts.user.app')
 @section('conten')
-<div class="w-screen h-hscreen/2 bg-no-repeat bg-cover" style="background-image: url('{{Vite::asset('resources/images/header-image.png')}}')">
-    <div class="navbar w-full h-28 flex justify-between">
+<div class="w-screen h-auto bg-no-repeat bg-cover" style="background-image: url('{{Vite::asset('resources/images/header-image.png')}}')">
+    <div class="navbar w-full h-auto flex justify-between">
         <div class="logo h-auto w-auto my-6 ml-32">
             <img src="{{Vite::asset('resources\images\logo-muara-mbaduk.png')}}" alt="">
         </div>
@@ -33,4 +33,6 @@
         </div>
     </div>
 </div>
+
+@yield('isi')
 @endsection
