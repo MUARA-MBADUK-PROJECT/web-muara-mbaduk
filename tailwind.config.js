@@ -19,7 +19,8 @@ module.exports = {
         '500':'500px',
         '750':'750px',
         '1000':'1000px',
-        'page':'832px'
+        'page':'832px',
+        'hscreen/2':'50vh'
       },
       lineClamp: {
         1: '1',

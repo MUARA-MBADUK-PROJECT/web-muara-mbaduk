@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('user.pages.landing');
-});
+})->name('home');
+
+Route::get('/',function(){
+    return view('user.pages.tentang');
+})->name('tentang');
 
 Route::view('tailwind','layouts.landing.app');
 
