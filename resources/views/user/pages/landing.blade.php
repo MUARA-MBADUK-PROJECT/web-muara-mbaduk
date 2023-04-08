@@ -1,33 +1,41 @@
 @extends('layouts.landing.app')
 @section('conten')
-<div class="inline-flex items-center justify-center w-screen bg-white" style=" height: 832px;">
-    <div class="inline-flex flex-col items-center justify-end px-24 bg-black bg-no-repeat bg-cover bg-center bg-opacity-40 w-full" style=" height: 832px; background-image: url('{{Vite::asset('resources/images/header-image.png')}}')">
-        <div class=" inline-flex space-x-96 items-center justify-end py-5 pl-28 pr-24 w-full sticky top-0 border-collapse" style=" height: 100px;">
-            <img class="w-28 h-full" src="{{Vite::asset('resources\images\logo-muara-mbaduk.png')}}" />
-            <div class="flex space-x-9 items-center justify-start" style="width: 564px; height: 44px;">
-                <p class="text-base text-white">Beranda</p>
-                <p class="text-base text-white">Eksplore</p>
-                <p class="text-base text-white">Paket Camping</p>
-                <p class="text-base text-white">Tentang</p>
-                <div class="flex items-center justify-center w-1/6 h-full px-4 py-2.5 bg-blue-700 rounded">
-                    <p class="text-base font-bold text-white">Masuk</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="flex flex-col space-y-5 items-start justify-end pl-24 pr-96 py-40" style="width: 1280px; height: 732px;">
-            <p class="text-2xl font-medium text-white">Selamat Datang Di Muara Mbaduk</p>
-            <p class="text-5xl font-bold text-white">Nikmati Liburan yang<br />Berbeda dengan<br />Berkemah</p>
-            <p class="text-base font-light text-white">Muara Mbaduk adalah kawasan wisata alam yang<br />menyajikan pantai, perbukitan hingga tempat berkemah</p>
-            <div class="inline-flex space-x-3 items-center justify-end w-56 h-14 pl-4 bg-blue-700 rounded">
-                <p class="text-base font-bold text-white">PESAN SEKARANG</p>
-                <div class="flex items-center justify-center w-11 h-full px-2.5 py-4 bg-blue-800">
-                    <img class="flex-1 h-full rounded-lg" src="{{Vite::asset('resources\icon\chevron-right.svg')}}" />
-                </div>
+{{-- header --}}
+<div class="w-screen h-screen bg-no-repeat bg-cover" style="background-image: url('{{Vite::asset('resources/images/header-image.png')}}')">
+    <div class="navbar w-full h-28 flex justify-between">
+        <div class="logo h-auto w-auto my-6 ml-32">
+            <img src="{{Vite::asset('resources\images\logo-muara-mbaduk.png')}}" alt="">
+        </div>
+        <div class="nav my-7 mr-28 flex">
+            <ul class="flex justify-center space-x-14 my-auto hover:cursor-pointer">
+                <li class="inline text-text-white my-auto">Beranda</li>
+                <li class="inline text-text-white ">Eksplore</li>
+                <li class="inline text-text-white ">Paket Camping</li>
+                <li class="inline text-text-white ">Tentang</li>
+            </ul>
+            <button class="text-text-white  font-bold ml-14 px-5 bg-text-blue my-2 rounded hover:bg-blue-800">masuk</button>
+        </div>
+    </div>
+    <div class="pt-40 pl-28">
+        <h1 class="text-xl font-medium text-text-white ">Selamat Datang Di Muara Mbaduk</h1>
+        <h2 class="font-bold text-left text-text-white text-5xl max-w-lg mt-1 leading-snug">Nikmati Liburan yang
+            Berbeda dengan
+            Berkemah</h2>
+        <h3 class="text-base text-text-white font-extralight max-w-md mt-2">Muara Mbaduk adalah kawasan wisata alam yang
+            menyajikan pantai, perbukitan hingga tempat berkemah </h3>
+        <div class="w-1/5 flex bg-text-blue max-w-xs mt-14 justify-between">
+            <div class="bg-text-blue p-4 flex">
+                <p class="uppercase font-bold text-text-white">pesan sekarang</p>
+                
+            </div>
+            <div class=" w-fit bg-blue-800 flex px-3 py-4">
+            <img src="{{Vite::asset('resources\icon\chevron-right.svg')}}" alt="">
             </div>
         </div>
     </div>
 </div>
+
 
 {{-- explore --}}
 <div class="h-auto w-screen bg-slate-50 p-36 flex sm:flex-col md:flex-row  justify-center gap-20 ">
@@ -161,7 +169,7 @@
                 </div>
                 <div class="mt-16">
                     <p class="text-xl text-text-gray text-left ">Saya benar-benar menikmati perjalanan saya ke
-                        Muara Mbaduk, dan saya sangat  merekomendasikan
+                        Muara Mbaduk, dan saya sangat merekomendasikan
                         tempat ini untuk semua orang yang mencari
                         pengalaman wisata yang berbeda dan menarik di
                         Banyuwangi.</p>
@@ -169,7 +177,7 @@
                 <div class="mt-4">
                     <p class="text-xl font-bold text-text-black"><img class="inline mr-1" src="{{Vite::asset('resources\icon\Rectangle.svg')}}" alt="">Indah Ratnasari</p>
                 </div>
-                
+
             </div>
         </div>
         <div class="rounded basis-1/2 flex justify-end">
@@ -199,7 +207,7 @@
             </div>
             <div class="inline-flex space-x-1.5 hover:bg-blue-800 hover:cursor-pointer items-center justify-center w-auto h-14 px-6 pt-3.5 pb-3 bg-blue-900 rounded mt-12">
                 <p class="text-xl font-bold text-white">Pesan Sekarang</p>
-                <img class="w-6 h-6 rounded-lg" src="{{Vite::asset('resources\icon\chevron-right.svg')}}"/>
+                <img class="w-6 h-6 rounded-lg" src="{{Vite::asset('resources\icon\chevron-right.svg')}}" />
             </div>
         </div>
     </div>
