@@ -30,3 +30,6 @@ Route::get('policy',function(){
 })->name('policy');
 Route::view('tailwind','layouts.landing.app');
 
+Route::get('login', function () {
+    return view('guest.pages.masuk');
+})->name('login');
