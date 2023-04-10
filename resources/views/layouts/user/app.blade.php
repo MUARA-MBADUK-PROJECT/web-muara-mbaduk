@@ -40,12 +40,12 @@
             <div class="">
                 <h3 class="text-xl font-bold text-text-white">Bantuan</h3>
                 <ul class="mt-7">
-                    <li class="text-text-gray text-xl my-2">Kontak</li>
+                    <a href="{{route('contact.show')}}"><li class="text-text-gray text-xl my-2">Kontak</li></a>
                     <li class="text-text-gray text-xl my-2">Tentang Kami</li>
                     <li class="text-text-gray text-xl my-2">Harga Tiket</li>
                     <li class="text-text-gray text-xl my-2">FAQ</li>
-                    <a href="/term"><li class="text-text-gray text-xl my-2">Syarat dan Ketentuan</li></a>
-                    <a href="/policy"><li class="text-text-gray text-xl my-2">Kebijakan Prifasi</li></a>
+                    <a href="{{route('term')}}"><li class="text-text-gray text-xl my-2">Syarat dan Ketentuan</li></a>
+                    <a href="{{route('policy')}}"><li class="text-text-gray text-xl my-2">Kebijakan Prifasi</li></a>
 
                 </ul>
             </div>
@@ -59,6 +59,8 @@
         </div>
 
     </div>
+
+    @vite('resources/js/app.js')
 
 </body>
 </html>

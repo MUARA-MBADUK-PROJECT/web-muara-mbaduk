@@ -1,5 +1,7 @@
 <?php
 
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -137,6 +139,16 @@ Route::prefix('/packet')->name('packet.')->group(function(){
 
 Route::get('login',function(){})
     ->name('login');
+
+Route::prefix('contact')->name('contact.')->group(function(){
+    Route::get('/',function(){
+        return view('guest.pages.kontak');
+    })->name('show');
+
+    Route::post('send',function(Request $request){
+        dd($request);
+    })->name('send');
+});
 
 Route::view('tailwind','layouts.landing.app');
 
