@@ -137,6 +137,3 @@ Route::prefix('/packet')->name('packet.')->group(function(){
 
 Route::view('tailwind','layouts.landing.app');
 
-Route::get('login', function () {
-    return view('guest.pages.masuk');
-})->name('login');
