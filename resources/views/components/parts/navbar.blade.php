@@ -11,7 +11,7 @@
                     <a href=""><li class="inline text-text-white ">Paket Camping</li></a>
                     <a href="/about"><li class="inline text-text-white ">Tentang</li></a>
                 </ul> 
-                <a href="{{route("login")}}" ><button class="text-text-white  font-bold ml-14 px-5 bg-text-blue my-2 rounded hover:bg-blue-800">masuk</button></a>
+                <a href="{{route("login")}}" ><button class="text-text-white  font-bold ml-14 px-5 bg-text-blue py-2 rounded hover:bg-blue-800">masuk</button></a>
             </div>
         </div>
     </div>

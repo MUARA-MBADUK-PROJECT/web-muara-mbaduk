@@ -135,5 +135,8 @@ Route::prefix('/packet')->name('packet.')->group(function(){
     })->name('detail');
 });
 
+Route::get('login',function(){})
+    ->name('login');
+
 Route::view('tailwind','layouts.landing.app');
 
