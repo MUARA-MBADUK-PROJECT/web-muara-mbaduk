@@ -1,66 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Web Frontend untuk Aplikasi Muarabaduk
+Selamat datang di repository "Muara Mbaduk"! Repository ini berisi tampilan web frontend untuk aplikasi MuaraMBaduk yang dibangun dengan menggunakan teknologi HTML, CSS, dan JavaScript. Repository ini disiapkan untuk membantu Anda memulai pengembangan aplikasi dengan tampilan web yang sesuai dengan kebutuhan proyek. Harapannya, repository ini dapat membantu mempercepat proses pengembangan aplikasi dan mempermudah proses pelatihan atau onboarding bagi developer baru di masa depan. Jangan ragu untuk berkontribusi atau mempelajari cara kerja tampilan web yang kami gunakan.
+## Persyaratan Teknis
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+ - PHP 8.1
+ - composser
+ - node js
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Instruksi Instalasi
+ 1. Clone repository dari GitHub dengan menjalanakan perintah dibawah ini menggunakan terminal atau command prompt jika anda menggunakan windows 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+> `git clone https://github.com/MUARA-MBADUK-PROJECT/web-muara-mbaduk.git`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+ 2. Masuk ke directory tempat anda meng clone repository dengan menjalankan sytax 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+> `cd <nama-folder-repository>`
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+atau langsung membukanya melalui file manager.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+ 3. Salin file .env.example ke fiel bernama .env. langkah ini juga dapat dilakukan dengan menjalankan command 
 
-## Laravel Sponsors
+> `cp .env.example .env`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+ 4. lalu install dependency yang diperlukan dengan menjalankan perintah 
 
-### Premium Partners
+> `commposer install`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+ dan 
 
-## Contributing
+> `npm install`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Instruksi Menjalankan pada environtment local/dev
 
-## Code of Conduct
+ 1. jalankan server dengan menjalankan command
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+>  `php artisan serve`
 
-## Security Vulnerabilities
+ 2. buka terminal baru lalu jalankan juga vite untuk secara otomatis membangun asset yang ada di repository resource kedalam repository build, dan akan langsung merefresh page ketika ada perubahan file. Vite dapat dijalankan dengan menjalankan command 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+> `npm run dev`
 
-## License
+## Instruksi Penggunaan
+(menunggu aplikasi selesai)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Intruksi Pengembangan
+Untuk instruksi pengembangan, pada aplikasi ini menggunakan framework yang populer dan terdokumentasi dengan baik pada websitenya dengan baik. Link dokumentasi dari framework yang digunakan ada dawah ini
+
+### Pihak Ketiga
+Aplikasi ini menggunakan beberapa pihak ketiga untuk membantu mempercepat dalam pengembangannya. beberapa pihak ketiga yang digunakan pada aplikasi ini 
+
+|nama|link dokumentasi  |
+|--|--|
+| laravel 10 | (https://laravel.com/docs/10.x) |
+| tailwind 3.3.1 | (https://tailwindcss.com/docs)|
+| api muarambaduk|(under development)|
+
+### Bekerja Dengan Tailwind
+Aplikasi ini menggunakan framework css **tailwind** untuk pihak ketiga pada stylingnya, sehingga diperlukan **vite** yang akan secara otomatis mengambil utility yang diperlukan berdasarkan class class yang digunakan pada file fiel yang didaftarkan pada file `tailwind.config.js`, sehingga file css yang ada pada build tidak akan membengkak. Untuk configurasi dari tailwind bisa anda lihat pada dokumentasi tailwind [Install Tailwind CSS with Laravel - Tailwind CSS](https://tailwindcss.com/docs/guides/laravel)
+
+### Pembuatan Route
+Cara pembuatan route pada aplikasi ini tertulis pada dokumentasi laravel https://laravel.com/docs/10.x/routing.
+
+Saya sangat menyarankan anda untuk memberikan nama pada setiap route yang anda buat untuk memudahkan dalam menggenerate url pada aplikasi, cara penamaan route dapat anda lihat pada dokumentasi laravel ini [Routing - Laravel - The PHP Framework For Web Artisans](https://laravel.com/docs/10.x/routing#named-routes). Dengan memberikan nama pada setiap route anda dapat menggenerate url dengan method 
+
+> `route('name')//`
+
+atau melakukan redirect dengan cara
+
+> `return  redirect()->route('profile');`
+> `return  to_route('profile');`
+
+
+
+### Penempatan view blade
+seperti yang tertera pada dokumentasi laravel, repository untuk penempatan view terdapat pada repository `/resourece/views`. Pada repository tersebut terdapat sub sub repository 
+
+ - component, berisi component blade templat Lebih lengkapnya bisa anda baca pada  dokumentasi laravel tepatnya ada di bagian the `basics/blade templates/components` [Blade Templates - Laravel - The PHP Framework For Web Artisans](https://laravel.com/docs/10.x/blade#components)
+ - layouts, berisi layout html view yang digunakan pada palikasi. Lebih lengkapnya ada pada dokumentasi laravel ada di bagian `basics/blade templates/building layouts` [Blade Templates - Laravel - The PHP Framework For Web Artisans](https://laravel.com/docs/10.x/blade#building-layouts)
+ - guest, berisi view yang dapat diakses oleh guest (pengunjung web yang tidak melakukan login)
+ - transaction,  berisi view untuk melakukan transaksi pada aplikasi
+ - user, berisi view yang hanya dapat diakses oleh user yang telah melakukan login
+
+### Penempatan asset
+Pada aplikasi ini sangat disarankan untuk meletakan asset yang akan digunakan pada directory **resources**. Pada directory **resource** tersebut juga telah ada beberapa sub sub directory sebagai acuan anda dalam peletakan asset.
+
+Untuk pengambilan url dari asset tersebut dapat menggunakan static method 
+
+> `Vite::asset("[url directory dari root]")`
+
+ contoh 
+
+> `Vite::asset("resources\images\logo-muara-mbaduk.png")`
+
+### Pembuatan Component
+Seperti pada documentasi laravel [Blade Templates - Laravel - The PHP Framework For Web Artisans](https://laravel.com/docs/10.x/blade#components), untuk membuat commponent dapat menggunakan command artisan
+
+> `php artisan  make:component  repository/NamaComponent`
+
+pada pembuatan component saya sangat menyarangkan untuk menggunakan camlecase untuk nama dari component, karenan jika tidak menggunakan camlecase ada kemungkinan terjadi erro. Seperti menggunakan `-` (dash) untuk memisahkan kata, pada class `app/view/component` akan terjadi error.
+
+Hal ini mungkin di beberapa mesin tidak akan menampilkan erro, namun ada beberapa mesin akan menampilkan eror.
+### Deployment
+(masih dalam pengembangan)
+
+
+
+
+
+## Kontributor
+|nama|github|email|
+|--|--|--|
+| Bachtiar Arya Habibie | [BachtiarAH](https://github.com/BachtiarAH) |bachtiarah73@gmail.com|
+|Edo |[11edomantolas](https://github.com/11edomantolas)|email mu do|
+
+
+
+
