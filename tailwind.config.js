@@ -16,6 +16,7 @@ module.exports = {
         'footer':'#333333'
       },
       spacing:{
+        '400':'400px',
         '500':'500px',
         '750':'750px',
         '1000':'1000px',
@@ -24,6 +25,9 @@ module.exports = {
       },
       lineClamp: {
         1: '1',
+      },
+      aspectRatio: {
+        '5/2': '5 / 2',
       },
     },
   },

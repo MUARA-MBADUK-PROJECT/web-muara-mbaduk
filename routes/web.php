@@ -1,6 +1,7 @@
 <?php
 
-
+use App\Http\Controllers\ControllerBerita;
+use App\Http\Controllers\ControllerLanding;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.pages.landing');
-})->name('home');
+Route::get('/', [ControllerLanding::class,'index'])->name('landing');
 
 Route::get('about',function(){
     return view('guest.pages.tentang');
@@ -148,6 +147,11 @@ Route::prefix('contact')->name('contact.')->group(function(){
     Route::post('send',function(Request $request){
         dd($request);
     })->name('send');
+});
+
+Route::prefix('news')->name('news.')->group(function(){
+    Route::get('/',[ControllerBerita::class,'index'])->name('show');
+    Route::get('/{id}',[ControllerBerita::class,'getConten'])->name('conten');
 });
 
 Route::view('tailwind','layouts.landing.app');
