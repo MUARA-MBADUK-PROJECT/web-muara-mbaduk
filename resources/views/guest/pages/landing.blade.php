@@ -25,7 +25,7 @@
 
 
 {{-- explore --}}
-<div class="h-auto w-screen bg-slate-50 p-36 flex sm:flex-col md:flex-row  justify-center gap-20 ">
+<div id="explore" class="h-auto w-screen bg-slate-50 p-36 flex sm:flex-col md:flex-row  justify-center gap-20 ">
     <div class="flex-wrap w-500 h-auto">
         <h3 class="text-left text-4xl text-text-black font-bold">Nikmati berbagai
             <span class="text-text-blue">pemandangan</span> yang indah</h3>
