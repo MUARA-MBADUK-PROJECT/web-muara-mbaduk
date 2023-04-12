@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerBerita;
+use App\Http\Controllers\ControllerFAQ;
 use App\Http\Controllers\ControllerLanding;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -154,6 +156,8 @@ Route::prefix('news')->name('news.')->group(function(){
     Route::get('/{id}',[ControllerBerita::class,'getConten'])->name('conten');
     Route::get('more/{start}',[ControllerBerita::class,'getMoreNews'])->name('more');
 });
+
+Route::get('faq',[ControllerFAQ::class,'index'])->name('faq');
 
 Route::view('tailwind','layouts.landing.app');
 
