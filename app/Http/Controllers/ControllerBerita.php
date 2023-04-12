@@ -71,7 +71,30 @@ class ControllerBerita extends Controller
 
     public function getConten($id)
     {
-        return "ini akan menjadi page berita $id";
+        $data = [
+            'id_news' => '1',
+            'title' => 'Cara Seru Habiskan Akhir Tahun, Wisata Camping Ciamik di Banyuwangi Yuk!',
+            'release' => '29 Desember 2022',
+            'img' => 'https://awsimages.detik.net.id/community/media/visual/2022/12/09/muara-mbaduk-banyuwangi-2_169.jpeg?w=620',
+            'conten' => 'Berta, seorang wisatawan yang gemar menjelajahi berbagai destinasi wisata, telah merencanakan perjalanan wisata ke Banyuwangi pada akhir tahun 2022. Dia sangat bersemangat karena mendengar bahwa destinasi wisata di Banyuwangi telah melakukan berbagai perbaikan dan pembenahan untuk menyambut kunjungan wisatawan di akhir tahun tersebut.
+
+            Di paragraf pertama, Berta merencanakan perjalanannya ke Banyuwangi, mempertimbangkan waktu akhir tahun sebagai waktu yang ideal untuk mengunjungi daerah tersebut.
+            
+            Di paragraf kedua, Berta merasa antusias dengan kabar bahwa destinasi wisata di Banyuwangi telah berbenah diri. Mungkin ada perbaikan infrastruktur, peningkatan fasilitas, atau upaya konservasi yang telah dilakukan, yang membuatnya semakin bersemangat untuk mengunjungi daerah tersebut.
+            
+            Di paragraf ketiga, Berta mulai mempersiapkan perjalanan wisatanya. Dia mungkin merencanakan rute perjalanan, memesan akomodasi, atau mencari informasi tentang atraksi wisata yang ingin dia kunjungi di Banyuwangi.
+            
+            Di paragraf keempat, Berta berbicara tentang ekspektasinya terhadap perjalanan wisata ke Banyuwangi. Mungkin dia berharap dapat menikmati keindahan alam, menjelajahi budaya lokal, atau mencicipi kuliner khas daerah tersebut.
+            
+            Di paragraf kelima, Berta berbicara tentang harapannya untuk mendapatkan pengalaman wisata yang tak terlupakan di Banyuwangi. Dia mungkin mengharapkan dapat bertemu dengan penduduk lokal, belajar tentang kearifan lokal, atau mengabadikan momen indah dalam perjalanan wisatanya.
+            
+            Di paragraf keenam, Berta mungkin berbicara tentang hal-hal yang ingin dia lakukan atau tempat-tempat yang ingin dia kunjungi di Banyuwangi, seperti menjelajahi Taman Nasional Baluran, menjelajahi Kawah Ijen, atau mengunjungi Pantai Pulau Merah.
+            
+            Di paragraf ketujuh, Berta bisa merencanakan kegiatan atau acara khusus yang ingin dia ikuti di Banyuwangi, seperti festival budaya atau acara wisata yang diadakan pada akhir tahun, yang akan menjadi highlight perjalanan wisatanya.
+            
+            Dengan tujuh paragraf ini, kita bisa menjelaskan lebih detail tentang bagaimana Berta merencanakan dan mengharapkan perjalanannya ke Banyuwangi pada akhir tahun 2022.'
+        ];
+        return view('guest.pages.detail-berita',['data'=>$data]);
     }
 
     public function getMoreNews($start)

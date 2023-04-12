@@ -10,7 +10,7 @@
         <div class="w-full h-full grid grid-cols-1 p-5  content-end bg-gradient-to-t from-neutral-900 ">
             <div class="w-full">
                 <p class="text-text-white ">{{$hotNews['release']}}</p>
-                <p class="text-2xl font-bold line-clamp-1 text-text-white">{{$hotNews['title']}}</p>
+                <a href="{{route('news.conten',['id'=>$hotNews['id_news']])}}"><p class="text-2xl font-bold line-clamp-1 text-text-white">{{$hotNews['title']}}</p></a>
                 <p class="text-text-white line-clamp-1">{{$hotNews['sumary']}}</p>
             </div>
         </div>
@@ -95,6 +95,7 @@
         countNews = {{count($news)}};
         cardNews = document.getElementsByClassName('getElementsByClassName');
         container = document.getElementById("newsContainer");
+        baseLink = "{{route('news.show')}}/";
 
         var xhr = new XMLHttpRequest();
 
@@ -112,7 +113,8 @@
                         img: response[index].img
                         , release: response[index].release
                         , title: response[index].title
-                        , summary: response[index].summary,
+                        , summary: response[index].summary
+                        , link: baseLink+response[index].id_news
                     };
                     appendNewsCard(container, obj)
                 }
