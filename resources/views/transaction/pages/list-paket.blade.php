@@ -23,7 +23,7 @@
             </div>
             <a href="">
                 <div class="hover:cursor-pointer hover:bg-text-darkblue py-4 px-12 bg-text-blue rounded">
-                    <p class="text-text-white font-bold text-center">Buat Paket <img class="inline" src="{{Vite::asset('resources\icon\chevron-right.svg')}}" /></p>
+                    <p class="text-text-white font-bold text-center">Buat Paket <img class="inline" src="{{asset('resources\icon\chevron-right.svg')}}" /></p>
                 </div>
             </a>
         </div>

@@ -13,7 +13,7 @@
         </p>
         <div class="mt-12 flex gap-7">
             <div class="p-6 w-fit h-fit bg-text-blue rounded">
-                <img src="{{Vite::asset('resources\icon\map-pin.svg')}}" alt="">
+                <img src="{{asset('resources\icon\map-pin.svg')}}" alt="">
             </div>
             <div class="text-text-gray text-left flex flex-col justify-center">
                 <p class="">
@@ -26,7 +26,7 @@
         </div>
         <div class="mt-12 flex gap-7">
             <div class="p-6 w-fit h-fit bg-text-blue rounded">
-                <img src="{{Vite::asset('resources\icon\phone-call.svg')}}" alt="">
+                <img src="{{asset('resources\icon\phone-call.svg')}}" alt="">
             </div>
             <div class="text-text-gray text-left flex flex-col justify-center">
                 <p class="">
@@ -36,7 +36,7 @@
         </div>
         <div class="mt-12 flex gap-7">
             <div class="p-6 w-fit h-fit bg-text-blue rounded">
-                <img src="{{Vite::asset('resources\icon\mail-white.svg')}}" alt="">
+                <img src="{{asset('resources\icon\mail-white.svg')}}" alt="">
             </div>
             <div class="text-text-gray text-left flex flex-col justify-center">
                 <p class="">

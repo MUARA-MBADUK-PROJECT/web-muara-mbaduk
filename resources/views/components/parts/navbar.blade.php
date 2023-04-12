@@ -2,7 +2,7 @@
     <div>
         <div class="navbar w-full h-28 flex justify-between">
             <div class="logo h-auto w-auto my-6 ml-32">
-                <a href="{{route('landing')}}"><img src="{{Vite::asset('resources\images\logo-muara-mbaduk.png')}}" alt=""></a>
+                <a href="{{route('landing')}}"><img src="{{asset('resources\images\logo-muara-mbaduk.png')}}" alt=""></a>
             </div>
             <div class="nav my-7 mr-28 flex">
                 <ul class="flex justify-center space-x-14 my-auto hover:cursor-pointer">

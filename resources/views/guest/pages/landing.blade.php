@@ -2,8 +2,8 @@
 @section('conten')
 
 {{-- header --}}
-<div class="w-screen h-screen bg-no-repeat bg-cover" style="background-image: url('{{Vite::asset('resources/images/header-image.png')}}')">
-    <x-navbar/>
+<div class="w-screen h-screen bg-no-repeat bg-cover" style="background-image: url('{{asset('resources/images/header-image.png')}}')">
+    <x-parts.navbar/>
     <div class="pt-40 pl-28">
         <h1 class="text-xl font-medium text-text-white ">Selamat Datang Di Muara Mbaduk</h1>
         <h2 class="font-bold text-left text-text-white text-5xl max-w-lg mt-1 leading-snug">Nikmati Liburan yang
@@ -17,7 +17,7 @@
                 
             </div>
             <div class=" w-fit bg-blue-800 flex px-3 py-4">
-            <img src="{{Vite::asset('resources\icon\chevron-right.svg')}}" alt="">
+            <img src="{{asset('resources\icon\chevron-right.svg')}}" alt="">
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
         <h3 class="text-left text-4xl text-text-black font-bold">Nikmati berbagai
             <span class="text-text-blue">pemandangan</span> yang indah</h3>
         <div class="mt-20">
-            <img src="{{Vite::asset('resources\images\eksplore-1.png')}}">
+            <img src="{{asset('resources\images\eksplore-1.png')}}">
         </div>
     </div>
     <div class="flex-wrap h-auto w-500 justify-item-end">
@@ -42,7 +42,7 @@
             </p>
         </div>
         <div class="mt-20 justify-end flex">
-            <img class="" src="{{Vite::asset('resources\images\eksplore-2.png')}}" alt="eksplor 2">
+            <img class="" src="{{asset('resources\images\eksplore-2.png')}}" alt="eksplor 2">
         </div>
     </div>
 </div>
@@ -67,7 +67,7 @@
         </div>
         <a href="">
             <div class="hover:cursor-pointer hover:bg-text-darkblue py-4 px-12 bg-text-blue rounded">
-                <p class="text-text-white font-bold text-center">Buat Paket <img class="inline" src="{{Vite::asset('resources\icon\chevron-right.svg')}}" /></p>
+                <p class="text-text-white font-bold text-center">Buat Paket <img class="inline" src="{{asset('resources\icon\chevron-right.svg')}}" /></p>
             </div>
         </a>
     </div>
@@ -80,7 +80,7 @@
     </div>
     <div class="flex justify-center gap-24 mt-16">
         <div class="card h-500 w-96  shadow rounded">
-            <img class="rounded-t" src="{{Vite::asset('resources\images\berita1.png')}}" alt="">
+            <img class="rounded-t" src="{{asset('resources\images\berita1.png')}}" alt="">
             <div class="flex flex-col mx-5">
                 <div class="date mt-4">
                     <p class="date text-text-gray text-base text-left">29 Desember 2022</p>
@@ -96,7 +96,7 @@
 
         </div>
         <div class="card h-500 w-96 shadow rounded">
-            <img class="rounded-t" src="{{Vite::asset('resources\images\berita2.png')}}" alt="">
+            <img class="rounded-t" src="{{asset('resources\images\berita2.png')}}" alt="">
             <div class="flex flex-col mx-5">
                 <div class="date mt-4">
                     <p class="date text-text-gray text-base text-left">29 Desember 2022</p>
@@ -133,21 +133,21 @@
                         Banyuwangi.</p>
                 </div>
                 <div class="mt-4">
-                    <p class="text-xl font-bold text-text-black"><img class="inline mr-1" src="{{Vite::asset('resources\icon\Rectangle.svg')}}" alt="">Indah Ratnasari</p>
+                    <p class="text-xl font-bold text-text-black"><img class="inline mr-1" src="{{asset('resources\icon\Rectangle.svg')}}" alt="">Indah Ratnasari</p>
                 </div>
 
             </div>
         </div>
         <div class="rounded basis-1/2 flex justify-end">
-            <img class="rounded" src="{{Vite::asset('resources\images\kata-mereka1.png')}}" alt="">
+            <img class="rounded" src="{{asset('resources\images\kata-mereka1.png')}}" alt="">
         </div>
     </div>
     <div class="flex gap-2 justify-self-end">
         <div class="rounded-full w-9 h-9 bg-text-blue grid place-items-center opacity-50">
-            <img class="mx-auto my-auto" src="{{Vite::asset('resources\icon\chevron-left.svg')}}" alt="">
+            <img class="mx-auto my-auto" src="{{asset('resources\icon\chevron-left.svg')}}" alt="">
         </div>
         <div class="rounded-full w-9 h-9 bg-text-blue grid place-items-center">
-            <img class="mx-auto my-auto" src="{{Vite::asset('resources\icon\chevron-right.svg')}}" alt="">
+            <img class="mx-auto my-auto" src="{{asset('resources\icon\chevron-right.svg')}}" alt="">
         </div>
     </div>
 </div>
@@ -165,7 +165,7 @@
             </div>
             <div class="inline-flex space-x-1.5 hover:bg-blue-800 hover:cursor-pointer items-center justify-center w-auto h-14 px-6 pt-3.5 pb-3 bg-blue-900 rounded mt-12">
                 <p class="text-xl font-bold text-white">Pesan Sekarang</p>
-                <img class="w-6 h-6 rounded-lg" src="{{Vite::asset('resources\icon\chevron-right.svg')}}" />
+                <img class="w-6 h-6 rounded-lg" src="{{asset('resources\icon\chevron-right.svg')}}" />
             </div>
         </div>
     </div>

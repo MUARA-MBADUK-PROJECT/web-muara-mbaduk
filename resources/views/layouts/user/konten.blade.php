@@ -1,9 +1,9 @@
 @extends('layouts.user.app')
 @section('conten')
-<div class="w-screen h-auto bg-no-repeat bg-cover" style="background-image: url('{{Vite::asset('resources/images/header-image.png')}}')">
+<div class="w-screen h-auto bg-no-repeat bg-cover" style="background-image: url('{{asset('resources/images/header-image.png')}}')">
     <div class="navbar w-full h-auto flex justify-between">
         <div class="logo h-auto w-auto my-6 ml-32">
-            <img src="{{Vite::asset('resources\images\logo-muara-mbaduk.png')}}" alt="">
+            <img src="{{asset('resources\images\logo-muara-mbaduk.png')}}" alt="">
         </div>
         <div class="nav my-7 mr-28 flex">
             <ul class="flex justify-center space-x-14 my-auto hover:cursor-pointer">
@@ -28,7 +28,7 @@
                 
             </div>
             <div class=" w-fit bg-blue-800 flex px-3 py-4">
-            <img src="{{Vite::asset('resources\icon\chevron-right.svg')}}" alt="">
+            <img src="{{asset('resources\icon\chevron-right.svg')}}" alt="">
             </div>
         </div>
     </div>

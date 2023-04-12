@@ -16,16 +16,16 @@
     <div class="footer w-screen h-fit bg-footer pt-28 px-20 ">
         <div class="border-b-4 border-text-gray flex justify-between flex-wrap pb-20 ">
             <div class="flex flex-col max-w-xs ">
-                <img class="shrink" src="{{Vite::asset('resources\images\logo-muara-mbaduk-foot.png')}}" alt="logo muara mbaduk">
+                <img class="shrink" src="{{asset('resources\images\logo-muara-mbaduk-foot.png')}}" alt="logo muara mbaduk">
                 <p class="text-xl text-text-gray text-left ">Kawasan wisata alam yang
                     menyajikan pantai, perbukitan
                     hingga tempat berkemah</p>
                 <p class="text-xl text-text-gray text-left mt-5">Telepon / Whatapps : </p>
                 <p class="text-xl text-text-gray text-left ">0853 3334 2050</p>
                 <div class="flex mt-6 gap-4">
-                    <img src="{{Vite::asset('resources\icon\facebook.svg')}}" alt="">
-                    <img src="{{Vite::asset('resources\icon\instagram.svg')}}" alt="">
-                    <img src="{{Vite::asset('resources\icon\mail.svg')}}" alt="">
+                    <img src="{{asset('resources\icon\facebook.svg')}}" alt="">
+                    <img src="{{asset('resources\icon\instagram.svg')}}" alt="">
+                    <img src="{{asset('resources\icon\mail.svg')}}" alt="">
                 </div>
             </div>
             <div class="">
