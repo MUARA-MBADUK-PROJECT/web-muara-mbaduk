@@ -161,3 +161,9 @@ Route::get('faq',[ControllerFAQ::class,'index'])->name('faq');
 
 Route::view('tailwind','layouts.landing.app');
 
+Route::get('login', function () {
+    return view('guest.pages.masuk');
+})->name('login');
+Route::get('New_Policiy', function () {
+    return view('guest.pages.syarat_pemesanan');
+})->name('New_Policiy');
