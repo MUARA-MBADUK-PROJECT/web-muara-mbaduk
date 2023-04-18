@@ -62,4 +62,16 @@ Route::prefix('news')->name('news.')->group(function () {
 
 Route::get('faq', [ControllerFAQ::class, 'index'])->name('faq');
 
+Route::get('login', function () {
+    return view('guest.pages.masuk');
+})->name('login');
+
+Route::get('New_Policiy', function () {
+    return view('guest.pages.syarat_pemesanan');
+})->name('New_Policiy');
+
+Route::get('dashboard', function (){
+    return view('guest.pages.dashboard');
+})->name('dashboard');
+
 Route::view('tailwind', 'layouts.landing.app');
