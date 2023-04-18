@@ -167,3 +167,6 @@ Route::get('login', function () {
 Route::get('New_Policiy', function () {
     return view('guest.pages.syarat_pemesanan');
 })->name('New_Policiy');
+Route::get('dashboard', function (){
+    return view('guest.pages.dashboard');
+})->name('dashboard');
