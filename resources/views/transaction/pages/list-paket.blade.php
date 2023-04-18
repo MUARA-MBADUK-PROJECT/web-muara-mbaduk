@@ -21,7 +21,7 @@
                 <p class="text-xl font-bold text-left">Belum menemukan paket yang sesuai dengan kebutuhanmu ?</p>
                 <p>Tenang, kamu bisa membuat pesanan paket spesial sendiri</p>
             </div>
-            <a href="">
+            <a href="{{route('packet.custom')}}">
                 <div class="hover:cursor-pointer hover:bg-text-darkblue py-4 px-12 bg-text-blue rounded">
                     <p class="text-text-white font-bold text-center">Buat Paket <img class="inline" src="{{asset('resources\icon\chevron-right.svg')}}" /></p>
                 </div>

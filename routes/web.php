@@ -35,14 +35,14 @@ Route::get('policy', function () {
 
 Route::prefix('/packet')->name('packet.')->group(function () {
     Route::get('/list', [ControllerPacket::class,'index'])->name('list');
-
     Route::get('/detail/{id}', [ControllerPacket::class,'getById'])->name('detail');
     Route::get('/more',[ControllerPacket::class,'getMoreReviews'])->name('more');
+    Route::get('/custom',[ControllerPacket::class,'viewCustom'])->name('custom');
+    Route::post('/custom',[ControllerPacket::class,'sendCustom'])->name('custom.send');
 });
 
 Route::get('login', function () {
-})
-    ->name('login');
+})->name('login');
 
 Route::prefix('contact')->name('contact.')->group(function () {
     Route::get('/', function () {

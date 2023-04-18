@@ -194,4 +194,83 @@ class ControllerPacket extends Controller
 
         return json_encode($reviews);
     }
+
+    public function viewCustom()
+    {
+        $item = [
+            [
+                'id'=>'1',
+                'name'=>'Tenda Tendaki Kap. 2 Orang',
+                'price'=> 60000,
+                'img'=>'https://lzd-img-global.slatic.net/g/ff/kf/Se6130fd3372f4733b5a5d953d25d3355U.jpg_720x720q80.jpg_.webp'
+            ],
+            [
+                'id'=>'2',
+                'name'=>'Tenda Miss Borneo Kap. 2 Orang',
+                'price'=> 80000,
+                'img'=>'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/7/13/edef4102-eeeb-460a-bf55-22674e362158.jpg'
+            ],
+            [
+                'id'=>'3',
+                'name'=>'Tenda Miss Borneo Kap. 4 Orang',
+                'price'=> 100000,
+                'img'=>'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/3/5/d749547b-df7f-4853-9404-dfc59df36412.jpg'
+            ],
+            [
+                'id'=>'4',
+                'name'=>'Kompor',
+                'price'=> 20000,
+                'img'=>'https://s2.bukalapak.com/img/256104419/large/KOMPOR_PORTABLE_MINI_WINDPROOF__KOMPOR_CAMPING.jpg'
+            ],
+            [
+                'id'=>'5',
+                'name'=>'Gas Kaleng',
+                'price'=> 15000,
+                'img'=>'https://assets.klikindomaret.com/share/10037809/10037809_1.jpg'
+            ],
+            [
+                'id'=>'7',
+                'name'=>'Nesting / alat Masak',
+                'price'=> 10000,
+                'img'=>'https://images.tokopedia.net/img/cache/700/product-1/2015/10/22/237827/237827_184450f5-fcc5-4744-93cf-2242d4b130fb.jpg'
+            ],
+            [
+                'id'=>'8',
+                'name'=>'Meja Caping',
+                'price'=> 15000,
+                'img'=>'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//84/MTA-33312700/no_brand_meja_camping-meja_lipat_cordura-size_m_full01_eghttk7v.jpg'
+            ],
+            [
+                'id'=>'9',
+                'name'=>'Matras Lebar 80 x 60 cm',
+                'price'=> 10000,
+                'img'=>'https://cf.shopee.co.id/file/535559d6bb376c5f519aa0ab749da54c'
+            ],
+            [
+                'id'=>'10',
+                'name'=>'Cangkir',
+                'price'=> 5000,
+                'img'=>'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/12/19/1670c688-1834-4e72-8f9e-57a31f58c6a1.jpg'
+            ],
+            [
+                'id'=>'11',
+                'name'=>'Sendok dan Garbu',
+                'price'=> 5000,
+                'img'=>'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//101/MTA-42289408/no-brand_no-brand_full01.jpg'
+            ],
+            [
+                'id'=>'12',
+                'name'=>'jumlah Peserta',
+                'price'=> 5000,
+                'img'=>'https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg'
+            ],
+        ];
+
+        return view('transaction.pages.custom-packet',['item'=>$item]);
+    }
+
+    public function sendCustom(Request $request)
+    {
+        dd($request);
+    }
 }
