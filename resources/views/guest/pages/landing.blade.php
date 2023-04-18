@@ -25,7 +25,7 @@
 
 
 {{-- explore --}}
-<div class="h-auto w-screen bg-slate-50 p-36 flex sm:flex-col md:flex-row  justify-center gap-20 ">
+<div id="explore" class="h-auto w-screen bg-slate-50 p-36 flex sm:flex-col md:flex-row  justify-center gap-20 ">
     <div class="flex-wrap w-500 h-auto">
         <h3 class="text-left text-4xl text-text-black font-bold">Nikmati berbagai
             <span class="text-text-blue">pemandangan</span> yang indah</h3>
@@ -65,7 +65,7 @@
             <p class="text-xl font-bold text-left">Belum menemukan paket yang sesuai dengan kebutuhanmu ?</p>
             <p>Tenang, kamu bisa membuat pesanan paket spesial sendiri</p>
         </div>
-        <a href="">
+        <a href="{{route('packet.custom')}}">
             <div class="hover:cursor-pointer hover:bg-text-darkblue py-4 px-12 bg-text-blue rounded">
                 <p class="text-text-white font-bold text-center">Buat Paket <img class="inline" src="{{asset('resources\icon\chevron-right.svg')}}" /></p>
             </div>
