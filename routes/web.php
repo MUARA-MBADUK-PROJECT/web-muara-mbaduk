@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerBerita;
 use App\Http\Controllers\ControllerFAQ;
+use App\Http\Controllers\ControllerHistory;
 use App\Http\Controllers\ControllerLanding;
 use App\Http\Controllers\ControllerPacket;
 use Illuminate\Http\Request;
@@ -73,5 +74,9 @@ Route::get('New_Policiy', function () {
 Route::get('dashboard', function (){
     return view('guest.pages.dashboard');
 })->name('dashboard');
+
+Route::prefix('history')->name('history')->group(function(){
+    Route::get('/',[ControllerHistory::class,'index']);
+});
 
 Route::view('tailwind', 'layouts.landing.app');
