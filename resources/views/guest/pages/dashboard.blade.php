@@ -54,8 +54,7 @@
                             <rect width="80" height="80" fill="white"/>
                             </clipPath>
                             </defs>
-                            </svg>
-                            
+                            </svg>                       
                         <p class="text-slate-400 mt-6">FAQ</p>
                     </div>
                 </div>
