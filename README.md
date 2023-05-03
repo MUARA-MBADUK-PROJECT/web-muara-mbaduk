@@ -116,7 +116,7 @@ Hal ini mungkin di beberapa mesin tidak akan menampilkan erro, namun ada beberap
 |nama|github|email|
 |--|--|--|
 | Bachtiar Arya Habibie | [BachtiarAH](https://github.com/BachtiarAH) |bachtiarah73@gmail.com|
-|Edo |[11edomantolas](https://github.com/11edomantolas)|email mu do|
+|Elisa Christian Alfrido Mantolas |[11edomantolas](https://github.com/11edomantolas)|Mantolasedo@gmail.com|
 
 
 
