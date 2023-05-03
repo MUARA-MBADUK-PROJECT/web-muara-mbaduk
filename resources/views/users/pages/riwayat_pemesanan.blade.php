@@ -5,7 +5,8 @@
 </x-parts.header>
 <article class="container py-20">
     <section>
-        <div class="flex justify-between border-b-2 border-text-gray pb-4">
+        @foreach($data as $item => $value)
+        <div class="flex justify-between border-b-2 border-text-gray pb-4 my-7">
             <div>
                 <div class="flex">
                     <div class="grid items-center">
@@ -17,8 +18,8 @@
                         </svg>
                     </div>
                     <div class="ml-5">
-                        <p class="font-bold text-text-blue">MDK2602232233580</p>
-                        <p class="text-text-gray">26 Februari 2023</p>
+                        <p class="font-bold text-text-blue">{{$value['id']}}</p>
+                        <p class="text-text-gray">{{$value['date']}}</p>
                     </div>
                 </div>
                 <div class="flex space-x-6">
@@ -27,7 +28,7 @@
                             <path d="M20.8334 21.875V19.7917C20.8334 18.6866 20.3944 17.6268 19.613 16.8454C18.8316 16.064 17.7718 15.625 16.6667 15.625H8.33341C7.22835 15.625 6.16854 16.064 5.38714 16.8454C4.60573 17.6268 4.16675 18.6866 4.16675 19.7917V21.875" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M12.4999 11.4583C14.8011 11.4583 16.6666 9.59285 16.6666 7.29167C16.6666 4.99048 14.8011 3.125 12.4999 3.125C10.1987 3.125 8.33325 4.99048 8.33325 7.29167C8.33325 9.59285 10.1987 11.4583 12.4999 11.4583Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <p class="text-text-gray">5</p>
+                        <p class="text-text-gray">{{$value['person']}}</p>
                     </div>
                     <div class="flex space-x-2.5">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +41,7 @@
                                 </clipPath>
                             </defs>
                         </svg>
-                        <p class="text-text-gray">0</p>
+                        <p class="text-text-gray">{{$value['bike']}}</p>
                     </div>
                     <div class="flex space-x-2.5">
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,15 +65,15 @@
                                 </clipPath>
                             </defs>
                         </svg>
-                        <p class="text-text-gray">1</p>
+                        <p class="text-text-gray">{{$value['car']}}</p>
                     </div>
                 </div>
             </div>
             <div class="flex">
                 <div class="grid justify-items-end">
-                    <p class=" bg-yellow-500 px-8 py-1 rounded text-text-white">Menunggu Pembayaran</p>
-                    <p class=" text-text-gray">Bayar Ditempat</p>
-                    <p class="text-text-gray">Rp. 45.000</p>
+                    <p class="{{ $value['status'] == 'Sudah Dibayar' ? 'bg-green-500' : 'bg-yellow-500' }}  px-8 py-1 rounded text-text-white">{{$value['status']}}</p>
+                    <p class=" text-text-gray">{{$value['payment_method']}}</p>
+                    <p class="text-text-gray">Rp. {{$value['total']}}</p>
                 </div>
                 <div class="grid place-items-center ml-9">
                     <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +83,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </section>
 </article>
 @endsection
