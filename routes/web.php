@@ -75,8 +75,9 @@ Route::get('dashboard', function (){
     return view('guest.pages.dashboard');
 })->name('dashboard');
 
-Route::prefix('history')->name('history')->group(function(){
-    Route::get('/',[ControllerHistory::class,'index']);
+Route::prefix('history')->name('history.')->group(function(){
+    Route::get('/',[ControllerHistory::class,'index'])->name('index');
+    Route::get('/detail/{id}',[ControllerHistory::class,'detail'])->name('detail');
 });
 
 Route::view('tailwind', 'layouts.landing.app');

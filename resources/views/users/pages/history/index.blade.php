@@ -76,10 +76,12 @@
                     <p class="text-text-gray">Rp. {{$value['total']}}</p>
                 </div>
                 <div class="grid place-items-center ml-9">
-                    <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9.375 22.5H35.625" stroke="#939393" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M22.5 9.375L35.625 22.5L22.5 35.625" stroke="#939393" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    <a href="{{route('history.detail',[ 'id' => $value['id'] ])}}">
+                        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.375 22.5H35.625" stroke="#939393" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M22.5 9.375L35.625 22.5L22.5 35.625" stroke="#939393" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
