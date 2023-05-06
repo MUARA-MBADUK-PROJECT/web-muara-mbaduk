@@ -212,4 +212,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'api_base_url' => env('API_BASE_URL'),
+    'api_version' => env('API_VERSION'),
+
 ];
