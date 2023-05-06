@@ -7,8 +7,8 @@ class RepositoryProduct extends Repository{
         return $this->apiGet('products');
     }
 
-    public function getOne($keyWord)
+    public function getOne($slug)
     {
-        return $this->apiGet("products/$keyWord");
+        return $this->apiGet("products/$slug");
     }
 }
