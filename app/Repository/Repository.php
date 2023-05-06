@@ -2,11 +2,21 @@
 
 namespace App\Repository;
 
-class Repository{
+class Repository
+{
     private $apiBaseUrl;
     private $apiVer;
     protected $baseUrl;
     protected $auth;
+
+    public function trimUrl($url)
+    {
+        if (substr($url, 0, 1) === '/') { // Check if the first character is the one we want to remove
+            $url = ltrim($url, '/'); // Remove the character using ltrim
+        }
+
+        return $url;
+    }
 
     public function __construct()
     {
@@ -19,7 +29,7 @@ class Repository{
     public function apiGet($endPoint)
     {
         $curl = curl_init();
-        $url = $this->baseUrl .'/'. $endPoint;
+        $url = $this->baseUrl . '/' . $this->trimUrl($endPoint);;
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -31,7 +41,7 @@ class Repository{
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'Authorization: '. $this->auth
+                'Authorization: ' . $this->auth
             ),
         ));
 
@@ -40,5 +50,33 @@ class Repository{
         curl_close($curl);
         return json_decode($response);
         // return $url;
+    }
+
+    public function apiPost(String $endPoint,array $body)
+    {
+        $curl = curl_init();
+        $url = $this->baseUrl . "/$endPoint";
+        $body = json_encode($body);
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => $body,
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                "Authorization: $this->auth;"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        return $response;
     }
 }
