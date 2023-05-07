@@ -6,6 +6,7 @@ use App\Http\Controllers\ControllerFAQ;
 use App\Http\Controllers\ControllerHistory;
 use App\Http\Controllers\ControllerLanding;
 use App\Http\Controllers\ControllerPacket;
+use App\Http\Controllers\ControllerPages;
 use App\Http\Controllers\ControllerTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,22 +23,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ControllerLanding::class, 'index'])->name('landing');
+Route::get('pages/{slug}',[ControllerPages::class,'showPages'])->name('pages');
 
-Route::get('about', function () {
-    return view('guest.pages.tentang');
-})->name('about');
+Route::get('about',[ControllerPages::class,'showAbout'])->name('about');
 
-Route::get('term', function () {
-    return view('guest.pages.syarat');
-})->name('term');
+Route::get('term', [ControllerPages::class,'showTermOfService'])->name('term');
 
-Route::get('policy', function () {
-    return view('guest.pages.privasi');
-})->name('policy');
+Route::get('policy', [ControllerPages::class,'showPrivacyPolicy'])->name('policy');
 
 Route::prefix('/packet')->name('packet.')->group(function () {
     Route::get('/list', [ControllerPacket::class,'index'])->name('list');
-    Route::get('/detail/{id}', [ControllerPacket::class,'getById'])->name('detail');
+    Route::get('/detail/{slug}', [ControllerPacket::class,'getBySlug'])->name('detail');
     Route::get('/more',[ControllerPacket::class,'getMoreReviews'])->name('more');
     Route::get('/custom',[ControllerPacket::class,'viewCustom'])->name('custom');
     Route::post('/custom',[ControllerPacket::class,'sendCustom'])->name('custom.send');

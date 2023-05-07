@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\RepositoryPackage;
+use App\View\Components\cards\Packet;
 use Illuminate\Http\Request;
 
 class ControllerPacket extends Controller
 {
     //
+
+    private $repo;
+
+    public function __construct() {
+        $this->repo = new RepositoryPackage();
+    }
     public function index()
     {
         $data = [
@@ -108,28 +116,10 @@ class ControllerPacket extends Controller
         return view('transaction.pages.list-paket', ['data' => $data]);
     }
 
-    public function getById($id)
+    public function getBySlug($slug)
     {
-        $packet = [
-            'id' => '1',
-            'name' => 'standar',
-            'price' => 1500000,
-            'img' => 'https://down-id.img.susercontent.com/file/9e7d9d14b0cbc3d28b7d73a6aa04547d',
-            'summary' => 'Paket camping yang ditujukan untuk empat orang dengan fasilitas yang lengkap dan nyaman',
-            'description' => 'Paket camping yang ditujukan untuk empat orang dengan fasilitas
-            yang lengkap dan nyaman. serta juga menyediakan fasilitas tambahan seperti
-            toilet dan gratis pemsangan tenda.',
-            'list' => [
-                'tenda 2',
-                'kursi lipat 1',
-                'Matras 1',
-                'Lampu Tenda 1',
-                'Kompor dan Gas Kaleng 1',
-                'panci',
-                'Cangkir 2',
-                'Sendok Garbu'
-            ],
-        ];
+        $packet = $this->repo->getOne($slug);
+
 
         $reviews = [
             [
@@ -166,7 +156,7 @@ class ControllerPacket extends Controller
 
 
         ];
-        return view('transaction.pages.detail-packet', ['packet' => $packet, 'reviews' => $reviews]);
+        return view('transaction.pages.detail-packet', ['packet' => $packet->data, 'reviews' => $reviews]);
     }
 
     public function getMoreReviews()

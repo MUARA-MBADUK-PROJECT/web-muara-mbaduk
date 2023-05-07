@@ -1,3 +1,15 @@
+@php
+    $pages = Cache::remember('pages', 60, function () {
+        $repoPages = new App\Repository\RepositoryPages();
+        return $repoPages->getAll();
+    });
+
+    $packages = Cache::remember('packages', 60, function () {
+        $repoPackage = new App\Repository\RepositoryPackage();
+        return $repoPackage->getAll();
+    });
+@endphp
+
 <!doctype html>
 <html>
 <head>
@@ -35,28 +47,24 @@
             <div class="">
                 <h3 class="text-xl font-bold text-text-white">Paket Camping</h3>
                 <ul class="mt-7">
-                    <li class="text-text-gray text-xl my-2">standart</li>
-                    <li class="text-text-gray text-xl my-2">standart</li>
-                    <li class="text-text-gray text-xl my-2">standart</li>
-                    <li class="text-text-gray text-xl my-2">standart</li>
+                    @foreach($packages->data as $key => $value)
+                        <a href="{{route('packet.detail',['slug'=>$value->slug])}}">
+                            <li class="text-text-gray text-xl my-2">{{$value->title}}</li>
+                        </a>
+                    @endforeach
                 </ul>
             </div>
             <div class="">
                 <h3 class="text-xl font-bold text-text-white">Bantuan</h3>
                 <ul class="mt-7">
+                    
+                    @foreach($pages->data as $key => $value)
+                    <a href="{{route('pages',['slug'=> $value->slug])}}">
+                        <li class="text-text-gray text-xl my-2">{{$value->pages}}</li>
+                    </a>
+                    @endforeach
                     <a href="{{route('contact.show')}}">
                         <li class="text-text-gray text-xl my-2">Kontak</li>
-                    </a>
-                    <li class="text-text-gray text-xl my-2">Tentang Kami</li>
-                    <li class="text-text-gray text-xl my-2">Harga Tiket</li>
-                    <a href="{{route('faq')}}">
-                        <li class="text-text-gray text-xl my-2">FAQ</li>
-                    </a>
-                    <a href="{{route('term')}}">
-                        <li class="text-text-gray text-xl my-2">Syarat dan Ketentuan</li>
-                    </a>
-                    <a href="{{route('policy')}}">
-                        <li class="text-text-gray text-xl my-2">Kebijakan Prifasi</li>
                     </a>
 
                 </ul>
