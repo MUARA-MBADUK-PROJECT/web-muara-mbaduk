@@ -6,19 +6,38 @@
 </x-parts.header>
 <div class="flex flex-col px-28 py-28">
 
-    <section class="aspect-[5/2] shadow-inner w-full bg-no-repeat bg-cover" style="background-image: url('{{$hotNews['img']}}')">
+    <section class="aspect-[5/2] shadow-inner w-full bg-no-repeat bg-cover" style="background-image: url('{{$news->data[0]->thumbnail}}')">
         <div class="w-full h-full grid grid-cols-1 p-5  content-end bg-gradient-to-t from-neutral-900 ">
             <div class="w-full">
-                <p class="text-text-white ">{{$hotNews['release']}}</p>
-                <a href="{{route('news.conten',['id'=>$hotNews['id_news']])}}"><p class="text-2xl font-bold line-clamp-1 text-text-white">{{$hotNews['title']}}</p></a>
-                <p class="text-text-white line-clamp-1">{{$hotNews['sumary']}}</p>
+
+                <p class="text-text-white ">
+                    @php
+                    use Carbon\Carbon;
+
+                    $dateString = $news->data[0]->created_at;
+                    $date = Carbon::parse($dateString)->format('d M Y');
+                    echo $date;
+
+                    @endphp
+                </p>
+                <a href="{{route('news.conten',['slug'=>$news->data[0]->slug])}}">
+                    <p class="text-2xl font-bold line-clamp-1 text-text-white">{{$news->data[0]->title}}</p>
+                </a>
+                <p class="text-text-white line-clamp-1">{{$news->data[0]->body}}</p>
             </div>
         </div>
     </section>
 
     <div id="newsContainer" class="py-28 flex flex-row justify-between h-fit w-full flex-wrap gap-7">
-        @foreach($news as $title)
-        <x-cards.news link="{{route('news.conten',['id'=>$title['id_news']])}}" img="{{$title['img']}}" title="{{$title['title']}}" summary="{{$title['summary']}}"></x-cards.news>
+        @foreach($news->data as $title)
+        @php
+
+        $dateString = $news->data[0]->created_at;
+        $date = Carbon::parse($dateString)->format('d M Y');
+        $date;
+
+        @endphp
+        <x-cards.news link="{{route('news.conten',['slug'=>$title->slug])}}" img="{{$title->thumbnail}}" title="{{$title->title}}" summary="{{$date}}"></x-cards.news>
         @endforeach
 
     </div>
@@ -92,7 +111,11 @@
     function loadMoreNews() {
 
 
-        countNews = {{count($news)}};
+        countNews = {
+            {
+                count($news - > data)
+            }
+        };
         cardNews = document.getElementsByClassName('getElementsByClassName');
         container = document.getElementById("newsContainer");
         baseLink = "{{route('news.show')}}/";
@@ -108,13 +131,13 @@
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
                 for (let index = 0; index < response.length; index++) {
-                    
+
                     obj = {
                         img: response[index].img
                         , release: response[index].release
                         , title: response[index].title
                         , summary: response[index].summary
-                        , link: baseLink+response[index].id_news
+                        , link: baseLink + response[index].id_news
                     };
                     appendNewsCard(container, obj)
                 }

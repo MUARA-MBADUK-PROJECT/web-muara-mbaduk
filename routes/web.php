@@ -58,7 +58,7 @@ Route::prefix('contact')->name('contact.')->group(function () {
 
 Route::prefix('news')->name('news.')->group(function () {
     Route::get('/', [ControllerBerita::class, 'index'])->name('show');
-    Route::get('/{id}', [ControllerBerita::class, 'getConten'])->name('conten');
+    Route::get('/{slug}', [ControllerBerita::class, 'getConten'])->name('conten');
     Route::get('more/{start}', [ControllerBerita::class, 'getMoreNews'])->name('more');
 });
 
