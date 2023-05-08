@@ -1,9 +1,12 @@
+@php
+    use Carbon\Carbon;
+@endphp
 @extends('layouts.user.app')
 @section('conten')
 
 {{-- header --}}
 <div class="w-screen h-screen bg-no-repeat bg-cover" style="background-image: url('{{asset('resources/images/header-image.png')}}')">
-    <x-parts.navbar/>
+    <x-parts.navbar />
     <div class="pt-40 pl-28">
         <h1 class="text-xl font-medium text-text-white ">Selamat Datang Di Muara Mbaduk</h1>
         <h2 class="font-bold text-left text-text-white text-5xl max-w-lg mt-1 leading-snug">Nikmati Liburan yang
@@ -14,10 +17,10 @@
         <div class="w-1/5 flex bg-text-blue max-w-xs mt-14 justify-between">
             <div class="bg-text-blue p-4 flex">
                 <p class="uppercase font-bold text-text-white">pesan sekarang</p>
-                
+
             </div>
             <div class=" w-fit bg-blue-800 flex px-3 py-4">
-            <img src="{{asset('resources\icon\chevron-right.svg')}}" alt="">
+                <img src="{{asset('resources\icon\chevron-right.svg')}}" alt="">
             </div>
         </div>
     </div>
@@ -50,18 +53,18 @@
 {{-- PENYEWAAN --}}
 <div class="bg-gray-100 p-28">
     <div class="flex gap-20  overflow-x-auto h-auto">
-        @foreach($packet as $item)
-        <x-cards.packet packet-id="{{$item['id']}}" packet-name="{{$item['name']}}" packet-price="{{$item['price']}}" packet-img="{{$item['img']}}">
+        @foreach($packets as $package)
+        <x-cards.packet packet-id="{{$package->id}}" packet-name="{{$package->title}}" packet-price="{{$package->price}}" packet-img="{{$package->image}}">
             <ul>
-                @foreach($item['list'] as $list)
-                    <li>{{$list}}</li>
+                @foreach($package->products as $product)
+                <li>{{$product->title}} {{$product->quantity}}</li>
                 @endforeach
             </ul>
         </x-cards.packet>
         @endforeach
     </div>
     <div class="my-24 mx-28 flex justify-around border border-text-gray rounded py-14">
-        <div >
+        <div>
             <p class="text-xl font-bold text-left">Belum menemukan paket yang sesuai dengan kebutuhanmu ?</p>
             <p>Tenang, kamu bisa membuat pesanan paket spesial sendiri</p>
         </div>
@@ -80,36 +83,30 @@
     </div>
     <div class="flex justify-center gap-24 mt-16">
         <div class="card h-500 w-96  shadow rounded">
-            <img class="rounded-t" src="{{asset('resources\images\berita1.png')}}" alt="">
-            <div class="flex flex-col mx-5">
-                <div class="date mt-4">
-                    <p class="date text-text-gray text-base text-left">29 Desember 2022</p>
-                </div>
-                <div class="title h-20 flex-none">
-                    <p class="text-left font-bold text-text-black text-xl line-clamp-2" style="">Cara Seru Habiskan Akhir Tahun, Wisata
-                        Camping Ciamik di Banyuwangi Yuk!</p>
-                </div>
-                <div class="sumary">
-                    <p class=" text-base text-text-gray text-left line-clamp-2">Banyuwangi, sebuah kota di ujung timur Pulau Jawa, terkenal dengan keindahan alamnya yang memukau. Dari pantai-pantai eksotis hingga wisata alam pegunungan yang menakjubkan, Banyuwangi menawarkan pengalaman wisata yang tak terlupakan.</p>
-                </div>
-            </div>
+
+           @for($i = 0; $i < 1; $i++)
+           <img class="rounded-t" src="{{$news[$i]->thumbnail}}" alt="">
+           <div class="flex flex-col mx-5">
+               <div class="date mt-4">
+                   <p class="date text-text-gray text-base text-left">@php
+                       
+                       $dateString = $news[$i]->created_at;
+                       $date = Carbon::parse($dateString)->format('d M Y');
+                       echo $date;
+
+                       @endphp</p>
+               </div>
+               <div class="title h-20 flex-none">
+                   <p class="text-left font-bold text-text-black text-xl line-clamp-2" style="">{{$news[$i]->title}}</p>
+               </div>
+               <div class="sumary">
+                   <p class=" text-base text-text-gray text-left line-clamp-2">{{$news[$i]->body}}</p>
+               </div>
+           </div>
+           @endfor
 
         </div>
-        <div class="card h-500 w-96 shadow rounded">
-            <img class="rounded-t" src="{{asset('resources\images\berita2.png')}}" alt="">
-            <div class="flex flex-col mx-5">
-                <div class="date mt-4">
-                    <p class="date text-text-gray text-base text-left">29 Desember 2022</p>
-                </div>
-                <div class="title h-20 flex-none">
-                    <p class="text-left font-bold text-text-black text-xl line-clamp-2" style="">Cara Seru Habiskan Akhir Tahun, Wisata
-                        Camping Ciamik di Banyuwangi Yuk!</p>
-                </div>
-                <div class="sumary">
-                    <p class=" text-base text-text-gray text-left line-clamp-2">Banyuwangi, sebuah kota di ujung timur Pulau Jawa, terkenal dengan keindahan alamnya yang memukau. Dari pantai-pantai eksotis hingga wisata alam pegunungan yang menakjubkan, Banyuwangi menawarkan pengalaman wisata yang tak terlupakan.</p>
-                </div>
-            </div>
-        </div>
+       
     </div>
     <div class="mt-12 mx-[512px] bg-text-blue flex-none rounded mb-24">
         <a href="{{route('news.show')}}"><button class="text-text-white w-full text-xl text-center font-bold px-7 py-4">Muat Lebih Banyak</button></a>
@@ -163,10 +160,12 @@
                 <p class="text-2xl text-text-white text-center">untuk merasakan pengalaman wisata alam
                     yang tak terlupakan di Muara Mbaduk</p>
             </div>
-            <div class="inline-flex space-x-1.5 hover:bg-blue-800 hover:cursor-pointer items-center justify-center w-auto h-14 px-6 pt-3.5 pb-3 bg-blue-900 rounded mt-12">
-                <p class="text-xl font-bold text-white">Pesan Sekarang</p>
-                <img class="w-6 h-6 rounded-lg" src="{{asset('resources\icon\chevron-right.svg')}}" />
-            </div>
+            <a href="{{route('packet.list')}}">
+                <button class="inline-flex space-x-1.5 hover:bg-blue-800 hover:cursor-pointer items-center justify-center w-full h-14 px-6 pt-3.5 pb-3 bg-blue-900 rounded mt-12">
+                    <p class="text-xl font-bold text-white">Pesan Sekarang</p>
+                    <img class="w-6 h-6 rounded-lg" src="{{asset('resources\icon\chevron-right.svg')}}" />
+                </button>
+            </a>
         </div>
     </div>
 </div>
