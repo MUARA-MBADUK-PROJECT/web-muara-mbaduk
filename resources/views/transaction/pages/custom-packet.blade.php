@@ -56,19 +56,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($item as $key => $value)
-                    <tr id="{{$value['id']}}">
+                    @foreach($products->data as $key => $product)
+                    <tr id="{{$product->id}}">
                         <td>
                             <div class="flex items-center">
-                                <img class="w-24 aspect-square" src="{{$value['img']}}" alt="">
+                                <img class="w-24 aspect-square" src="{{$product->image}}" alt="">
                                 <div class="ml-6">
-                                    <h3 class="text-text-black text-xl">{{$value['name']}}</h3>
-                                    <p class="text-text-blue text-xl">Rp. <span>{{$value['price']}}</span></p>
+                                    <h3 class="text-text-black text-xl">{{$product->title}}</h3>
+                                    <p class="text-text-blue text-xl">Rp. <span>{{$product->price}}</span></p>
                                 </div>
                             </div>
                         </td>
                         <td >
-                            <input class="w-fit" name="{{$value['id']}}" type="number" hidden value="0">
+                            <input class="w-fit" name="{{$product->id}}" type="number" hidden value="0">
                             <div class="flex item-center ">
                                 <p class="text-text-black text-xl">x</p>
                                 <p class="text-text-black text-xl">0</p>
@@ -76,8 +76,8 @@
                         </td>
                         <td>
                             <div class="flex justify-end gap-5">
-                                <button type="button" onclick="decrease(this)" data-id="{{$value['id']}}" class="bg-text-gray px-10 text-text-white text-3xl font-bold pb-1 rounded">-</button>
-                                <button type="button" onclick="increase(this)" data-id="{{$value['id']}}" class="bg-text-blue px-10 text-text-white text-3xl pb-1 font-bold rounded">+</button>
+                                <button type="button" onclick="decrease(this)" data-id="{{$product->id}}" class="bg-text-gray px-10 text-text-white text-3xl font-bold pb-1 rounded">-</button>
+                                <button type="button" onclick="increase(this)" data-id="{{$product->id}}" class="bg-text-blue px-10 text-text-white text-3xl pb-1 font-bold rounded">+</button>
                             </div>
                         </td>
                     </tr>

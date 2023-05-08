@@ -25,11 +25,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ControllerLanding::class, 'index'])->name('landing');
 Route::get('pages/{slug}',[ControllerPages::class,'showPages'])->name('pages');
 
-Route::get('about',[ControllerPages::class,'showAbout'])->name('about');
+// Route::get('about',[ControllerPages::class,'showAbout'])->name('about');
 
-Route::get('term', [ControllerPages::class,'showTermOfService'])->name('term');
+// Route::get('term', [ControllerPages::class,'showTermOfService'])->name('term');
 
-Route::get('policy', [ControllerPages::class,'showPrivacyPolicy'])->name('policy');
+// Route::get('policy', [ControllerPages::class,'showPrivacyPolicy'])->name('policy');
 
 Route::prefix('/packet')->name('packet.')->group(function () {
     Route::get('/list', [ControllerPacket::class,'index'])->name('list');
