@@ -14,12 +14,13 @@ module.exports = {
         xl: '5rem',
         '2xl': '6rem',
       },
-      'center' : true
+      center: true
     },
     extend: {
       colors:{
         'text-black':'#1E1E1E',
         'text-gray':'#939393',
+        'text-lightgray':'#EFEFEF',
         'text-blue':'#1570BF',
         'text-white':'#FFFFFF',
         'text-darkblue':'#0B4981',

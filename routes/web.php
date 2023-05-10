@@ -3,8 +3,10 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerBerita;
 use App\Http\Controllers\ControllerFAQ;
+use App\Http\Controllers\ControllerHistory;
 use App\Http\Controllers\ControllerLanding;
 use App\Http\Controllers\ControllerPacket;
+use App\Http\Controllers\ControllerTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -71,5 +73,12 @@ Route::get('newpolicy', function () {
 Route::get('dashboard', function (){
     return view('guest.pages.dashboard');
 })->name('dashboard');
+
+Route::prefix('history')->name('history.')->group(function(){
+    Route::get('/',[ControllerHistory::class,'index'])->name('index');
+    Route::get('/detail/{id}',[ControllerHistory::class,'detail'])->name('detail');
+});
+
+Route::get('ticket',[ControllerTicket::class,'index'])->name('ticket');
 
 Route::view('tailwind', 'layouts.landing.app');
