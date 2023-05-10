@@ -67,11 +67,9 @@ Route::get('faq', [ControllerFAQ::class, 'index'])->name('faq');
 Route::get('login', function () {
     return view('guest.pages.masuk');
 })->name('login');
-
-Route::get('New_Policiy', function () {
+Route::get('newpolicy', function () {
     return view('guest.pages.syarat_pemesanan');
-})->name('New_Policiy');
-
+})->name('newpolicy');
 Route::get('dashboard', function (){
     return view('guest.pages.dashboard');
 })->name('dashboard');
