@@ -29,7 +29,7 @@ class Repository
     public function apiGet($endPoint)
     {
         $curl = curl_init();
-        $url = $this->baseUrl . '/' . $this->trimUrl($endPoint);;
+        $url = $this->baseUrl . '/' . $this->trimUrl($endPoint);
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -55,8 +55,10 @@ class Repository
     public function apiPost(String $endPoint,array $body)
     {
         $curl = curl_init();
-        $url = $this->baseUrl . "/$endPoint";
+        $url = $this->baseUrl . '/' . $this->trimUrl($endPoint);
         $body = json_encode($body);
+        
+        // dd($body);
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,

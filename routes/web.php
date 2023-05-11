@@ -1,15 +1,23 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerAuth;
 use App\Http\Controllers\ControllerBerita;
+use App\Http\Controllers\ControllerDashboard;
 use App\Http\Controllers\ControllerFAQ;
 use App\Http\Controllers\ControllerHistory;
 use App\Http\Controllers\ControllerLanding;
+use App\Http\Controllers\ControllerLogin;
 use App\Http\Controllers\ControllerPacket;
 use App\Http\Controllers\ControllerPages;
 use App\Http\Controllers\ControllerTicket;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ControllerLanding::class, 'index'])->name('landing');
-Route::get('pages/{slug}',[ControllerPages::class,'showPages'])->name('pages');
+Route::get('pages/{slug}', [ControllerPages::class, 'showPages'])->name('pages');
 
 // Route::get('about',[ControllerPages::class,'showAbout'])->name('about');
 
@@ -32,15 +40,25 @@ Route::get('pages/{slug}',[ControllerPages::class,'showPages'])->name('pages');
 // Route::get('policy', [ControllerPages::class,'showPrivacyPolicy'])->name('policy');
 
 Route::prefix('/packet')->name('packet.')->group(function () {
-    Route::get('/list', [ControllerPacket::class,'index'])->name('list');
-    Route::get('/detail/{slug}', [ControllerPacket::class,'getBySlug'])->name('detail');
-    Route::get('/more',[ControllerPacket::class,'getMoreReviews'])->name('more');
-    Route::get('/custom',[ControllerPacket::class,'viewCustom'])->name('custom');
-    Route::post('/custom',[ControllerPacket::class,'sendCustom'])->name('custom.send');
+    Route::get('/list', [ControllerPacket::class, 'index'])->name('list');
+    Route::get('/detail/{slug}', [ControllerPacket::class, 'getBySlug'])->name('detail');
+    Route::get('/more', [ControllerPacket::class, 'getMoreReviews'])->name('more');
+    Route::get('/custom', [ControllerPacket::class, 'viewCustom'])->name('custom');
+    Route::post('/custom', [ControllerPacket::class, 'sendCustom'])->name('custom.send');
 });
 
-Route::get('login', function () {
-})->name('login');
+Route::prefix('login')->name('login.')->group(
+    function () {
+        Route::get('/', function () {
+            return view('guest.pages.masuk');
+        })->name('view');
+        Route::prefix('google')->name('google.')->group(function () {
+            Route::get('/auth/redirect', [ControllerAuth::class,'googleRedirect'])->name('redirect');
+
+            Route::get('/auth/callback', [ControllerAuth::class,'googleCallback'])->name('callback');
+        });
+    }
+);
 
 Route::prefix('contact')->name('contact.')->group(function () {
     Route::get('/', function () {
@@ -60,23 +78,35 @@ Route::prefix('news')->name('news.')->group(function () {
 
 Route::get('faq', [ControllerFAQ::class, 'index'])->name('faq');
 
-Route::get('login', function () {
-    return view('guest.pages.masuk');
-})->name('login');
+// Route::get('login', function () {
+//     return view('guest.pages.masuk');
+// })->name('login');
 
 Route::get('New_Policiy', function () {
     return view('guest.pages.syarat_pemesanan');
 })->name('New_Policiy');
 
-Route::get('dashboard', function (){
-    return view('guest.pages.dashboard');
-})->name('dashboard');
+Route::get('dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
 
-Route::prefix('history')->name('history.')->group(function(){
-    Route::get('/',[ControllerHistory::class,'index'])->name('index');
-    Route::get('/detail/{id}',[ControllerHistory::class,'detail'])->name('detail');
+Route::prefix('history')->name('history.')->group(function () {
+    Route::get('/', [ControllerHistory::class, 'index'])->name('index');
+    Route::get('/detail/{id}', [ControllerHistory::class, 'detail'])->name('detail');
 });
 
-Route::get('ticket',[ControllerTicket::class,'index'])->name('ticket');
+Route::get('ticket', [ControllerTicket::class, 'index'])->name('ticket');
 
 Route::view('tailwind', 'layouts.landing.app');
+
+Route::get('kuki',function ()
+{
+    $response = new Response('Hello World');
+    $cookie = cookie('name', 'sbuah nilai', 0); // 600 minutes = 10 hours
+    $response->withCookie($cookie);
+
+    return $response;
+});
+
+Route::get('skuki',function (Request $request)
+{
+    dd($request);
+});
