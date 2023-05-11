@@ -71,5 +71,9 @@ Route::get('newpolicy', function () {
 Route::get('dashboard', function (){
     return view('guest.pages.dashboard');
 })->name('dashboard');
+Route::get('visitdetails', function (){
+    return view('guest.pages.detail_kunjungan');
+})->name('visitdetails');
+
 
 Route::view('tailwind', 'layouts.landing.app');
