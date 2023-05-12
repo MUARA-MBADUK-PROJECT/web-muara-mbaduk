@@ -47,7 +47,7 @@ class ControllerAuth extends Controller
 
         if ($resObj->code == 200) {
             $jwt = $resObj->data;
-            $cookie = cookie('MUARA_MBADUK', $jwt, time() + 3600000);
+            $cookie = cookie('MUARA_MBADUK', $jwt,10080);
             return redirect()->route('dashboard')->withCookie($cookie);
             
         }else{
