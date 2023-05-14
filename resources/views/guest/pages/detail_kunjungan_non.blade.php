@@ -46,7 +46,7 @@
                     <h2 class="text-text-gray text-lg mx-3 font-medium">Hari Akhir Pekan / Libur</h2>
                 </div>
             </div>
-            <div class="mt-24 flex justify-between px-3 border-b rounded-sm border-text-gray p-10">
+            <div class="mt-14 flex justify-between px-3 border-b rounded-sm border-text-gray p-10">
                 <div class="flex space-x-4 mx-3"><svg width="45" height="45" viewBox="0 0 45 45" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
