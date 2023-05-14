@@ -75,9 +75,11 @@ Route::get('visitdetails', function (){
     return view('guest.pages.detail_kunjungan');
 })->name('visitdetails');
 Route::get('no_camping', function (){
-    
     return view('guest.pages.detail_kunjungan_non');
 })->name('no_camping');
+Route::get('camping', function (){
+    return view('guest.pages.detail_kunjungan_camping');
+})->name('camping');
 
 
 
