@@ -80,6 +80,10 @@ Route::get('no_camping', function (){
 Route::get('camping', function (){
     return view('guest.pages.detail_kunjungan_camping');
 })->name('camping');
+Route::get('wisatawan', function (){
+    return view('guest.pages.detail_wisatawan');
+})->name('wisatawan');
+
 
 
 
