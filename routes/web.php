@@ -86,6 +86,10 @@ Route::get('wisatawan', function (){
 Route::get('rincian_camping', function (){
     return view('guest.pages.rincian_pemesanan_camping');
 })->name('rincian_camping');
+Route::get('rincian_non_camping', function (){
+    return view('guest.pages.rincian_pemesanan_non_camping');
+})->name('rincian_non_camping');
+
 
 
 
