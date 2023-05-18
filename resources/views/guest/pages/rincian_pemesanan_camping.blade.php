@@ -166,7 +166,7 @@
             <h2 class="text-text-black font-bold text-xl">Bank Pembayaran</h2>
         </div>
         <select id="pertanyaan" name="pertanyaan"
-            class="mx-3 px-3 border-2 border-text-gray rounded mt-5 flex felx-col justify-center h-14 w-full text-text-black font-bold">
+            class="mr-1 ml-3 px-3 border-2 border-text-gray rounded mt-5 flex felx-col justify-center h-14 w-auto text-text-black font-bold">
             <optgroup label="Daftar Bank">
                 <option>BCA ( Bank Central Asia )</option>
                 <option>BRI ( Bank Rakyat Indonesia )</option>
@@ -174,9 +174,8 @@
             </optgroup>
 
         </select>
-
         <button class="h-14 w-full bg-text-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-12">
-            Berikutnya
+            Bayar
         </button>
 
     </div>
