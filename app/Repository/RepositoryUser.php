@@ -2,8 +2,8 @@
 namespace App\Repository;
 
 class RepositoryUser extends Repository{
-    public function getAccount()
+    public function getProfil($jwt)
     {
-        return $this->apiGet('/users/account');
+        return $this->apiPost('users/account',['token'=>$jwt]);
     }
 }

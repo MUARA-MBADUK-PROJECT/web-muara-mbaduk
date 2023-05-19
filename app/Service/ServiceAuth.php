@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Repository\RepositoryAuth;
+use App\Repository\RepositoryUser;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -14,9 +15,11 @@ class ServiceAuth extends Service
     protected $repo;
     protected $client;
     protected $res;
+    protected $repoUser;
 
     public function __construct()
     {
+        $this->repoUser = new RepositoryUser();
         $this->res = new Response('account');
         $this->repo = new RepositoryAuth();
         $this->client = new Client;
@@ -44,9 +47,26 @@ class ServiceAuth extends Service
 
         // dd($this->client);
         $jwt = $token['id_token'];
-        $response= $this->repo->googleLogin($jwt);
+        $response = $this->repo->googleLogin($jwt);
 
         // Redirect ke halaman dashboard atau halaman yang diinginkan
         return $response;
     }
+
+    public function getProfil($request)
+    {
+        
+        if ($request->hasCookie('MUARA_MBADUK')) {
+            $jwt = $request->cookie('MUARA_MBADUK');
+            $account = $this->repoUser->getProfil($jwt);
+            // dd($account);
+            $profil = json_decode($account)->data;
+
+            return $profil;
+        }
+
+        return null;
+    }
+
+    
 }

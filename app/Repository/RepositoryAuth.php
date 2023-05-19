@@ -12,4 +12,8 @@ class RepositoryAuth extends Repository{
         return $this->apiPost('/users/login',$body);
     }
 
+    public function getProfil($jwt)
+    {
+        $this->apiPost('users/account',['token'=>$jwt]);
+    }
 }

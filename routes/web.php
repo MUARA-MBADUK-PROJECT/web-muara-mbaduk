@@ -11,6 +11,8 @@ use App\Http\Controllers\ControllerLogin;
 use App\Http\Controllers\ControllerPacket;
 use App\Http\Controllers\ControllerPages;
 use App\Http\Controllers\ControllerTicket;
+use App\Http\Middleware\CekSession;
+use App\Http\Middleware\IsLoged;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -33,12 +35,6 @@ use Laravel\Socialite\Facades\Socialite;
 Route::get('/', [ControllerLanding::class, 'index'])->name('landing');
 Route::get('pages/{slug}', [ControllerPages::class, 'showPages'])->name('pages');
 
-// Route::get('about',[ControllerPages::class,'showAbout'])->name('about');
-
-// Route::get('term', [ControllerPages::class,'showTermOfService'])->name('term');
-
-// Route::get('policy', [ControllerPages::class,'showPrivacyPolicy'])->name('policy');
-
 Route::prefix('/packet')->name('packet.')->group(function () {
     Route::get('/list', [ControllerPacket::class, 'index'])->name('list');
     Route::get('/detail/{slug}', [ControllerPacket::class, 'getBySlug'])->name('detail');
@@ -49,13 +45,11 @@ Route::prefix('/packet')->name('packet.')->group(function () {
 
 Route::prefix('login')->name('login.')->group(
     function () {
-        Route::get('/', function () {
-            return view('guest.pages.masuk');
-        })->name('view');
+        Route::get('/', [ControllerAuth::class, 'index'])->name('view')->middleware(IsLoged::class);
+        
         Route::prefix('google')->name('google.')->group(function () {
-            Route::get('/auth/redirect', [ControllerAuth::class,'googleRedirect'])->name('redirect');
-
-            Route::get('/auth/callback', [ControllerAuth::class,'googleCallback'])->name('callback');
+            Route::get('/auth/redirect', [ControllerAuth::class, 'googleRedirect'])->name('redirect');
+            Route::get('/auth/callback', [ControllerAuth::class, 'googleCallback'])->name('callback');
         });
     }
 );
@@ -82,27 +76,13 @@ Route::get('faq', [ControllerFAQ::class, 'index'])->name('faq');
 Route::get('newpolicy', function () {
     return view('guest.pages.syarat_pemesanan');
 })->name('newpolicy');
-Route::get('dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
-
-Route::prefix('history')->name('history.')->group(function () {
-    Route::get('/', [ControllerHistory::class, 'index'])->name('index');
-    Route::get('/detail/{id}', [ControllerHistory::class, 'detail'])->name('detail');
-});
 
 Route::get('ticket', [ControllerTicket::class, 'index'])->name('ticket');
 
-Route::view('tailwind', 'layouts.landing.app');
-
-Route::get('kuki',function ()
-{
-    $response = new Response('Hello World');
-    $cookie = cookie('name', 'sbuah nilai', 0); // 600 minutes = 10 hours
-    $response->withCookie($cookie);
-
-    return $response;
-});
-
-Route::get('skuki',function (Request $request)
-{
-    dd($request);
+Route::middleware(CekSession::class)->group(function () {
+    Route::prefix('history')->name('history.')->group(function () {
+        Route::get('/', [ControllerHistory::class, 'index'])->name('index');
+        Route::get('/detail/{id}', [ControllerHistory::class, 'detail'])->name('detail');
+    });
+    Route::get('dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
 });
