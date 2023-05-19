@@ -7,10 +7,10 @@
     <main class="p-28">
         <section class="flex gap-20  overflow-x-auto h-auto">
             @foreach($data as $item)
-            <x-cards.packet packet-id="{{$item['id']}}" packet-name="{{$item['name']}}" packet-price="{{$item['price']}}" packet-img="{{$item['img']}}">
+            <x-cards.packet packet-id="{{$item->id}}" slug="{{$item->slug}}" packet-name="{{$item->title}}" packet-price="{{$item->price}}" packet-img="{{$item->image}}">
                 <ul>
-                    @foreach($item['list'] as $list)
-                        <li>{{$list}}</li>
+                    @foreach($item->products as $product)
+                        <li>{{$product->title}} {{$product->quantity}}</li>
                     @endforeach
                 </ul>
             </x-cards.packet>

@@ -4,19 +4,20 @@
     <h1 class="text-text-white font-bold text-5xl ">Paket untuk Camping</h1>
     </x-parts-header>
     <main class="p-24 ">
+
         <section class="flex">
-            <img class="w-80 h-80 grow-0" src="{{$packet['img']}}" alt="">
+            <img class="w-80 h-80 grow-0" src="{{$packet->image}}" alt="">
             <section class="ml-20 flex-col justify-start">
-                <h2 class="text-4xl font-bold capitalize">{{$packet['name']}}</h2>
-                <h3 class="text-text-blue text-4xl ">RP. {{$packet['price']}}</h3>
-                <summary class="text-text-black list-none max-w-xl mt-6">{{$packet['summary']}}</summary>
+                <h2 class="text-4xl font-bold capitalize">{{$packet->title}}</h2>
+                <h3 class="text-text-blue text-4xl ">RP. {{$packet->price}}</h3>
+                <summary class="text-text-black list-none max-w-xl mt-6">{{$packet->summary}}</summary>
                 <a href=""><button class="bg-text-blue text-left py-4 px-10 rounded text-white font-bold my-6">Pesan Sekarang</button></a>
                 <div>
                     <h3 class="font-bold pb-6">Description</h3>
-                    <p class="pb-6">{{$packet['description']}}</p>
+                    <p class="pb-6">{{$packet->description}}</p>
                     <ul class="pl-4 list-disc">
-                        @foreach($packet['list'] as $list)
-                        <li>{{$list}}</li>
+                        @foreach($packet->products as $list)
+                        <li>{{$list->title}}</li>
                         @endforeach
                     </ul>
                 </div>

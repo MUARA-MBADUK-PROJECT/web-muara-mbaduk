@@ -14,16 +14,18 @@ class Packet extends Component
     private $packetName;
     private $packetPrice;
     private $packetImg;
+    private $slug;
     /**
      * Create a new component instance.
      */
 
-    public function __construct($packetId="",$packetName="",$packetPrice=0,$packetImg="")
+    public function __construct($packetId="",$packetName="",$packetPrice=0,$packetImg="",$slug="")
     {
         $this->packetId = $packetId;
         $this->packetName = $packetName;
         $this->packetPrice = $packetPrice;
         $this->packetImg = $packetImg;
+        $this->slug = $slug;
     }
 
     /**
@@ -31,6 +33,6 @@ class Packet extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.cards.packet',['packetId'=>$this->packetId,'packetName'=>$this->packetName,'packetPrice'=>$this->packetPrice,'packetImg'=>$this->packetImg]);
+        return view('components.cards.packet',['packetId'=>$this->packetId,'packetName'=>$this->packetName,'packetPrice'=>$this->packetPrice,'packetImg'=>$this->packetImg,'slug'=>$this->slug]);
     }
 }

@@ -1,3 +1,5 @@
+![alt text](https://github.com/MUARA-MBADUK-PROJECT/web-muara-mbaduk/blob/main/resources/images/logo-hitam.png)
+
 # Web Frontend untuk Aplikasi Muarabaduk
 Selamat datang di repository "Muara Mbaduk"! Repository ini berisi tampilan web frontend untuk aplikasi MuaraMBaduk yang dibangun dengan menggunakan teknologi HTML, CSS, dan JavaScript. Repository ini disiapkan untuk membantu Anda memulai pengembangan aplikasi dengan tampilan web yang sesuai dengan kebutuhan proyek. Harapannya, repository ini dapat membantu mempercepat proses pengembangan aplikasi dan mempermudah proses pelatihan atau onboarding bagi developer baru di masa depan. Jangan ragu untuk berkontribusi atau mempelajari cara kerja tampilan web yang kami gunakan.
 ## Persyaratan Teknis
@@ -56,7 +58,7 @@ Aplikasi ini menggunakan beberapa pihak ketiga untuk membantu mempercepat dalam 
 |--|--|
 | laravel 10 | (https://laravel.com/docs/10.x) |
 | tailwind 3.3.1 | (https://tailwindcss.com/docs)|
-| api muarambaduk|(under development)|
+| api muarambaduk|(https://documenter.getpostman.com/view/8080574/2s93Y5Nexc)|
 
 ### Bekerja Dengan Tailwind
 Aplikasi ini menggunakan framework css **tailwind** untuk pihak ketiga pada stylingnya, sehingga diperlukan **vite** yang akan secara otomatis mengambil utility yang diperlukan berdasarkan class class yang digunakan pada file fiel yang didaftarkan pada file `tailwind.config.js`, sehingga file css yang ada pada build tidak akan membengkak. Untuk configurasi dari tailwind bisa anda lihat pada dokumentasi tailwind [Install Tailwind CSS with Laravel - Tailwind CSS](https://tailwindcss.com/docs/guides/laravel)
@@ -85,7 +87,7 @@ seperti yang tertera pada dokumentasi laravel, repository untuk penempatan view 
  - user, berisi view yang hanya dapat diakses oleh user yang telah melakukan login
 
 ### Penempatan asset
-Pada aplikasi ini sangat disarankan untuk meletakan asset yang akan digunakan pada directory **resources**. Pada directory **resource** tersebut juga telah ada beberapa sub sub directory sebagai acuan anda dalam peletakan asset.
+Pada aplikasi ini sangat disarankan untuk meletakan asset yang akan digunakan pada directory **public/resources**. Pada directory **resource** tersebut juga telah ada beberapa sub sub directory sebagai acuan anda dalam peletakan asset.
 
 Untuk pengambilan url dari asset tersebut dapat menggunakan static method 
 
@@ -114,7 +116,7 @@ Hal ini mungkin di beberapa mesin tidak akan menampilkan erro, namun ada beberap
 |nama|github|email|
 |--|--|--|
 | Bachtiar Arya Habibie | [BachtiarAH](https://github.com/BachtiarAH) |bachtiarah73@gmail.com|
-|Edo |[11edomantolas](https://github.com/11edomantolas)|email mu do|
+|Elisa Christian Alfrido Mantolas |[11edomantolas](https://github.com/11edomantolas)|Mantolasedo@gmail.com|
 
 
 

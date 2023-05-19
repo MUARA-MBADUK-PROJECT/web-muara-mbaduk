@@ -5,13 +5,13 @@
     </x-parts-header>
     <article class="px-28 py-24 ">
         @foreach($data as $key => $item)
-        <section class="py-7 border-b-2" id="q-{{$item['id_faq']}}">
+        <section class="py-7 border-b-2" id="q-{{$item->id}}">
             <div class="flex justify-between">
-                <h2 class="text-xl font-bold">{{$item['question']}}</h2>
-                <p onclick="showAnswer(this)" class="font-bold text-xl cursor-pointer" data-id="q-{{$item['id_faq']}}">+</p>
+                <h2 class="text-xl font-bold">{{$item->title}}</h2>
+                <button  onclick="showAnswer(this)" class="font-bold text-xl cursor-pointer" data-id="q-{{$item->id}}">+</button>
             </div>
             <p hidden class="answer text-text-gray text-xl text-left whitespace-pre-line">
-                {{$item['answer']}}
+                {{$item->description}}
             </p>
 
         </section>
