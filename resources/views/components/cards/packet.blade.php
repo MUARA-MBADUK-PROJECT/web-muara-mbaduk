@@ -10,7 +10,7 @@
         </div>
 
         <div class="mt-9 mx-6 bg-text-blue mb-10 w-auto h-fit rounded-md justify-center py-1 px-16 grid justify-items-center">
-            <a class="w-full h-full text-white rounded" href="/packet/detail/{{$packetId}}">
+            <a class="w-full h-full text-white rounded" href="/packet/detail/{{$slug}}">
                 
                     Selengkapnya
                 

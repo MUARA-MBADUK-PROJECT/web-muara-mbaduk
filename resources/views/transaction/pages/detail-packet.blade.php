@@ -4,6 +4,7 @@
     <h1 class="text-text-white font-bold text-5xl ">Paket untuk Camping</h1>
     </x-parts-header>
     <main class="p-24 ">
+
         <section class="flex">
             <img class="w-80 h-80 grow-0" src="{{$packet->image}}" alt="">
             <section class="ml-20 flex-col justify-start">

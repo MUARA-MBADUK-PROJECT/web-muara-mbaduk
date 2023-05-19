@@ -29,7 +29,6 @@ class ControllerPacket extends Controller
     {
         $packet = $this->repo->getOne($slug);
 
-
         $reviews = [
             [
                 'id_review' => '1',
