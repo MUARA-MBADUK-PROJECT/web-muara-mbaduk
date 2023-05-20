@@ -5,11 +5,11 @@
 @section('conten')
 <x-parts.header>
     <h1>Pembayaran</h1>
-    <p class="text-base">{{$data['id']}}</p>
+    <p class="text-base">{{$data->order_id}}</p>
 </x-parts.header>
 <article class="container p-24">
     <div class="flex justify-center">
-        <svg id="barcode"></svg>
+        <img src="{{$data->barcode}}" alt="barcode">
     </div>
     <nav class="mt-16 flex w-full justify-center">
         <button onclick="showDetail(this)">
@@ -26,17 +26,18 @@
     <div class="my-16">
         <div id="Instruksi">
             <div class="flex justify-between">
+
                 <div>
                     <h3 class="text-text-black text-xl font-bold">Kode Order</h3>
-                    <p>{{$data['id']}}</p>
+                    <p>{{$data->order_id}}</p>
                 </div>
                 <div>
                     <h3 class="text-text-black text-xl font-bold">Status Pembayaran</h3>
-                    <p class="{{ $data['status'] == 'Sudah Dibayar' ? 'bg-green-500' : 'bg-yellow-500' }}  px-8 py-1 rounded text-text-white">{{$data['status']}}</p>
+                    <p class="  px-8 py-1 rounded text-text-white">{{$data->status}}</p>
                 </div>
             </div>
             <div class="mt-16">
-                @if($data['payment_method']=='Bayar Ditempat')
+                @if($data->type=='cash')
                 <h3 class="text-text-black text-xl font-bold">Instruksi Konfirmasi Pesanan</h3>
                 <ul class="list-disc list-inside mt-6">
                     <li>Harap datang pada sesuai hari pemesanan.</li>
@@ -49,10 +50,21 @@
                 @else
                 <div class="grid justify-items-center">
                     <p class="text-text-black text-xl font-bold">Segera lakukan pembayaran sebelum</p>
-                    <p class="text-text-black text-xl font-bold">{{$data['date']}}</p>
+                    <p class="text-text-black text-xl font-bold">{{$data->date}}</p>
                     <p class="mt-10">Transfer ke nomor Virtual Account :</p>
+                    @switch($data->va_numbers->bank)
+                    @case('bca')
                     <img class="mt-9" src="{{asset('resources\images\2560px-Bank_Central_Asia.png')}}" alt="" srcset="">
                     <p class="text-xl text-text-gray"> <abbr class="font-bold">BCA</abbr> ( Bank Central Asia )</p>
+                    @break
+                    @case('bri')
+                    <img class="mt-9 w-60" src="{{asset('resources\images\BRI_logo.jpg')}}" alt="" srcset="">
+                    <p class="text-xl text-text-gray"> <abbr class="font-bold">BRI</abbr> ( Bank Rakyat Indonesia )</p>
+                    @break
+                    @default
+                    <img class="mt-9 w-60" src="{{asset('resources\images\BNI_logo.jpg')}}" alt="" srcset="">
+                    <p class="text-xl text-text-gray"> <abbr class="font-bold">BNI</abbr> ( Bank Negara Indonesia )</p>
+                    @endswitch
                     <div onclick="copyToclipboard()" class="mt-10 hover:cursor-pointer bg-text-lightgray relative py-4 px-16">
                         <div class=" absolute right-1 top-1">
                             <svg class="stroke-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,11 +73,11 @@
                             </svg>
                         </div>
                         <div>
-                            <p id="norec" class="text-text-black text-4xl font-bold">80777081316951940</p>
+                            <p id="norec" class="text-text-black text-4xl font-bold">{{$data->va_numbers->va_number}}</p>
                         </div>
                     </div>
                     <p class="mt-12 text-text-black text-xl">Dengan jumlah yang harus dibayar :</p>
-                    <p class="mt-12 text-text-blue text-4xl font-bold">Rp {{$data['total']}}</p>
+                    <p class="mt-12 text-text-blue text-4xl font-bold">Rp {{$data->gross_amount}}</p>
                     <button onclick="location.reload()" class="mt-14 px-32 py-4 bg-text-blue text-xl font-bold text-text-white flex space-x-4">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1.04199 4.16675V10.4167H7.29199" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -84,44 +96,102 @@
                 <div>
                     <h3 class="text-text-black text-xl font-bold">Pemesan</h3>
                     <ul class="mt-4 text-xl">
-                        <li>{{$data['name']}}</li>
-                        <li>{{$data['email']}}</li>
+                        <li>{{$profil->fullname}}</li>
+                        <li>{{$profil->email}}</li>
                     </ul>
                 </div>
                 <div class="text-right">
                     <h3 class="text-text-black text-xl font-bold">Tanggal Kunjungan</h3>
-                    <p class="mt-4 text-xl">{{$data['date']}}</p>
-                    <p class="{{ $data['status'] == 'Sudah Dibayar' ? 'bg-green-500' : 'bg-yellow-500' }}  px-8 py-1 rounded text-text-white">{{$data['status']}}</p>
+                    <p class="mt-4 text-xl">{{$data->date}}</p>
+                    <p class="  px-8 py-1 rounded text-text-white">{{$data->status}}</p>
                 </div>
             </div>
             <section class="mt-16">
                 <h3 class="text-xl font-bold text-text-black">Rincian</h3>
+                {{-- {{dd($tickets)}} --}}
+                @foreach($tickets as $key => $value)
+
                 <div class="flex mt-8 justify-between py-9 border-b-2">
                     <div class="flex space-x-5">
-                        <p class="text-3xl font-bold text-text-black">{{$data['person']}}</p>
+                        <p class="text-3xl font-bold text-gray-900">{{$value['count']}}</p>
+                        @if($value['category']=='tourist')
                         <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M37.5 39.375V35.625C37.5 33.6359 36.7098 31.7282 35.3033 30.3217C33.8968 28.9152 31.9891 28.125 30 28.125H15C13.0109 28.125 11.1032 28.9152 9.6967 30.3217C8.29018 31.7282 7.5 33.6359 7.5 35.625V39.375" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M22.5 20.625C26.6421 20.625 30 17.2671 30 13.125C30 8.98286 26.6421 5.625 22.5 5.625C18.3579 5.625 15 8.98286 15 13.125C15 17.2671 18.3579 20.625 22.5 20.625Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
+                        @else
+                        @if(substr($key, -1)==2)
+                        <svg width="45" height="45" fill="#000000" viewBox="-6.89 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path id="Path_12" data-name="Path 12" d="M134.519,165.244a1.356,1.356,0,1,0-.4-.963,1.313,1.313,0,0,0,.027.252l-2.291,1.865a.393.393,0,0,0-.137.227l-.205.986a3.1,3.1,0,0,1-1.6-.439c-.626-.525-1.171-1.3-2.19-1.3h-.012c-1.021,0-1.564.772-2.189,1.3a3.086,3.086,0,0,1-1.591.437l-.21-.984a.4.4,0,0,0-.137-.227l-2.289-1.865a1.3,1.3,0,0,0,.024-.252,1.359,1.359,0,1,0-.4.963l2.06,1.68.16.771a1.162,1.162,0,0,0-.232.061.484.484,0,0,0-.188.373l-3.064.311a.426.426,0,0,0,.044.849l.041,0,2.977-.3c.052.655.447.539,2.411.573.938.017.83.072,1,.24a.978.978,0,0,1,.173.553,8.449,8.449,0,0,0-2.508.761c-1.383.776-1.367,1.614-1.564,3.672s-.224,4.082-.247,4.606c-.017.445.058,4.211.1,5.068.07,1.49-.044,1.551.64,2.057a4.27,4.27,0,0,0,2.182.924c.192.025.37.046.549.066v.851h.012c.029.252.345.475.826.625v4.5a1.446,1.446,0,1,0,2.891,0v-4.5c.469-.151.776-.37.8-.62h.011V187.5c.179-.018.355-.039.544-.064a4.266,4.266,0,0,0,2.181-.924c.687-.506.569-.567.643-2.057.039-.857.117-4.623.1-5.068-.02-.524-.049-2.551-.246-4.606s-.181-2.9-1.564-3.672a8.429,8.429,0,0,0-2.509-.761.973.973,0,0,1,.174-.553c.162-.168.055-.223,1-.24,1.962-.034,2.357.082,2.408-.573l2.981.3.044,0a.426.426,0,0,0,.042-.849l-3.067-.311c-.029-.176-.083-.324-.189-.373a1.093,1.093,0,0,0-.228-.059l.161-.773Zm-6.8,4.508a1.638,1.638,0,1,1,1.638-1.639A1.637,1.637,0,0,1,127.718,169.752Z" transform="translate(-118.604 -162.924)"></path>
+                            </g>
+                        </svg>
+                        @else
+                        <svg fill="#000000" width="45" height="45" viewBox="0 -3.6 30.859 30.859" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path id="Path_1" data-name="Path 1" d="M141.314,136.63l1.055-.085a.568.568,0,0,0,.52-.61l-.129-1.58a.565.565,0,0,0-.609-.519l-2.354,0-2.549-5.724a2.074,2.074,0,0,0-2.032-1.116h-15a2.084,2.084,0,0,0-2.036,1.116l-2.546,5.724-2.354,0a.568.568,0,0,0-.61.519l-.127,1.58a.567.567,0,0,0,.519.61l1.055.085a10.131,10.131,0,0,0-1.833,5.852l.238,3.025a1.649,1.649,0,0,0,.9,1.355v1.6c.1,2.185.788,2.185,2.319,2.185s2.32,0,2.423-2.185v-1.417l9.551,0,9.468,0v1.415c.1,2.185.787,2.185,2.319,2.185s2.32,0,2.422-2.185v-1.6a1.734,1.734,0,0,0,.978-1.355l.242-3.025A10.131,10.131,0,0,0,141.314,136.63ZM122.257,143.5a.568.568,0,0,1-.566.567h-5.577a.567.567,0,0,1-.568-.567v-2.04a.565.565,0,0,1,.568-.567l5.577.453a.568.568,0,0,1,.566.566Zm-4.9-7.98,2.742-6.307h15.232l2.741,6.307H117.359Zm22.53,7.98a.567.567,0,0,1-.567.567h-5.577a.568.568,0,0,1-.567-.567v-1.588a.569.569,0,0,1,.567-.566l5.577-.453a.565.565,0,0,1,.567.567Z" transform="translate(-112.289 -126.994)"></path>
+                            </g>
+                        </svg>
+                        @endif
+                        @endif
                         <div class="grid place-items-center">
-                            <p class="text-text-black">Pengunjung/Wisatawan</p>
+                            <p class="text-text-black">{{$key}}</p>
                         </div>
                     </div>
-                    <p class="text-xl text-text-black">Rp {{$data['total']}}</p>
+                    <p class="text-xl text-text-black">Rp {{$value['price']}}</p>
                 </div>
+
+                @endforeach
+                @foreach($packages as $key => $value)
                 <div class="flex mt-8 justify-between py-9 border-b-2">
                     <div class="flex space-x-5">
-                        <p class="text-3xl font-bold text-text-black">{{$data['person']}}</p>
-                        <svg width="45" height="46" viewBox="0 0 45 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.39729 30.4607C7.03507 30.8777 7.07941 31.5093 7.49632 31.8715C7.91323 32.2337 8.54484 32.1894 8.90706 31.7725L14.6381 25.1761C15.3561 25.7804 16.515 27.2667 17.0297 30.3767C17.1096 30.8595 17.527 31.2135 18.0163 31.2135H26.087C26.5707 31.2135 26.9851 30.8672 27.071 30.3911C27.3421 28.8896 28.2136 26.5836 29.9257 24.6716C30.4525 24.0833 31.059 23.5315 31.7547 23.0508L35.9722 30.6965C36.239 31.1801 36.8472 31.3559 37.3308 31.0891C37.8144 30.8223 37.9902 30.2141 37.7234 29.7305L33.5084 22.0895C34.7122 21.5835 36.115 21.2791 37.7446 21.2791C38.2968 21.2791 38.7446 20.8314 38.7446 20.2791C38.7446 17.0287 36.8133 10.0402 28.9746 8.46134C28.6108 8.38805 28.2363 8.5223 28.0019 8.81005C27.7675 9.0978 27.7117 9.4917 27.857 9.83321C28.101 10.4066 28.3856 11.1697 28.6361 11.9955L25.6707 10.3709C25.1863 10.1055 24.5786 10.2831 24.3132 10.7674C24.0478 11.2518 24.2254 11.8595 24.7097 12.1249L29.2189 14.5953C29.2837 15.1152 29.3007 15.5827 29.2624 15.9739C29.2488 16.1126 29.2293 16.2327 29.2057 16.3363C28.0463 15.9808 26.5105 15.7524 24.8999 15.9691C23.0158 16.2226 21.0283 17.0893 19.4714 19.0446C18.08 18.4658 16.1435 17.7645 14.1225 17.2346C11.7484 16.6122 9.09109 16.1799 7.05798 16.5894C7.04233 16.5926 7.02676 16.5961 7.01128 16.6C6.38737 16.7571 5.41125 17.0379 4.48971 17.3761C4.02925 17.545 3.56614 17.7343 3.16081 17.9363C2.77654 18.1278 2.36052 18.3709 2.06213 18.6714C1.87613 18.8587 1.77174 19.112 1.77174 19.376V22.0854C1.77174 22.3936 1.91389 22.6846 2.15699 22.8741C2.4001 23.0636 2.717 23.1304 3.0159 23.0551C3.59582 22.9091 4.56139 22.688 5.55433 22.5042C6.5666 22.3168 7.53429 22.1823 8.15218 22.1823C9.42928 22.1823 10.7884 22.7411 12.9233 24.1003L7.39729 30.4607ZM32.6007 27.9579C32.9267 27.5121 32.8296 26.8864 32.3838 26.5604C31.938 26.2344 31.3123 26.3315 30.9863 26.7773C30.0498 28.0579 29.5535 29.6098 29.5711 31.1984C29.5887 32.787 30.1195 34.3275 31.0843 35.5867C32.0491 36.8461 33.3958 37.756 34.9217 38.1773C36.4476 38.5987 38.0683 38.5082 39.5383 37.9197C41.0082 37.3312 42.2464 36.2773 43.0669 34.9187C43.8873 33.5603 44.2458 31.9705 44.089 30.3896C43.9323 28.8087 43.2685 27.3212 42.1969 26.1523C41.1252 24.9833 39.7036 24.1965 38.1466 23.9123C37.6033 23.8131 37.0825 24.1732 36.9834 24.7165C36.8842 25.2598 37.2443 25.7806 37.7876 25.8798C38.914 26.0854 39.9445 26.6549 40.7227 27.5038C41.501 28.3528 41.9846 29.435 42.0988 30.587C42.213 31.739 41.9516 32.8967 41.3549 33.8848C40.7582 34.8728 39.8592 35.6369 38.7949 36.063C37.7307 36.489 36.5582 36.5544 35.4541 36.2495C34.3499 35.9446 33.373 35.2855 32.6719 34.3704C31.9707 33.4552 31.5838 32.3339 31.571 31.1762C31.5581 30.0185 31.92 28.8888 32.6007 27.9579ZM8.99333 25.8628C9.53844 25.9515 10.0523 25.5816 10.141 25.0365C10.2298 24.4914 9.85986 23.9775 9.31476 23.8888C7.75258 23.6344 6.15092 23.8994 4.75232 24.6429C3.35384 25.3864 2.23516 26.5676 1.56415 28.0065C0.893177 29.4453 0.705819 31.0644 1.02995 32.6195C1.35409 34.1745 2.17245 35.5823 3.36273 36.6292C4.55312 37.6761 6.05066 38.3051 7.62911 38.4195C9.20758 38.534 10.7796 38.1276 12.1072 37.2627C13.4347 36.398 14.4452 35.1223 14.9873 33.6297C15.5294 32.1371 15.5741 30.5077 15.1148 28.9873C14.9551 28.4587 14.3971 28.1595 13.8684 28.3192C13.3397 28.479 13.0406 29.037 13.2003 29.5657C13.5348 30.673 13.5022 31.8601 13.1074 32.9469C12.7127 34.0337 11.9779 34.96 11.0155 35.5869C10.0533 36.2138 8.91536 36.5075 7.77374 36.4248C6.6321 36.342 5.54729 35.887 4.68358 35.1274C3.81976 34.3676 3.22401 33.3442 2.98787 32.2114C2.75172 31.0784 2.88838 29.899 3.37674 28.8518C3.86505 27.8047 4.67795 26.9476 5.69118 26.4089C6.7043 25.8703 7.86334 25.6788 8.99333 25.8628Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <p class="text-3xl font-bold text-gray-900">{{$value['count']}}</p>
+                        <svg width="45px" height="45px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill="#000000" d="M361.155 91.245l-18 .193.42 38.98c-45.773 13.285-108.533 19.738-166.474 23.573 35.097 96.284 99.357 173.77 157.845 257.13 20.718-19.655 51.11-31.983 83.46-36.01-20.8-18.109-36.634-27.966-58.833-70.438 31.27 37.085 52.579 48.467 77.623 62.006 3.263-13.094 8.938-24.638 18.721-32.674 8.667-7.12 20.026-10.654 33.53-10.344-46.874-59.763-101.67-117.054-127.83-189.435l-.462-42.98zM163.25 102.92l-17.998.244s.25 18.34.56 36.97c.156 9.316.325 18.703.489 25.929.06 2.636.117 4.58.174 6.542-34.378 83.733-69.154 160.993-123.92 233.442 33.635-1.387 66.326-1.203 98.552-.041 22.263-62.617 23.346-134.855 35.627-202.006 11.417 68.562 10.566 139.445 33.483 205.83 42.962 3.082 85.69 7.198 129.35 10.926-55.67-79.151-118.213-155.037-155.118-249.365-.05-1.782-.1-3.396-.152-5.737-.162-7.156-.333-16.523-.488-25.82-.31-18.594-.559-36.914-.559-36.914z"></path>
+                            </g>
                         </svg>
-
                         <div class="grid place-items-center">
-                            <p class="text-text-black">Kendaran roda 2</p>
+                            <p class="text-text-black">{{$key}}</p>
                         </div>
                     </div>
-                    <p class="text-xl text-text-black">Rp {{$data['total']}}</p>
+                    <p class="text-xl text-text-black">Rp {{$value['price']}}</p>
                 </div>
+                @endforeach
+                <div class="flex mt-8 justify-between py-9 border-b-2">
+                    <div class="flex space-x-5">
+                        <svg width="45" height="45" fill="#000000" viewBox="0 0 24 24" id="tax-left" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path id="secondary" d="M17,17H10m3-4h4M9,6,3,12" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+                                <line id="secondary-upstroke" x1="3.45" y1="6.5" x2="3.55" y2="6.5" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line>
+                                <line id="secondary-upstroke-2" data-name="secondary-upstroke" x1="8.45" y1="11.5" x2="8.55" y2="11.5" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line>
+                                <path id="primary" d="M13,3h7a1,1,0,0,1,1,1V20a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+                            </g>
+                        </svg>
+                        <div class="grid place-items-center">
+                            <p class="text-text-black">PPN (Pajak Penambahan Nilai)</p>
+                        </div>
+                    </div>
+                    <p class="text-xl text-text-black">Rp 5000</p>
+                </div>
+                <div class="flex mt-8 justify-between py-9">
+                    <div class="flex space-x-5">
+
+                        <div class="grid place-items-center">
+                            <p class="text-text-gray text-xl font-bold">Total Pembayaran</p>
+                        </div>
+                    </div>
+                    <p class="text-xl font-bold  text-text-blue">Rp {{$data->gross_amount}}</p>
+                </div>
+
             </section>
         </div>
     </div>
@@ -129,8 +199,6 @@
 @endsection
 @section('js')
 <script>
-    JsBarcode("#barcode", "{{$data['id']}}");
-
     const noRec = document.getElementById('norec');
     detailPage = document.getElementById('detail');
     intructionPage = document.getElementById('Instruksi');

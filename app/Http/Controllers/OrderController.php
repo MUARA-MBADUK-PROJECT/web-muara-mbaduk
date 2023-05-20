@@ -34,7 +34,7 @@ class OrderController extends Controller
 
     public function acceptTerm(Request $request)
     {
-        // Session::forget('orders');
+        Session::forget('orders');
         // dd($request);
         if ($request->get('accept_term') == 'on') {
             session(['accept_term' => true]);
@@ -178,7 +178,7 @@ class OrderController extends Controller
         } else {
             $res = $this->paymentRepo->CheckOutCash($userId,$date,$camping,$packages,$tickets);
         }
-        
+        Session::forget('orders');
 
         return redirect(route('history.detail',['id'=>$res->data->order_id]));
     }

@@ -31,8 +31,13 @@
                     </g>
                 </svg>
                 <div class="text-base flex flex-col justify-center font-normal ">
-                    <h2><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][name]" placeholder="belum ada" required class="border-0"></h2>
-                    <h2 class="mt-1"><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][identity]" placeholder="belum ada" required class="border-0"></h2>
+                    @if($value['data']->category == 'tourist')
+                    <h2><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][name]" placeholder="masukan nama" required class="border-0"></h2>
+                    <h2 class="mt-1"><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][identity]" placeholder="masukan no NIK" required class="border-0"></h2>
+                    @else
+                    <h2><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][name]" placeholder="masukan nama" required class="border-0"></h2>
+                    <h2 class="mt-1"><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][identity]" placeholder="masukan Plat nomor" required class="border-0"></h2>
+                    @endif
                 </div>
             </div>
             <div class="mx-3">

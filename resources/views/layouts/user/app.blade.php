@@ -6,7 +6,7 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    {{-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" /> --}}
     @vite(['resources/css/app.css','resources/js/app.js'])
     {{-- <link rel="stylesheet" href="css/tailwind/styl.css"> --}}
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}

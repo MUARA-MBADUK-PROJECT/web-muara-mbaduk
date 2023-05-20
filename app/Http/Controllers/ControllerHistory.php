@@ -2,109 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\RepositoryPayment;
 use App\Repository\RepositoryTicket;
+use App\Repository\RepositoryUser;
+use App\Service\ServiceAuth;
 use Illuminate\Http\Request;
 
 class ControllerHistory extends Controller
 {
 
     private RepositoryTicket $repo;
+    private RepositoryPayment $repoPayment;
+    private ServiceAuth $serviceAuth;
 
     public function __construct() {
         $this->repo = new RepositoryTicket();
+        $this->repoPayment = new RepositoryPayment();
+        $this->serviceAuth = new ServiceAuth();
     }
 
     //
     public function index()
     {
-        $data = [
-            [
-                'id' => 'MDK2602232233580',
-                'date' => '26 Februari 2023',
-                'person' => 5,
-                'car' => 1,
-                'bike' => 0,
-                'payment_method' => 'Bayar Ditempat',
-                'total' => 45000,
-                'status' => 'Menunggu Pembayaran'
-            ],
-            [
-                'id' => 'MDK2802230930211',
-                'date' => '28 Februari 2023',
-                'person' => 2,
-                'car' => 0,
-                'bike' => 2,
-                'payment_method' => 'Transfer Bank',
-                'total' => 60000,
-                'status' => 'Sudah Dibayar'
-            ],
+        $request = request();
+        $profil = $this->serviceAuth->getProfil($request);
+        $payment = $this->repoPayment->getByUser($profil->id);
 
-            [
-                'id' => 'MDK0103231203145',
-                'date' => '01 Maret 2023',
-                'person' => 1,
-                'car' => 0,
-                'bike' => 1,
-                'payment_method' => 'Bayar Ditempat',
-                'total' => 25000,
-                'status' => 'Menunggu Pembayaran'
-            ],
+        $history = [];
+        foreach ($payment->data as $key => $value) {
+            $ticketPackage = $this->repoPayment->getById($value->order_id)->data;
+            array_push($history,['payment'=>$payment->data[$key],'tickets'=>$ticketPackage->tickets,'packages'=>$ticketPackage->packages]);
+        }
 
-            [
-                'id' => 'MDK0303231547423',
-                'date' => '03 Maret 2023',
-                'person' => 3,
-                'car' => 1,
-                'bike' => 2,
-                'payment_method' => 'Transfer Bank',
-                'total' => 90000,
-                'status' => 'Sudah Dibayar'
-            ],
-
-            [
-                'id' => 'MDK0503230815216',
-                'date' => '05 Maret 2023',
-                'person' => 4,
-                'car' => 2,
-                'bike' => 0,
-                'payment_method' => 'Bayar Ditempat',
-                'total' => 120000,
-                'status' => 'Menunggu Pembayaran'
-            ],
-
-            [
-                'id' => 'MDK0703231724130',
-                'date' => '07 Maret 2023',
-                'person' => 2,
-                'car' => 1,
-                'bike' => 1,
-                'payment_method' => 'Transfer Bank',
-                'total' => 70000,
-                'status' => 'Sudah Dibayar'
-            ]
-        ];
-
-        return view('users.pages.history.index', ['data' => $data]);
+        
+        return view('users.pages.history.index', ['history' => $history]);
     }
 
     public function detail($id)
     {
-        $data = [
-            'id' => 'MDK2602232233580',
-            'name'=>'Aristo Caesar Pratama',
-            'email'=>'aristo.belakang@gmail.com',
-            'date' => '26 Februari 2023',
-            'person' => 5,
-            'car' => 1,
-            'bike' => 0,
-            // 'payment_method' => 'Bayar Ditempat',
-            'payment_method' => 'Transfer Bank',  
-            'total' => 45000,
-            'status' => 'Menunggu Pembayaran'
-        ];
 
-        $ticket = $this->repo->getAll();
+        $payment = $this->repoPayment->getById($id);
+        $tickets = [];
+        foreach ($payment->data->tickets as $key => $value) {
+            if (isset($tickets[$value->title])) {
+                $tickets[$value->title]['count']++;
+                $tickets[$value->title]['price']= $tickets[$value->title]['price'] + $value->price ;
+            }else{
+                $tickets[$value->title] = ['count'=>1,'price'=>$value->price,'category'=>$value->category];
+            }
+        }
 
-        return view('users.pages.history.detail', ['data' => $data]);
+        $packages = [];
+        foreach ($payment->data->packages as $key => $value) {
+            if (isset($packages[$value->title])) {
+                $packages[$value->title]['count']++;
+                $packages[$value->title]['price']= $packages[$value->title]['price'] + $value->price ;
+            }else{
+                $packages[$value->title] = ['count'=>1,'price'=>$value->price];
+            }
+        }
+
+        $profil = $this->serviceAuth->getProfil(request());
+        return view('users.pages.history.detail', ['data' => $payment->data,'profil'=>$profil,'tickets'=>$tickets, 'packages'=>$packages]);
     }
 }

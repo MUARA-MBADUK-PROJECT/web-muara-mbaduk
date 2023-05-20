@@ -78,24 +78,24 @@ Route::get('newpolicy', function () {
     return view('guest.pages.syarat_pemesanan');
 })->name('newpolicy');
 
-Route::get('visitdetails', function () {
-    return view('guest.pages.detail_kunjungan');
-})->name('visitdetails');
-Route::get('no_camping', function () {
-    return view('guest.pages.detail_kunjungan_non');
-})->name('no_camping');
-Route::get('camping', function () {
-    return view('guest.pages.detail_kunjungan_camping');
-})->name('camping');
-Route::get('wisatawan', function () {
-    return view('guest.pages.detail_wisatawan');
-})->name('wisatawan');
-Route::get('rincian_camping', function () {
-    return view('guest.pages.rincian_pemesanan_camping');
-})->name('rincian_camping');
-Route::get('rincian_non_camping', function () {
-    return view('guest.pages.rincian_pemesanan_non_camping');
-})->name('rincian_non_camping');
+// Route::get('visitdetails', function () {
+//     return view('guest.pages.detail_kunjungan');
+// })->name('visitdetails');
+// Route::get('no_camping', function () {
+//     return view('guest.pages.detail_kunjungan_non');
+// })->name('no_camping');
+// Route::get('camping', function () {
+//     return view('guest.pages.detail_kunjungan_camping');
+// })->name('camping');
+// Route::get('wisatawan', function () {
+//     return view('guest.pages.detail_wisatawan');
+// })->name('wisatawan');
+// Route::get('rincian_camping', function () {
+//     return view('guest.pages.rincian_pemesanan_camping');
+// })->name('rincian_camping');
+// Route::get('rincian_non_camping', function () {
+//     return view('guest.pages.rincian_pemesanan_non_camping');
+// })->name('rincian_non_camping');
 
 
 
@@ -105,7 +105,7 @@ Route::get('ticket', [ControllerTicket::class, 'index'])->name('ticket');
 
 Route::middleware(CekSession::class)->group(function () {
     Route::prefix('history')->name('history.')->group(function () {
-        Route::get('/', [ControllerHistory::class, 'index'])->name('index');
+        Route::get('/', [ControllerHistory::class, 'index'])->name('page');
         Route::get('/detail/{id}', [ControllerHistory::class, 'detail'])->name('detail');
     });
     Route::get('dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
