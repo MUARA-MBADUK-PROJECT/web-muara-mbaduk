@@ -30,7 +30,7 @@ class CekSession
             $jwt = $request->cookie('MUARA_MBADUK');
             $account = $this->repoUser->getProfil($jwt);
             // dd($account);
-            $data = json_decode($account)->data;
+            $data = $account->data;
             $exp = $data->exp;
             if ($this->isExp($exp)) {
                 return redirect(route('login.view'))->with('status','session expired');

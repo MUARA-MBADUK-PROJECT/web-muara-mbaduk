@@ -26,15 +26,18 @@
         </li>
         <li class="mt-1">
             Dengan membaca dan check list berarti anda setuju dengan syarat
-             dan kondisi 
+            dan kondisi 
         </li>
-        <div class="flex items-center -ml-5 mt-4">
-            <input type="checkbox" id="check" class="mr-2">
-            <label for="check" class="text-black">Ya, Setuju</label>
-          </div>
-          <button class="w-full -ml-5 bg-text-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-            Berikutnya
-          </button>
+        <form action="{{route('order.term.accept')}}" method="POST">
+            @csrf
+            <div class="flex items-center -ml-5 mt-4">
+                <input type="checkbox" name="accept_term" id="check" class="mr-2">
+                <label for="check" class="text-black">Ya, Setuju</label>
+            </div>
+            <button type="submit" class="w-full -ml-5 bg-text-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+                Berikutnya
+            </button>
+        </form>
     </ul>
 </div>
 @endsection

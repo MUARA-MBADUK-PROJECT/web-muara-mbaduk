@@ -16,4 +16,36 @@ class RepositoryPayment extends Repository{
     {
         return $this->apiGet("/payments/user/$idUser");
     }
+
+    public function CheckoutBank(string $userid,$date,bool $camping, string $bank, array $packages, array $tickets)
+    {
+        $request = [
+            'user_id'=>$userid,
+            'date'=>$date,
+            'camping'=>$camping,
+            'bank'=>$bank,
+            'packages'=>$packages,
+            'tickets'=>$tickets
+        ];
+
+        // echo json_encode($request);
+
+        return $this->apiPost('/payments/bank',$request);
+    }
+
+    public function CheckOutCash(string $userid,$date,bool $camping,  array $packages, array $tickets)
+    {
+        $request = [
+            'user_id'=>$userid,
+            'date'=>$date,
+            'camping'=>$camping,
+            'bank'=>null,
+            'packages'=>$packages,
+            'tickets'=>$tickets
+        ];
+
+        // echo json_encode($request);
+
+        return $this->apiPost('/payments/cash',$request);
+    }
 }

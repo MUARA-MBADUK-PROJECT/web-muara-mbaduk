@@ -60,7 +60,7 @@ class ServiceAuth extends Service
             $jwt = $request->cookie('MUARA_MBADUK');
             $account = $this->repoUser->getProfil($jwt);
             // dd($account);
-            $profil = json_decode($account)->data;
+            $profil = $account->data;
 
             return $profil;
         }

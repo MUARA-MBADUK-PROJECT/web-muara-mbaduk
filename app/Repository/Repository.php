@@ -46,10 +46,16 @@ class Repository
         ));
 
         $response = curl_exec($curl);
-
+        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
-        return json_decode($response);
-        // return $url;
+        if (300 > $httpCode && $httpCode>=200) {
+            return json_decode($response);
+        } else {
+            return back()->with([
+                'status'=>'fail',
+                'message'=>'server error, ada yang salah dengan server mohon hubungi administrasi'
+            ]);
+        }
     }
 
     public function apiPost(String $endPoint,array $body)
@@ -77,8 +83,24 @@ class Repository
         ));
 
         $response = curl_exec($curl);
-
+        
+        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
-        return $response;
+        if (300 > $httpCode && $httpCode>=200) {
+            return json_decode($response);
+        } else {
+            return back()->with([
+                'status'=>'fail',
+                'message'=>'server error, ada yang salah dengan server mohon hubungi administrasi'
+            ]);
+        }
+        
+        
+    }
+
+    public function isSeccess($curl)
+    {
+        
+        
     }
 }

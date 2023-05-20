@@ -11,6 +11,7 @@ use App\Http\Controllers\ControllerLogin;
 use App\Http\Controllers\ControllerPacket;
 use App\Http\Controllers\ControllerPages;
 use App\Http\Controllers\ControllerTicket;
+use App\Http\Controllers\OrderController;
 use App\Http\Middleware\CekSession;
 use App\Http\Middleware\IsLoged;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ Route::prefix('/packet')->name('packet.')->group(function () {
 Route::prefix('login')->name('login.')->group(
     function () {
         Route::get('/', [ControllerAuth::class, 'index'])->name('view')->middleware(IsLoged::class);
-        
+
         Route::prefix('google')->name('google.')->group(function () {
             Route::get('/auth/redirect', [ControllerAuth::class, 'googleRedirect'])->name('redirect');
             Route::get('/auth/callback', [ControllerAuth::class, 'googleCallback'])->name('callback');
@@ -77,22 +78,22 @@ Route::get('newpolicy', function () {
     return view('guest.pages.syarat_pemesanan');
 })->name('newpolicy');
 
-Route::get('visitdetails', function (){
+Route::get('visitdetails', function () {
     return view('guest.pages.detail_kunjungan');
 })->name('visitdetails');
-Route::get('no_camping', function (){
+Route::get('no_camping', function () {
     return view('guest.pages.detail_kunjungan_non');
 })->name('no_camping');
-Route::get('camping', function (){
+Route::get('camping', function () {
     return view('guest.pages.detail_kunjungan_camping');
 })->name('camping');
-Route::get('wisatawan', function (){
+Route::get('wisatawan', function () {
     return view('guest.pages.detail_wisatawan');
 })->name('wisatawan');
-Route::get('rincian_camping', function (){
+Route::get('rincian_camping', function () {
     return view('guest.pages.rincian_pemesanan_camping');
 })->name('rincian_camping');
-Route::get('rincian_non_camping', function (){
+Route::get('rincian_non_camping', function () {
     return view('guest.pages.rincian_pemesanan_non_camping');
 })->name('rincian_non_camping');
 
@@ -108,4 +109,18 @@ Route::middleware(CekSession::class)->group(function () {
         Route::get('/detail/{id}', [ControllerHistory::class, 'detail'])->name('detail');
     });
     Route::get('dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
+
+    Route::prefix('order')->name('order.')->group(function () {
+        Route::name('term.')->group(function () {
+            Route::get('term', [OrderController::class, 'term'])->name('page');
+            Route::post('term', [OrderController::class, 'acceptTerm'])->name('accept');
+        });
+        Route::name('chose.')->group(function () {
+            Route::get('chose', [OrderController::class, 'chose'])->name('page');
+            Route::post('filldata' ,[OrderController::class,'fillData'])->name('fill');
+        });
+
+        Route::post('paymentmethod',[OrderController::class,'chosePaymentMethode'])->name('paymentMethod');
+        Route::post('checkout',[OrderController::class,'checkout'])->name('checkout');
+    });
 });
