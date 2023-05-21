@@ -16,4 +16,9 @@ class RepositoryPackage extends Repository{
     {
         return $this->apiGet("/packages/category/$category");
     }
+
+    public function getByPackage($id)
+    {
+        return $this->apiGet('/reviews/package/'.$id);
+    }
 }

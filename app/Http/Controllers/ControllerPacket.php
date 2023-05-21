@@ -28,43 +28,8 @@ class ControllerPacket extends Controller
     public function getBySlug($slug)
     {
         $packet = $this->repo->getOne($slug);
-
-        $reviews = [
-            [
-                'id_review' => '1',
-                'name' => 'Mamang Racing',
-                'img' => 'https://qph.cf2.quoracdn.net/main-qimg-c2108cee7b7917f80d8f6182a7a0a8ee-lq',
-                'star' => 5,
-                'comment' => 'First time mengunjungi wisata muara mbaduk merupakan pengalaman yang mengesankan buat saya.
-                Kunjungan saya kali ini untuk berkemah dengan pacar saya. Ada berbagai macam pilihan layanan camping yang
-                disediakan di wisata ini.'
-            ],
-            [
-                'id_review' => '2',
-                'name' => 'Nadia Sari',
-                'img' => 'https://example.com/nadia-sari.jpg',
-                'star' => 4,
-                'comment' => 'Wisata Muara Mbaduk sangat indah dan cocok untuk menghabiskan waktu liburan bersama keluarga. Pemandangannya sangat menakjubkan dan suasana di sini sangat tenang. Anak-anak saya juga senang bermain di area bermain yang disediakan.'
-            ],
-            [
-                'id_review' => '3',
-                'name' => 'Budi Hermawan',
-                'img' => 'https://example.com/budi-hermawan.jpg',
-                'star' => 3,
-                'comment' => 'Saya mengunjungi Wisata Muara Mbaduk pada akhir pekan. Lokasinya cukup mudah diakses dan parkirannya luas. Sayangnya, fasilitas yang ada masih terbatas, seperti toilet dan tempat makan. Namun, pemandangan alamnya sangat bagus dan cocok untuk berfoto-foto.'
-            ],
-            [
-                'id_review' => '4',
-                'name' => 'Rina Wijayanti',
-                'img' => 'https://example.com/rina-wijayanti.jpg',
-                'star' => 2,
-                'comment' => 'Saya merasa kurang puas dengan pengalaman saya di Wisata Muara Mbaduk. Pemandangan bagus, tapi fasilitasnya kurang memadai. Tempatnya juga agak terpencil dan jalan menuju ke sana cukup rusak. Harga tiket masuknya juga tergolong mahal.'
-            ]
-
-
-
-        ];
-        return view('transaction.pages.detail-packet', ['packet' => $packet->data, 'reviews' => $reviews]);
+        $reviews = $this->repo->getByPackage($packet->data->id);
+        return view('transaction.pages.detail-packet', ['packet' => $packet->data, 'reviews' => $reviews->data]);
     }
 
     public function getMoreReviews()

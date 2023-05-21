@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repository\RepositoryPayment;
+use App\Repository\RepositoryReviews;
 use App\Repository\RepositoryTicket;
 use App\Repository\RepositoryUser;
 use App\Service\ServiceAuth;
@@ -14,11 +15,14 @@ class ControllerHistory extends Controller
     private RepositoryTicket $repo;
     private RepositoryPayment $repoPayment;
     private ServiceAuth $serviceAuth;
+    private RepositoryReviews $repoReviews;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->repo = new RepositoryTicket();
         $this->repoPayment = new RepositoryPayment();
         $this->serviceAuth = new ServiceAuth();
+        $this->repoReviews = new RepositoryReviews();
     }
 
     //
@@ -31,10 +35,10 @@ class ControllerHistory extends Controller
         $history = [];
         foreach ($payment->data as $key => $value) {
             $ticketPackage = $this->repoPayment->getById($value->order_id)->data;
-            array_push($history,['payment'=>$payment->data[$key],'tickets'=>$ticketPackage->tickets,'packages'=>$ticketPackage->packages]);
+            array_push($history, ['payment' => $payment->data[$key], 'tickets' => $ticketPackage->tickets, 'packages' => $ticketPackage->packages]);
         }
 
-        
+
         return view('users.pages.history.index', ['history' => $history]);
     }
 
@@ -46,9 +50,9 @@ class ControllerHistory extends Controller
         foreach ($payment->data->tickets as $key => $value) {
             if (isset($tickets[$value->title])) {
                 $tickets[$value->title]['count']++;
-                $tickets[$value->title]['price']= $tickets[$value->title]['price'] + $value->price ;
-            }else{
-                $tickets[$value->title] = ['count'=>1,'price'=>$value->price,'category'=>$value->category];
+                $tickets[$value->title]['price'] = $tickets[$value->title]['price'] + $value->price;
+            } else {
+                $tickets[$value->title] = ['count' => 1, 'price' => $value->price, 'category' => $value->category];
             }
         }
 
@@ -56,13 +60,29 @@ class ControllerHistory extends Controller
         foreach ($payment->data->packages as $key => $value) {
             if (isset($packages[$value->title])) {
                 $packages[$value->title]['count']++;
-                $packages[$value->title]['price']= $packages[$value->title]['price'] + $value->price ;
-            }else{
-                $packages[$value->title] = ['count'=>1,'price'=>$value->price];
+                $packages[$value->title]['price'] = $packages[$value->title]['price'] + $value->price;
+            } else {
+                $packages[$value->title] = ['count' => 1, 'price' => $value->price, 'id' => $value->id];
             }
         }
 
         $profil = $this->serviceAuth->getProfil(request());
-        return view('users.pages.history.detail', ['data' => $payment->data,'profil'=>$profil,'tickets'=>$tickets, 'packages'=>$packages]);
+        return view('users.pages.history.detail', ['data' => $payment->data, 'profil' => $profil, 'tickets' => $tickets, 'packages' => $packages]);
+    }
+
+    public function review(Request $request)
+    {
+        // dd($request);
+        $profil = $this->serviceAuth->getProfil($request);
+        $packages = $request->get('packages');
+
+        $star = $request->get('rating');
+        $review = $request->get('review');
+        foreach ($packages as $key => $value) {
+            $res = $this->repoReviews->post($value,$profil->id,  $star, $review);
+        }
+
+        // dd($res);
+        return back();
     }
 }

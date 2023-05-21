@@ -54,7 +54,7 @@
             </div>
             <div class="flex">
                 <div class="grid justify-items-end">
-                    <p class="  px-8 py-1 rounded text-text-white">{{$value['payment']->status}}</p>
+                    <x-status.badge status="{{$value['payment']->status}}" />
                     <p class=" text-text-gray">{{$value['payment']->type}}</p>
                     <p class="text-text-gray">Rp. {{$value['payment']->gross_amount}}</p>
                 </div>
