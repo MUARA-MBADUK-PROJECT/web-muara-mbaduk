@@ -1,6 +1,8 @@
 <?php
 namespace App\Repository;
 
+use function PHPUnit\Framework\isEmpty;
+
 class RepositoryPayment extends Repository{
     public function getAll()
     {
@@ -19,6 +21,7 @@ class RepositoryPayment extends Repository{
 
     public function CheckoutBank(string $userid,$date,bool $camping, string $bank, array $packages, array $tickets)
     {
+        // dd();
         $request = [
             'user_id'=>$userid,
             'date'=>$date,
@@ -27,6 +30,7 @@ class RepositoryPayment extends Repository{
             'packages'=>$packages,
             'tickets'=>$tickets
         ];
+        
 
         // echo json_encode($request);
 
@@ -39,13 +43,14 @@ class RepositoryPayment extends Repository{
             'user_id'=>$userid,
             'date'=>$date,
             'camping'=>$camping,
-            'bank'=>null,
             'packages'=>$packages,
             'tickets'=>$tickets
         ];
 
         // echo json_encode($request);
+        
 
         return $this->apiPost('/payments/cash',$request);
     }
+    
 }

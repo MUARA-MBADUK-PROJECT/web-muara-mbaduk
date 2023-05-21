@@ -33,7 +33,7 @@ class CekSession
             $data = $account->data;
             $exp = $data->exp;
             if ($this->isExp($exp)) {
-                return redirect(route('login.view'))->with('status','session expired');
+                return redirect(route('login.view'))->with(['status'=>'warning','message'=>' mohon untuk melakukan login terembih dahulu']);
             } else {
                 return $next($request); 
             }
@@ -42,7 +42,7 @@ class CekSession
             // return view('guest.pages.dashboard',['acc'=>$account]);
           
         } else {
-            return redirect(route('login.view'))->with('status','session expired');
+            return redirect(route('login.view'))->with(['status'=>'warning','message'=>'mohon untuk melakukan login terembih dahulu']);
         }
         
     }

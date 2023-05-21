@@ -55,6 +55,8 @@ Route::prefix('login')->name('login.')->group(
     }
 );
 
+Route::get('logout',[ControllerAuth::class,'logout'])->name('logout');
+
 Route::prefix('contact')->name('contact.')->group(function () {
     Route::get('/', function () {
         return view('guest.pages.kontak');
@@ -106,7 +108,7 @@ Route::get('ticket', [ControllerTicket::class, 'index'])->name('ticket');
 Route::middleware(CekSession::class)->group(function () {
     Route::prefix('history')->name('history.')->group(function () {
         Route::get('/', [ControllerHistory::class, 'index'])->name('page');
-        Route::get('/detail/{id}', [ControllerHistory::class, 'detail'])->name('detail');
+        Route::any('/detail/{id}', [ControllerHistory::class, 'detail'])->name('detail');
     });
     Route::get('dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
 
@@ -124,3 +126,8 @@ Route::middleware(CekSession::class)->group(function () {
         Route::post('checkout',[OrderController::class,'checkout'])->name('checkout');
     });
 });
+
+Route::any('error500',function ()
+{
+    return view('error.500error');
+})->name('error.500');

@@ -65,7 +65,8 @@ class OrderController extends Controller
     public function fillData(Request $request)
     {
 
-        // dd($request);
+        
+        $isHadChosPackage = false;
 
         $orders = [
             'date' => $request->get('date'),
@@ -74,6 +75,18 @@ class OrderController extends Controller
             'package' => $request->get('package'),
             'total' => $request->get('total')
         ];
+
+        
+        foreach ($orders['package'] as $key => $value) {
+            if ($value!='0') {
+                $isHadChosPackage = true;
+            }
+        }
+        if ($orders['camping']=="true") {
+            if (!$isHadChosPackage) {
+                return back()->with('message','mohon pilih paket jika ingin berkemah');
+            }
+        }
 
         $package = [];
         foreach ($orders['package'] as $key => $value) {
@@ -154,6 +167,12 @@ class OrderController extends Controller
         $date = date("d/m/Y", strtotime($orders['date']));
         $bank = $request->get('bank');
 
+        if ($orders['camping'] == "true") {
+            $camping = true;
+        }else {
+            $camping = false;
+        }
+
         $packages = [];
         for ($i=0; $i < count($orders['package']); $i++) { 
             $packages[$i] = (object)[
@@ -178,8 +197,10 @@ class OrderController extends Controller
         } else {
             $res = $this->paymentRepo->CheckOutCash($userId,$date,$camping,$packages,$tickets);
         }
-        Session::forget('orders');
-
+        // echo $res;
+        // dd($res);
+        // dd();
+        // Session::forget('orders');
         return redirect(route('history.detail',['id'=>$res->data->order_id]));
     }
 }

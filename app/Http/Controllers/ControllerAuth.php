@@ -42,7 +42,7 @@ class ControllerAuth extends Controller
     public function googleCallback(Request $request)
     {
         $response = $this->service->googleCallback($request);
-        $resObj = json_decode($response);
+        $resObj = $response;
         // dd($resObj->code);
 
         if ($resObj->code == 200) {
@@ -51,7 +51,7 @@ class ControllerAuth extends Controller
             return redirect()->route('dashboard')->withCookie($cookie);
             
         }else{
-            dd($resObj);
+            // dd($resObj);
             return redirect()->route('dashboard');
         }
 
@@ -61,5 +61,11 @@ class ControllerAuth extends Controller
         //     return redirect()->route('dashboard')->withCookie($cookie);
 
         
+    }
+
+    public function logout()
+    {
+        $this->service->logout();
+        return back();
     }
 }

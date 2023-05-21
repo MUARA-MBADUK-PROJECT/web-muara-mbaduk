@@ -26,9 +26,6 @@
                 <option value="false">Tidak, Saya tidak melakukan camping</option>
 
             </select>
-            <button class="h-14 w-full bg-text-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-12">
-                Cek tiket dan harga
-            </button>
         </div>
         <div class="px-3 mt-12 border-2 rounded-sm border-text-gray p-5">
             <div class="flex flex-row justify-between">

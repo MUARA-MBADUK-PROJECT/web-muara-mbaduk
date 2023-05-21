@@ -9,6 +9,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Google\Client;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cookie;
 
 class ServiceAuth extends Service
 {
@@ -45,7 +46,7 @@ class ServiceAuth extends Service
         $this->client->authenticate($request->get('code'));
         $token = $this->client->getAccessToken();
 
-        // dd($this->client);
+        // dd($token);
         $jwt = $token['id_token'];
         $response = $this->repo->googleLogin($jwt);
 
@@ -55,7 +56,7 @@ class ServiceAuth extends Service
 
     public function getProfil($request)
     {
-        
+
         if ($request->hasCookie('MUARA_MBADUK')) {
             $jwt = $request->cookie('MUARA_MBADUK');
             $account = $this->repoUser->getProfil($jwt);
@@ -68,5 +69,9 @@ class ServiceAuth extends Service
         return null;
     }
 
-    
+    public function logout()
+    {
+        // Discard a cookie by setting an expired value
+        Cookie::queue(Cookie::forget('MUARA_MBADUK'));
+    }
 }
