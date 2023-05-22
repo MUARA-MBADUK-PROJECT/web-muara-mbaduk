@@ -14,15 +14,17 @@
             Berkemah</h2>
         <h3 class="text-base text-text-white font-extralight max-w-md mt-2">Muara Mbaduk adalah kawasan wisata alam yang
             menyajikan pantai, perbukitan hingga tempat berkemah </h3>
-        <div class="w-1/5 flex bg-text-blue max-w-xs mt-14 justify-between">
-            <div class="bg-text-blue p-4 flex">
-                <p class="uppercase font-bold text-text-white">pesan sekarang</p>
-
+        <a href="{{route('packet.list')}}">
+            <div class="w-1/5 flex bg-text-blue max-w-xs mt-14 justify-between">
+                <div class="bg-text-blue p-4 flex">
+                    <p class="uppercase font-bold text-text-white">pesan sekarang</p>
+    
+                </div>
+                <div class=" w-fit bg-blue-800 flex px-3 py-4">
+                    <img src="{{asset('resources\icon\chevron-right.svg')}}" alt="">
+                </div>
             </div>
-            <div class=" w-fit bg-blue-800 flex px-3 py-4">
-                <img src="{{asset('resources\icon\chevron-right.svg')}}" alt="">
-            </div>
-        </div>
+        </a>
     </div>
 </div>
 
@@ -54,7 +56,7 @@
 <div class="bg-gray-100 p-28">
     <div class="flex gap-20  overflow-x-auto h-auto">
         @foreach($packets as $package)
-        <x-cards.packet packet-id="{{$package->id}}" packet-name="{{$package->title}}" packet-price="{{$package->price}}" packet-img="{{$package->image}}">
+        <x-cards.packet packet-id="{{$package->id}}" packet-name="{{$package->title}}" slug="{{$package->slug}}" packet-price="{{$package->price}}" packet-img="{{$package->image}}">
             <ul>
                 @foreach($package->products as $product)
                 <li>{{$product->title}} {{$product->quantity}}</li>

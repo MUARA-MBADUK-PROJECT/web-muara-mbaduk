@@ -38,18 +38,6 @@
 
     @vite('resources/js/app.js')
     @yield('js')
-    <script>
-        M.toast({
-            html: "{{session('message')}}"
-        })
-
-    </script>
-
     
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="js/materialize.min.js">
-        M.Toast.dismissAll();
-
-    </script>
 </body>
 </html>

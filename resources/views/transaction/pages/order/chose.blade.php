@@ -91,7 +91,7 @@
 
                 </tbody>
             </table>
-            <div id="package-camping" >
+            <div id="package-camping">
                 <div>
                     <h2 class="text-text-black text-xl mt-14 mx-3 font-medium">Paket camping yang tersedia</h2>
                 </div>
@@ -103,7 +103,7 @@
                         @foreach($packages->data as $key => $package)
                         <tr id="{{$package->id}}" class="border-b-2">
                             <td>
-                                <div class="flex items-center">
+                                <div class="flex items-center" onclick="getPackage(this)" data-slug="{{$package->slug}}" data-modal-target="package-modal" data-modal-toggle="package-modal">
                                     <img src="{{$package->image}}" alt="" srcset="">
                                     <div class="ml-6">
                                         <h3 class="text-text-black text-xl" data-id="title">{{$package->title}}</h3>
@@ -131,12 +131,14 @@
 
                     </tbody>
                 </table>
-                
+
             </div>
             <div class="w-full flex justify-end">
                 <tr>
-                    <td class=""><p class="text-text-gray text-xl font-bold flex-col justify-center">Estimasi Biaya</p></td>
-                    <td ><input type="text" class="border-0 text-right text-text-blue text-xl font-bold" id="total" readonly name="total" value="Rp. 0"></td>
+                    <td class="">
+                        <p class="text-text-gray text-xl font-bold flex-col justify-center">Estimasi Biaya</p>
+                    </td>
+                    <td><input type="text" class="border-0 text-right text-text-blue text-xl font-bold" id="total" readonly name="total" value="Rp. 0"></td>
                 </tr>
             </div>
         </div>
@@ -161,6 +163,42 @@
             Berikutnya
         </button>
     </form>
+</div>
+
+
+<!-- Modal toggle -->
+<button data-modal-target="package-modal" data-modal-toggle="package-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+    Toggle modal
+</button>
+
+<!-- Main modal -->
+<div id="package-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Detail package
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="package-modal">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div  class="p-6 space-y-6">
+                <div id="modal-body"></div>
+            </div>
+            <!-- Modal footer -->
+            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button data-modal-hide="package-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+                <button data-modal-hide="package-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -282,6 +320,98 @@
         } else {
             packageCamping.hidden = true;
         }
+    }
+
+
+    function createPackageDiv(listItems, packageName, packagePrice, packageImageURL) {
+        const div = document.createElement('div');
+        div.className = 'cardsNews w-80 h-fit flex flex-col bg-white border rounded-md pb-8';
+
+        const img = document.createElement('img');
+        img.className = 'w-full h-full mx-0 rounded-t-md';
+        img.src = packageImageURL;
+        img.alt = '';
+        div.appendChild(img);
+
+        const divInner = document.createElement('div');
+        divInner.className = 'mt-9 mx-7 pb-7 grid justify-items-center border-b-2 border-text-gray';
+
+        const p1 = document.createElement('p');
+        p1.className = 'font-bold text-xl text-text-black';
+        p1.textContent = packageName;
+        divInner.appendChild(p1);
+
+        const p2 = document.createElement('p');
+        p2.className = 'text-xl text-text-blue';
+        p2.textContent = packagePrice;
+        divInner.appendChild(p2);
+
+        div.appendChild(divInner);
+
+        const divList = document.createElement('div');
+        divList.className = 'ml-6 mt-9';
+
+        const ul = document.createElement('ul');
+
+        listItems.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item.title;
+            ul.appendChild(li);
+        });
+
+        divList.appendChild(ul);
+        div.appendChild(divList);
+
+        const divLink = document.createElement('div');
+        divLink.className = 'mt-9 mx-6 bg-text-blue mb-10 w-auto h-fit rounded-md justify-center py-1 px-16 grid justify-items-center';
+
+        const a = document.createElement('a');
+        a.className = 'w-full h-full text-white rounded';
+        a.href = '/packet/detail/paket-standart-2';
+        a.textContent = 'Selengkapnya';
+
+        divLink.appendChild(a);
+        div.appendChild(divLink);
+
+        return div;
+    }
+
+    function getPackage(params) {
+        let slug = params.getAttribute("data-slug");
+        // WARNING: For GET requests, body is set to null by browsers.
+
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function() {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    var response = JSON.parse(this.responseText);
+                    var listItems = response.products;
+                    var packageName = response.title;
+                    var packagePrice = response.price;
+                    var packageImageURL = response.image;
+
+                    var parentElement = document.getElementById('modal-body'); // Replace 'parentElementId' with the actual ID of the parent element
+
+                    var packageDiv = createPackageDiv(listItems, packageName, packagePrice, packageImageURL);
+                    parentElement.appendChild(packageDiv);
+                } else {
+                    console.log("Request failed with status:", this.status);
+                    var parentElement = document.getElementById('modal-body'); // Replace 'parentElementId' with the actual ID of the parent element
+                    parentElement.innerHTML = "data gagal di load";
+                }
+            }else {
+                    console.log("Request failed with status:", this.status);
+                    var parentElement = document.getElementById('modal-body'); // Replace 'parentElementId' with the actual ID of the parent element
+                    parentElement.innerHTML = "data masih di load";
+                }
+        });
+
+        xhr.open("GET", "https://api.muarambaduk.biz.id/v1/packages/"+slug);
+        xhr.setRequestHeader("Authorization", "21a5abce903553898ace6ab4915c60a50b8a97e9");
+
+        xhr.send();
     }
 
 </script>
