@@ -8,5 +8,6 @@
         @php
             echo $data->data->body
         @endphp
+        
     </div>
     @endsection

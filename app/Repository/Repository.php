@@ -49,13 +49,15 @@ class Repository
         $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
         // dd($response);
-        if (300 > $httpCode && $httpCode>=200 || true) {
+        if (300 > $httpCode && $httpCode>=200) {
             return json_decode($response);
         } else {
-            return redirect(route('error.500'))->with([
+            echo redirect(route('error.500'))->with([
                 'status'=>'fail',
                 'message'=>$response
             ]);
+
+            dd();
         }
     }
 

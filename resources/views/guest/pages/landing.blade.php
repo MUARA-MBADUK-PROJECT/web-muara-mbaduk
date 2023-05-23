@@ -1,5 +1,5 @@
 @php
-    use Carbon\Carbon;
+use Carbon\Carbon;
 @endphp
 @extends('layouts.user.app')
 @section('conten')
@@ -18,7 +18,7 @@
             <div class="w-1/5 flex bg-text-blue max-w-xs mt-14 justify-between">
                 <div class="bg-text-blue p-4 flex">
                     <p class="uppercase font-bold text-text-white">pesan sekarang</p>
-    
+
                 </div>
                 <div class=" w-fit bg-blue-800 flex px-3 py-4">
                     <img src="{{asset('resources\icon\chevron-right.svg')}}" alt="">
@@ -86,70 +86,85 @@
     <div class="flex justify-center gap-24 mt-16">
         <div class="card h-500 w-96  shadow rounded">
 
-           @for($i = 0; $i < 1; $i++)
-           <img class="rounded-t" src="{{$news[$i]->thumbnail}}" alt="">
-           <div class="flex flex-col mx-5">
-               <div class="date mt-4">
-                   <p class="date text-text-gray text-base text-left">@php
-                       
-                       $dateString = $news[$i]->created_at;
-                       $date = Carbon::parse($dateString)->format('d M Y');
-                       echo $date;
+            @for($i = 0; $i < 1; $i++) <img class="rounded-t" src="{{$news[$i]->thumbnail}}" alt="">
+                <div class="flex flex-col mx-5">
+                    <div class="date mt-4">
+                        <p class="date text-text-gray text-base text-left">@php
 
-                       @endphp</p>
-               </div>
-               <div class="title h-20 flex-none">
-                   <p class="text-left font-bold text-text-black text-xl line-clamp-2" style="">{{$news[$i]->title}}</p>
-               </div>
-               <div class="sumary">
-                   <p class=" text-base text-text-gray text-left line-clamp-2">{{$news[$i]->body}}</p>
-               </div>
-           </div>
-           @endfor
+                            $dateString = $news[$i]->created_at;
+                            $date = Carbon::parse($dateString)->format('d M Y');
+                            echo $date;
+
+                            @endphp</p>
+                    </div>
+                    <div class="title h-20 flex-none">
+                        <p class="text-left font-bold text-text-black text-xl line-clamp-2" style="">{{$news[$i]->title}}</p>
+                    </div>
+                    <div class="sumary">
+                        <p class=" text-base text-text-gray text-left line-clamp-2">{{$news[$i]->body}}</p>
+                    </div>
+                </div>
+                @endfor
 
         </div>
-       
+
     </div>
     <div class="mt-12 mx-[512px] bg-text-blue flex-none rounded mb-24">
         <a href="{{route('news.show')}}"><button class="text-text-white w-full text-xl text-center font-bold px-7 py-4">Muat Lebih Banyak</button></a>
     </div>
 </div>
 
-{{-- PENGUNJUNG --}}
-<div class="w-scree h-auto  py-44 px-32 bg-gray-100 ">
-    <div class="flex justify-center gap-36">
-        <div class="basis-1/2">
-            <div class="flex flex-col ">
-                <div>
-                    <h2 class="text-left font-bold text-4xl text-text-black">Kata <span class="text-text-blue">mereka</span> yang telah
-                        berkunjung</h2>
-                </div>
-                <div class="mt-16">
-                    <p class="text-xl text-text-gray text-left ">Saya benar-benar menikmati perjalanan saya ke
-                        Muara Mbaduk, dan saya sangat merekomendasikan
-                        tempat ini untuk semua orang yang mencari
-                        pengalaman wisata yang berbeda dan menarik di
-                        Banyuwangi.</p>
-                </div>
-                <div class="mt-4">
-                    <p class="text-xl font-bold text-text-black"><img class="inline mr-1" src="{{asset('resources\icon\Rectangle.svg')}}" alt="">Indah Ratnasari</p>
-                </div>
 
+
+
+
+<div id="controls-carousel" class="relative  w-scree h-auto  py-20 bg-gray-100" data-carousel="static">
+    <div class="mb-9 ml-6">
+        <h2 class="text-left font-bold text-4xl text-text-black">Kata <span class="text-text-blue">mereka</span> yang telah
+            berkunjung</h2>
+    </div>
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+       
+        @for($i = 0; $i < count($testimonie); $i++)
+            <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div class="flex justify-center gap-36 px-16">
+                <div class="basis-1/2">
+                    <div class="flex flex-col ">
+                        
+                        <div class="mt-16">
+                            <p class="text-xl text-text-gray text-left ">{{$testimonie[$i]->description}}</p>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-xl font-bold text-text-black"><img class="inline mr-1" src="{{asset('resources\icon\Rectangle.svg')}}" alt="">{{$testimonie[$i]->fullname}}</p>
+                        </div>
+        
+                    </div>
+                </div>
+                <div class="rounded basis-1/2 flex justify-end">
+                    <img class="rounded" src="{{$testimonie[$i]->images}}" alt="">
+                </div>
             </div>
         </div>
-        <div class="rounded basis-1/2 flex justify-end">
-            <img class="rounded" src="{{asset('resources\images\kata-mereka1.png')}}" alt="">
-        </div>
+        @endfor
     </div>
-    <div class="flex gap-2 justify-self-end">
-        <div class="rounded-full w-9 h-9 bg-text-blue grid place-items-center opacity-50">
-            <img class="mx-auto my-auto" src="{{asset('resources\icon\chevron-left.svg')}}" alt="">
-        </div>
-        <div class="rounded-full w-9 h-9 bg-text-blue grid place-items-center">
-            <img class="mx-auto my-auto" src="{{asset('resources\icon\chevron-right.svg')}}" alt="">
-        </div>
-    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg aria-hidden="true" class="w-6 h-6 text-text-black dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg aria-hidden="true" class="w-6 h-6 text-text-black dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
 </div>
+
+
 
 {{-- LETS GO --}}
 <div class="bg-white p-28 w-screen h-[528px]">
