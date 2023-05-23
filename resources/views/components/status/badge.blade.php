@@ -8,7 +8,7 @@
 
     $statusLabels = [
         'pending' => 'Pending',
-        'settlement' => 'Settlement',
+        'settlement' => 'Lunas',
         'cancel' => 'Cancelled',
         'expire' => 'Expired',
     ];

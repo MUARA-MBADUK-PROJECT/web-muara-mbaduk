@@ -20,6 +20,7 @@ class ControllerDashboard extends Controller
 
     public function index(Request $request)
     {
+        
 
 
         $profil = $this->AuthService->getProfil($request);

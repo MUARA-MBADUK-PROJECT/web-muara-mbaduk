@@ -66,8 +66,11 @@ class ControllerHistory extends Controller
             }
         }
 
+        $review = $this->repoReviews->getByPayment($payment->data->id)->data[0];
+        
+
         $profil = $this->serviceAuth->getProfil(request());
-        return view('users.pages.history.detail', ['data' => $payment->data, 'profil' => $profil, 'tickets' => $tickets, 'packages' => $packages]);
+        return view('users.pages.history.detail', ['data' => $payment->data, 'profil' => $profil, 'tickets' => $tickets, 'packages' => $packages,'review'=>$review]);
     }
 
     public function review(Request $request)
@@ -78,11 +81,12 @@ class ControllerHistory extends Controller
 
         $star = $request->get('rating');
         $review = $request->get('review');
-        foreach ($packages as $key => $value) {
-            $res = $this->repoReviews->post($value,$profil->id,  $star, $review);
-        }
+        $payment = $request->get('payment');
+
+        // dd($payment);
+        $res = $this->repoReviews->post($packages,$profil->id,  $star, $review,$payment);
 
         // dd($res);
-        return back();
+    return back()->with('message',$res->statu);
     }
 }
