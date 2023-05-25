@@ -1,21 +1,7 @@
-@php
-    $pages = Cache::remember('pages', 60, function () {
-        $repoPages = new App\Repository\RepositoryPages();
-        return $repoPages->getAll();
-    });
 
-    $packages = Cache::remember('packages', 60, function () {
-        $repoPackage = new App\Repository\RepositoryPackage();
-        return $repoPackage->getAll();
-    });
-
-    $request = Cache::remember('request', 60, function () {
-        $repoPackage = new Illuminate\Http\Request;
-    });
-@endphp
 {{-- footer --}}
-<div class="flex flex-col w-screen h-fit bg-footer pt-28 px-20 ">
-    <div class="border-b-4 border-text-gray flex justify-between flex-wrap pb-20 ">
+<div class="flex flex-col w-screen bg-footer pt-28 px-20 ">
+    <div class="border-b-4 border-text-gray flex justify-between flex-wrap py-20">
         <div class="flex flex-col max-w-xs ">
             <img class="shrink" src="{{asset('resources\images\logo-muara-mbaduk-foot.png')}}" alt="logo muara mbaduk">
             <p class="text-xl text-text-gray text-left ">Kawasan wisata alam yang
@@ -32,6 +18,7 @@
         <div class="">
             <h3 class="text-xl font-bold text-text-white">Paket Camping</h3>
             <ul class="mt-7">
+                {{-- {{dd($packages)}} --}}
                 @foreach($packages->data as $key => $value)
                     <a href="{{route('packet.detail',['slug'=>$value->slug])}}">
                         <li class="text-text-gray text-xl my-2">{{$value->title}}</li>

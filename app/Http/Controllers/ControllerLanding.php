@@ -23,9 +23,10 @@ class ControllerLanding extends Controller
     public function index()
     {
         $packets = $this->repoPackage->getAll();
+        // dd($packets);
         $news = $this->repoNews->getAll();
         $testimonie = $this->repoTestimonie->getAll();
         // dd($news);
-        return view('guest.pages.landing',['packets'=>$packets->data, 'news'=>$news->data,'testimonie'=>$testimonie->data]);    
+        return view('guest.pages.landing.index',['packets'=>$packets->data, 'news'=>$news->data,'testimonie'=>$testimonie->data]);    
     }
 }

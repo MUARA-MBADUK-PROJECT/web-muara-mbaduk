@@ -2,6 +2,9 @@
 
 namespace App\Repository;
 
+use GuzzleHttp\Client;
+use Illuminate\Http\Client\Request;
+
 class Repository
 {
     private $apiBaseUrl;
@@ -20,7 +23,7 @@ class Repository
 
     public function __construct()
     {
-        $this->apiBaseUrl = env('API_BASE_URL');
+        $this->apiBaseUrl = env('API_URL');
         $this->apiVer = env('API_VERSION', 'v1');
         $this->baseUrl = $this->apiBaseUrl . '/' . $this->apiVer;
         $this->auth = env('API_AUTHORIZATION_KEY');
@@ -28,8 +31,10 @@ class Repository
 
     public function apiGet($endPoint)
     {
-        $curl = curl_init();
+        // $curl = curl_init();
         $url = $this->baseUrl . '/' . $this->trimUrl($endPoint);
+
+        $curl = curl_init();
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -41,32 +46,36 @@ class Repository
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'Authorization: ' . $this->auth
+                'Authorization: ' . $this->baseUrl
             ),
         ));
+        // var_dump($this->apiVer);
 
         $response = curl_exec($curl);
-        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        curl_close($curl);
-        // dd($response);
-        if (300 > $httpCode && $httpCode>=200) {
-            return json_decode($response);
-        } else {
-            echo redirect(route('error.500'))->with([
-                'status'=>'fail',
-                'message'=>$response
-            ]);
 
-            dd();
-        }
+        curl_close($curl);
+        return json_decode($response);
     }
 
-    public function apiPost(String $endPoint,array $body)
+    // public function apiGet($endPoint)
+    // {
+    //     $client = new Client();
+    //     $url = $this->baseUrl . '/' . $this->trimUrl($endPoint);
+    //     $headers = [
+    //         'Authorization' => $this->auth
+    //     ];
+    //     $request = $client->get( $url, $headers);
+    //     $res = $request->getBody();
+    //     // var_dump($res);
+    //     return $res;
+    // }
+
+    public function apiPost(String $endPoint, array $body)
     {
         $curl = curl_init();
         $url = $this->baseUrl . '/' . $this->trimUrl($endPoint);
         $body = json_encode($body);
-        
+
         // dd($body);
 
         curl_setopt_array($curl, array(
@@ -86,29 +95,24 @@ class Repository
         ));
 
         $response = curl_exec($curl);
-        
+
         $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
-        
-        if (300 > $httpCode && $httpCode >=200 || true) {
+
+        if (300 > $httpCode && $httpCode >= 200 || true) {
             return json_decode($response);
         } else {
             // dd($body);
             echo redirect(route('error.500'))->with([
-                'status'=>'fail',
-                'message'=>$response
+                'status' => 'fail',
+                'message' => $response
             ]);
 
-            dd();
-            
+            return json_decode($response);
         }
-        
-        
     }
 
     public function isSeccess($curl)
     {
-        
-        
     }
 }

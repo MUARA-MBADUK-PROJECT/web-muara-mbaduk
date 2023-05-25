@@ -1,28 +1,32 @@
-<div>
-    <nav>
-        <div class="navbar w-full h-28 flex justify-between">
-            <div class="logo h-auto w-auto my-6 ml-32">
-                <a href="{{route('landing')}}"><img src="{{asset('resources\images\logo-muara-mbaduk.png')}}" alt=""></a>
-            </div>
-            <div class="nav my-7 mr-28 flex">
-                <ul class="flex justify-center space-x-14 my-auto hover:cursor-pointer">
-                    <a href="{{route('landing')}}">
-                        <li class="inline text-text-white my-auto">Beranda</li>
-                    </a>
-                    <a href="{{route('landing')}}#explore">
-                        <li class="inline text-text-white ">Eksplore</li>
-                    </a>
-                    <a href="{{route('packet.list')}}">
-                        <li class="inline text-text-white ">Paket Camping</li>
-                    </a>
-                    <a href="{{route('pages',['slug'=>'about'])}}">
-                        <li class="inline text-text-white ">Tentang</li>
-                    </a>
-                </ul>
-                
-                <x-profil/>
-                {{-- <a href="{{route("login.view")}}"><button class="text-text-white  font-bold ml-14 px-5 bg-text-blue py-2 rounded hover:bg-blue-800">masuk</button></a> --}}
-            </div>
+
+
+<nav class="bg-none border-gray-200 dark:bg-gray-900">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4" style="background-image: url()">
+        <a href="{{route('landing')}}"><img src="{{asset('resources\images\logo-muara-mbaduk.png')}}" alt=""></a>
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6 stroke-text-white" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-none md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-none dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a href="{{route('landing')}}" class="block py-2 pl-3 pr-4 text-text-black rounded md:bg-transparent md:text-text-white md:p-0 dark:text-text-white md:dark:text-text-white" aria-current="page">Home</a>
+                </li>
+                <li>
+                    <a href="{{route('landing')}}#explore" class="block py-2 pl-3 pr-4 text-text-black rounded md:bg-transparent md:text-text-white md:p-0 dark:text-text-white md:dark:text-text-white">explore</a>
+                </li>
+                <li>
+                    <a href="{{route('packet.list')}}" class="block py-2 pl-3 pr-4 text-text-black rounded md:bg-transparent md:text-text-white md:p-0 dark:text-text-white md:dark:text-text-white">Paket Camping</a>
+                </li>
+                <li>
+                    <a href="{{route('pages',['slug'=>'about'])}}" class="block py-2 pl-3 pr-4 text-text-black rounded md:bg-transparent md:text-text-white md:p-0 dark:text-text-white md:dark:text-text-white">About</a>
+                </li>
+                <li>
+                    <x-profil />
+                </li>
+            </ul>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
