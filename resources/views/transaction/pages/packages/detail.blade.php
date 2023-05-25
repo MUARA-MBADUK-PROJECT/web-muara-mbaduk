@@ -1,14 +1,14 @@
 @extends('layouts.user.app')
 @section('conten')
 <x-parts.header>
-    <h1 class="text-text-white font-bold text-5xl ">Paket untuk Camping</h1>
+    <h1 class="text-text-white font-bold text-5xl ">Paket {{$packet->title}}</h1>
     </x-parts-header>
     <main class="p-24 ">
 
-        <section class="flex">
+        <section class="flex flex-wrap gap-20 justify-center">
             <img class="w-80 h-80 grow-0" src="{{$packet->image}}" alt="">
-            <section class="ml-20 flex-col justify-start">
-                <h2 class="text-4xl font-bold capitalize">{{$packet->title}}</h2>
+            <section class=" flex-col justify-start ">
+                <h2 class="text-4xl font-bold capitalize text-left">{{$packet->title}}</h2>
                 <h3 class="text-text-blue text-4xl ">RP. {{$packet->price}}</h3>
                 <summary class="text-text-black list-none max-w-xl mt-6">{{$packet->summary}}</summary>
                 <a href="{{route('dashboard')}}"><button class="bg-text-blue text-left py-4 px-10 rounded text-white font-bold my-6">Pesan Sekarang</button></a>

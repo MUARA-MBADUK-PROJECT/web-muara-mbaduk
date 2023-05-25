@@ -29,7 +29,7 @@ class ControllerPacket extends Controller
     {
         $packet = $this->repo->getOne($slug);
         $reviews = $this->repo->getByPackage($packet->data->id);
-        return view('transaction.pages.detail-packet', ['packet' => $packet->data, 'reviews' => $reviews->data]);
+        return view('transaction.pages.packages.detail', ['packet' => $packet->data, 'reviews' => $reviews->data]);
     }
 
     public function getMoreReviews()
