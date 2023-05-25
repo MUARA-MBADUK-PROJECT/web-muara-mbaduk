@@ -32,7 +32,9 @@ use Carbon\Carbon;
         </div>
 
     </div>
-    <div class="mt-12 mx-[512px] bg-text-blue flex-none rounded mb-24">
-        <a href="{{route('news.show')}}"><button class="text-text-white w-full text-xl text-center font-bold px-7 py-4">Muat Lebih Banyak</button></a>
+    <div class="w-full flex justify-center">
+        <div class="mt-12 w-fit px-4 bg-text-blue flex-none rounded mb-24">
+            <a href="{{route('news.show')}}"><button class="text-text-white w-full text-xl text-center font-bold px-7 py-4">Muat Lebih Banyak</button></a>
+        </div>
     </div>
 </div>
