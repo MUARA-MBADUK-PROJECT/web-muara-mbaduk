@@ -2,7 +2,7 @@
 use Carbon\Carbon;
 @endphp
 {{-- BERITA --}}
-<div class="bg-white w-screen h-fit flex flex-col">
+<div class="bg-white  h-fit flex flex-col">
     <div class="grid justify-items-center mt-24 mx-[10%]">
         <h2 class="text-text-black font-bold text-4xl">Berita terbaru dari <span class="text-text-blue">Muara Mbaduk</span></h2>
     </div>

@@ -1,9 +1,13 @@
 @if(isset($profil))
-<div class="flex items-center md:order-2 ml-14">
-    <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-        <span class="sr-only">Open user menu</span>
-        <img class="w-8 h-8 rounded-full" src="{{$profil->images}}" alt="user photo">
-    </button>
+<div class="flex pl-3 items-center md:order-2 py-2 md:-mt-4 md:ml-14 hover:cursor-pointer">
+    <div class="p-2 flex justify-start bg-transparent  rounded justify-items-center gap-2" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+        <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" >
+            {{-- <span class="sr-only">Open user menu</span> --}}
+            <img class="w-8 h-8 rounded-full" src="{{$profil->images}}" alt="user photo">
+            
+        </button>
+        <p class="text-text-white flex flex-col justify-center hover:cursor-pointer">{{$profil->fullname}}</p>
+    </div>
     <!-- Dropdown menu -->
     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
         <div class="px-4 py-3">
@@ -19,15 +23,9 @@
             </li>
         </ul>
     </div>
-    <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-        </svg>
-    </button>
 </div>
 @else
-<a href="{{route("login.view")}}"><button class="text-text-white  font-bold ml-14 px-5 bg-text-blue py-2 rounded hover:bg-blue-800">masuk</button></a>
+<a href="{{route("login.view")}}"><button class="text-text-white flex flex-col justify-center  font-bold md:ml-14 px-5 bg-transparent py-2 rounded hover:bg-blue-800 md:-mt-2">masuk</button></a>
 @endif
 
 

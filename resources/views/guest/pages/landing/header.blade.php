@@ -1,5 +1,5 @@
 {{-- header --}}
-<div class="w-screen h-fit bg-no-repeat bg-cover pb-10" style="background-image: url('{{asset('resources/images/header-image.png')}}')">
+<div class=" h-fit w-full bg-no-repeat bg-cover pb-10" style="background-image: url('{{asset('resources/images/header-image.png')}}')">
     <x-parts.navbar />
     <div class="pt-10 md:pt-40 lg:pt-40 px-16">
         <h1 class="text-xl font-medium text-text-white ">Selamat Datang Di Muara Mbaduk</h1>

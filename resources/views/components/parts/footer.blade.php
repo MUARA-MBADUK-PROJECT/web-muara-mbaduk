@@ -1,6 +1,6 @@
 
 {{-- footer --}}
-<div class="flex flex-col w-screen bg-footer pt-28 px-20 ">
+<div class="flex flex-col bg-footer pt-28 px-20 ">
     <div class="border-b-4 border-text-gray flex justify-between flex-wrap py-20">
         <div class="flex flex-col max-w-xs ">
             <img class="shrink" src="{{asset('resources\images\logo-muara-mbaduk-foot.png')}}" alt="logo muara mbaduk">

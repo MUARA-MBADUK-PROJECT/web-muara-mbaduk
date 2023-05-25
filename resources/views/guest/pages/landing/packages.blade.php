@@ -1,5 +1,5 @@
 {{-- PENYEWAAN --}}
-<div class="bg-gray-100 w-screen p-[5%]">
+<div class="bg-gray-100 pb-4  px-[5%]">
     <div class="flex gap-20 w-full overflow-x-auto h-auto">
         @foreach($packets as $package)
         <x-cards.packet packet-id="{{$package->id}}" packet-name="{{$package->title}}" slug="{{$package->slug}}" packet-price="{{$package->price}}" packet-img="{{$package->image}}">
@@ -11,7 +11,7 @@
         </x-cards.packet>
         @endforeach
     </div>
-    <div class="my-[20%] mx-[5%] flex justify-center gap-7  py-14 flex-wrap">
+    <div class=" flex justify-center gap-7  py-14 flex-wrap">
         <div>
             <p class="text-xl font-bold text-left">Belum menemukan paket yang sesuai dengan kebutuhanmu ?</p>
             <p>Tenang, kamu bisa membuat pesanan paket spesial sendiri</p>
