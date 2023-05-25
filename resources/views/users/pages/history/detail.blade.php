@@ -65,8 +65,9 @@
                 </div>
                 @else
                 <div class="max-w-md mx-auto">
-                    <form method="POST" action="{{route('history.review')}}">
+                    <form method="POST" action="{{route('history.review.edit')}}">
                         @csrf
+                        @method('put')
                         <input type="text" name="payment" value="{{$data->id}}" hidden>
                         @foreach($packages as $key => $value)
                             <input type="text" name="packages[]" value="{{$value['id']}}" hidden>

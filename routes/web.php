@@ -110,6 +110,7 @@ Route::middleware(CekSession::class)->group(function () {
         Route::get('/', [ControllerHistory::class, 'index'])->name('page');
         Route::any('/detail/{id}', [ControllerHistory::class, 'detail'])->name('detail');
         Route::post('/review',[ControllerHistory::class,'review'])->name('review');
+        Route::put('/review',[ControllerHistory::class,'updateReview'])->name('review.edit');
     });
     Route::get('dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
 

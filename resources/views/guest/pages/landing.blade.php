@@ -53,7 +53,7 @@ use Carbon\Carbon;
 </div>
 
 {{-- PENYEWAAN --}}
-<div class="bg-gray-100 p-28">
+<div class="bg-gray-100 p-[5%]">
     <div class="flex gap-20  overflow-x-auto h-auto">
         @foreach($packets as $package)
         <x-cards.packet packet-id="{{$package->id}}" packet-name="{{$package->title}}" slug="{{$package->slug}}" packet-price="{{$package->price}}" packet-img="{{$package->image}}">
@@ -65,7 +65,7 @@ use Carbon\Carbon;
         </x-cards.packet>
         @endforeach
     </div>
-    <div class="my-24 mx-28 flex justify-around border border-text-gray rounded py-14">
+    <div class="my-[20%] mx-[5%] flex justify-center gap-7  py-14 flex-wrap">
         <div>
             <p class="text-xl font-bold text-left">Belum menemukan paket yang sesuai dengan kebutuhanmu ?</p>
             <p>Tenang, kamu bisa membuat pesanan paket spesial sendiri</p>
@@ -80,7 +80,7 @@ use Carbon\Carbon;
 
 {{-- BERITA --}}
 <div class="bg-white w-screen h-fit flex flex-col">
-    <div class="grid justify-items-center mt-24 mx-80">
+    <div class="grid justify-items-center mt-24 mx-[10%]">
         <h2 class="text-text-black font-bold text-4xl">Berita terbaru dari <span class="text-text-blue">Muara Mbaduk</span></h2>
     </div>
     <div class="flex justify-center gap-24 mt-16">

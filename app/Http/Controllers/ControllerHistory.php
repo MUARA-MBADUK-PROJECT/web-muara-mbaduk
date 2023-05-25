@@ -15,7 +15,7 @@ class ControllerHistory extends Controller
     private RepositoryTicket $repo;
     private RepositoryPayment $repoPayment;
     private ServiceAuth $serviceAuth;
-    private RepositoryReviews $repoReviews;
+private RepositoryReviews $repoReviews;
 
     public function __construct()
     {
@@ -67,10 +67,10 @@ class ControllerHistory extends Controller
         }
 
         $review = $this->repoReviews->getByPayment($payment->data->id)->data[0];
-        
+
 
         $profil = $this->serviceAuth->getProfil(request());
-        return view('users.pages.history.detail', ['data' => $payment->data, 'profil' => $profil, 'tickets' => $tickets, 'packages' => $packages,'review'=>$review]);
+        return view('users.pages.history.detail', ['data' => $payment->data, 'profil' => $profil, 'tickets' => $tickets, 'packages' => $packages, 'review' => $review]);
     }
 
     public function review(Request $request)
@@ -84,9 +84,25 @@ class ControllerHistory extends Controller
         $payment = $request->get('payment');
 
         // dd($payment);
-        $res = $this->repoReviews->post($packages,$profil->id,  $star, $review,$payment);
+        $res = $this->repoReviews->post($packages, $profil->id,  $star, $review, $payment);
 
         // dd($res);
-    return back()->with('message',$res->statu);
+        return back()->with('message', $res->statu);
+    }
+
+    public function updateReview(Request $request)
+    {
+        $profil = $this->serviceAuth->getProfil($request);
+        $packages = $request->get('packages');
+
+        $star = $request->get('rating');
+        $review = $request->get('review');
+        $payment = $request->get('payment');
+
+        // dd($payment);
+        $res = $this->repoReviews->post($packages, $profil->id,  $star, $review, $payment);
+
+        // dd($res);
+        return back()->with('message', $res->statu);
     }
 }

@@ -31,4 +31,9 @@ class RepositoryReviews extends Repository
     {
         return $this->apiGet("/reviews/payment/$idPayment");
     }
+
+    public function update($id,$description, $star)
+    {
+        # code...
+    }
 }
