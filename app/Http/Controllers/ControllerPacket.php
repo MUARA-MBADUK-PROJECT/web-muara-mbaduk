@@ -62,7 +62,7 @@ class ControllerPacket extends Controller
     {
         $products = $this->repoProd->getAll();
 
-        return view('transaction.pages.custom-packet',['products'=>$products]);
+        return view('transaction.pages.packages.custom',['products'=>$products]);
     }
 
     public function sendCustom(Request $request)

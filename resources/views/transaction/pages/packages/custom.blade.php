@@ -3,7 +3,7 @@
 <x-parts.header>
     <h1>Buat Rencana Campingmu Sendiri</h1>
 </x-parts.header>
-<main class="py-24 px-28">
+<main class="py-24 px-[5%] w-full">
     <h2 class="text-text-black text-xl font-bold">Silahkan isi formulir di bawah ini, dan rencanakan camping paling pas untuk Kamu.</h2>
     <div>
         <label class="text-xl text-text-black " for="date">Mau Camping Kapan ?</label>
@@ -45,19 +45,20 @@
             </div>
         </div>
     </div>
-    <section class="mt-8 flex justify-between">
-        <table class="w-full border-separate border-spacing-y-5 ">
-            <thead>
-                <tr class="text-left">
-                    <th>Alat yang Tersedia</th>
-                    <th>jumlah</th>
+    <section class="mt-8">
+        <table class=" border-separate border-spacing-y-5 table-auto w-full">
+            <thead class="w-full">
+                <tr class="text-left w-full ">
+                    <th class=" ">AlatyangTersedia</th>
+                    <th class=""><p class="mx-5">jumlah</p></th>
+                    <th class=""></th>
                 </tr>
             </thead>
-            <tbody id="list-product">
+            <tbody id="list-product" >
                 @foreach($products->data as $key => $product)
                 <tr id="{{$product->id}}">
                     <td>
-                        <div class="flex items-center">
+                        <div class="flex items-center flex-nowrap">
                             <img class="w-24 aspect-square" src="{{$product->image}}" alt="">
                             <div class="ml-6">
                                 <h3 class="text-text-black text-xl" data-id="title">{{$product->title}}</h3>
@@ -67,28 +68,27 @@
                     </td>
                     <td>
                         <input class="w-fit" name="{{$product->id}}" type="number" hidden value="0">
-                        <div class="flex item-center ">
+                        <div class="flex item-center justify-center">
                             <p class="text-text-black text-xl">x</p>
                             <p class="text-text-black text-xl" data-id="count">0</p>
                         </div>
                     </td>
-                    <td>
-                        <div class="flex justify-end gap-5">
-                            <button type="button" onclick="decrease(this)" data-id="{{$product->id}}" class="bg-text-gray px-10 text-text-white text-3xl font-bold pb-1 rounded">-</button>
-                            <button type="button" onclick="increase(this)" data-id="{{$product->id}}" class="bg-text-blue px-10 text-text-white text-3xl pb-1 font-bold rounded">+</button>
+                    <td >
+                        <div class="flex justify-center flex-nowrap gap-5 ">
+                            <button type="button" onclick="decrease(this)" data-id="{{$product->id}}" class="bg-text-gray px-2 text-text-white text-3xl font-bold pb-1 rounded">-</button>
+                            <button type="button" onclick="increase(this)" data-id="{{$product->id}}" class="bg-text-blue px-2 text-text-white text-3xl pb-1 font-bold rounded">+</button>
                         </div>
                     </td>
                 </tr>
                 @endforeach
-                <tr>
-                    <td></td>
-                    <td class="text-text-gray text-xl font-bold">Estimasi Biaya</td>
-                    <td class="text-right text-text-blue text-xl font-bold"><input type="text" id="total" readonly name="total" value="Rp. 0"></td>
-                </tr>
             </tbody>
         </table>
+        <div class="w-full flex flex-wrap justify-end ">
+            <label for="tatal" class="text-text-gray text-xl font-bold mr-4">Estimasi Biaya</label>
+            <input class="text-right border-0 text-text-blue text-xl font-bold" type="text" id="total" readonly name="total" value="Rp. 0">
+        </div>
     </section>
-    <section class="flex flex-col">
+    <section class="flex flex-col mt-5">
         <label for="note" class="text-xl mb-5">Catatan untuk kami</label>
         <textarea name="note" id="note" cols="30" rows="10" class="border rounded py-4 px-5 text-text-gray  text-xl valid:text-text-black" placeholder="Ketikan sebuah catatan"></textarea>
     </section>
