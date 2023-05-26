@@ -7,28 +7,10 @@
     <main class="py-28 px-[5%]">
         @include('transaction.pages.packages.list')
         {{-- {{dd(count($data))}} --}}
-        <section class="flex gap-20 w-full justify-between 2xl:justify-center snap-x snap-mandatory overflow-x-auto h-auto">
-            @foreach($data as $package)
-            <x-cards.packet packet-id="{{$package->id}}" packet-name="{{$package->title}}" slug="{{$package->slug}}" packet-price="{{$package->price}}" packet-img="{{$package->image}}">
-                <ul>
-                    @foreach($package->products as $product)
-                    <li>{{$product->title}} {{$product->quantity}}</li>
-                    @endforeach
-                </ul>
-            </x-cards.packet>
-            <x-cards.packet packet-id="{{$package->id}}" packet-name="{{$package->title}}" slug="{{$package->slug}}" packet-price="{{$package->price}}" packet-img="{{$package->image}}">
-                <ul>
-                    @foreach($package->products as $product)
-                    <li>{{$product->title}} {{$product->quantity}}</li>
-                    @endforeach
-                </ul>
-            </x-cards.packet>
-            @endforeach
-        </section>
-        <section class="my-24 mx-[10%] flex justify-around py-14 flex-col flex-wrap justify-items-center gap-5">
-            <div >
-                <p class="text-xl font-bold text-center md:text-center lg:text-left xl:text-left 2xl:text-left">Belum menemukan paket yang sesuai dengan kebutuhanmu ?</p>
-                <p class="text-center md:text-center lg:text-left xl:text-left 2xl:text-left">Tenang, kamu bisa membuat pesanan paket spesial sendiri</p>
+        <section class="my-24  flex justify-around w-full py-14 flex-col flex-wrap justify-items-center gap-5">
+            <div class="">
+                <p class="text-xl font-bold text-center">Belum menemukan paket yang sesuai dengan kebutuhanmu ?</p>
+                <p class="text-center ">Tenang, kamu bisa membuat pesanan paket spesial sendiri</p>
             </div>
             <div class="flex justify-center w-full">
                 <a href="{{route('packet.custom')}}">

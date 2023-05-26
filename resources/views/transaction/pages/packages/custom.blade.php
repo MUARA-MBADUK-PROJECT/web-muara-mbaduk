@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="flex justify-between gap-16 mt-8">
+    <div class="flex justify-between gap-16 mt-8 flex-wrap">
         <div class="w-full">
             <label class="text-xl text-text-black " for="email">Email</label>
             <div class="border-2 border-text-gray rounded flex mt-5">

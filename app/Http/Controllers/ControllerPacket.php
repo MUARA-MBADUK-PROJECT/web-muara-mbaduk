@@ -22,7 +22,7 @@ class ControllerPacket extends Controller
     {
         $data = $this->repo->getAll();
 
-        return view('transaction.pages.packages.index', ['data' => $data->data]);
+        return view('transaction.pages.packages.index', ['data' => $data->data,'packages'=> $data->data]);
     }
 
     public function getBySlug($slug)
