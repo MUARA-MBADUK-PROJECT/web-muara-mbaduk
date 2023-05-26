@@ -4,7 +4,7 @@
     <h1 class="text-5xl font-bold text-text-white ">Berita</h1>
     <h2 class="text-2xl text-text-white">Informasi terbaru wisata alam Muara Mbaduk</h2>
 </x-parts.header>
-<div class="flex flex-col px-28 py-28">
+<div class="flex flex-col px-10 py-28">
 
     <section class="aspect-[5/2] shadow-inner w-full bg-no-repeat bg-cover" style="background-image: url('{{$news->data[0]->thumbnail}}')">
         <div class="w-full h-full grid grid-cols-1 p-5  content-end bg-gradient-to-t from-neutral-900 ">
@@ -28,7 +28,7 @@
         </div>
     </section>
 
-    <div id="newsContainer" class="py-28 flex flex-row justify-between h-fit w-full flex-wrap gap-7">
+    <div id="newsContainer" class="py-28 flex flex-row justify-evenly h-fit w-full flex-wrap gap-7">
         @foreach($news->data as $title)
         @php
 
@@ -42,9 +42,6 @@
 
     </div>
 
-    <div class="flex justify-center ">
-        <button onclick="loadMoreNews()" class="text-center bg-text-blue w-fit text-text-white font-bold text-xl px-8 py-3 rounded">Muat Lebih Banyak</button>
-    </div>
 
 </div>
 

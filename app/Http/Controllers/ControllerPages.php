@@ -32,6 +32,6 @@ class ControllerPages extends Controller
 
     public function showPages($slug)
     {
-        return view('guest.pages.pages',['data'=>$this->repo->getByIdOrSlug($slug)]);
+        return view('guest.pages.pages.index',['data'=>$this->repo->getByIdOrSlug($slug)]);
     }
 }

@@ -15,7 +15,10 @@ $date = Carbon::parse($dateString)->format('d M Y');
 <article class="p-28 ">
     <img class="w-full" src="{{$data->thumbnail}}" alt="">
     <p class="whitespace-pre-line indent-4">
-        {{$data->body}}
+        @php
+            echo $data->body
+        @endphp
+        {{-- {{}} --}}
     </p>
 </article>
 @endsection

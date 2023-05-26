@@ -3,7 +3,7 @@
 <x-parts.header>
     <h1 class="text-text-white text-4xl font-bold">Kontak</h1>
 </x-parts.header>
-<div class="py-32 flex justify-evenly px-24">
+<div class="py-32 flex justify-evenly px-24 flex-wrap gap-6">
     <div class="flex flex-col ">
         <h2 class="text-4xl font-bold text-left">Hubungin Kami</h2>
         <p class="mt-7 text-text-gray text-xl">
@@ -58,7 +58,7 @@
             <input type="email" id="email" name="email" placeholder="Ketikan Nama Lengkap" required class=" border px-5 text-xl input border-text-gray rounded h-14">
         </div>
         <div class="flex flex-col justify-start gap-2 mt-6">
-            <label for="massage" class="text-xl">Nama Lengkap *</label>
+            <label for="massage" class="text-xl">Pesan *</label>
             <textarea name="massage" id="massage" cols="30" placeholder="Masukan Pesan" class="border px-5 text-xl input border-text-gray rounded h-28" required rows="10"></textarea>
         </div>
         <div class=" w-auto  text-text-white bg-text-blue text-xl font-bold mt-10 rounded"><button type="submit" class="text-center w-full py-3">Kirim Pesan</button></div>

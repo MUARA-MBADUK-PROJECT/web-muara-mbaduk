@@ -5,9 +5,17 @@
         <h2 class="font-mediun text-2xl">Kamu dapat memilih paket camping sesuai kebutuhanmu</h2>
     </x-parts.header>
     <main class="py-28 px-[5%]">
+        @include('transaction.pages.packages.list')
         {{-- {{dd(count($data))}} --}}
-        <section class="flex gap-20 w-full justify-between {{count($data)<=3?'lg:justify-start xl:justify-start 2xl:justify-start':'lg:justify-center xl:justify-center 2xl:justify-center'}} snap-x snap-mandatory overflow-x-auto h-auto">
+        <section class="flex gap-20 w-full justify-between 2xl:justify-center snap-x snap-mandatory overflow-x-auto h-auto">
             @foreach($data as $package)
+            <x-cards.packet packet-id="{{$package->id}}" packet-name="{{$package->title}}" slug="{{$package->slug}}" packet-price="{{$package->price}}" packet-img="{{$package->image}}">
+                <ul>
+                    @foreach($package->products as $product)
+                    <li>{{$product->title}} {{$product->quantity}}</li>
+                    @endforeach
+                </ul>
+            </x-cards.packet>
             <x-cards.packet packet-id="{{$package->id}}" packet-name="{{$package->title}}" slug="{{$package->slug}}" packet-price="{{$package->price}}" packet-img="{{$package->image}}">
                 <ul>
                     @foreach($package->products as $product)

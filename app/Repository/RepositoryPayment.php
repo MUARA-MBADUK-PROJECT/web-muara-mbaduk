@@ -44,11 +44,12 @@ class RepositoryPayment extends Repository{
             'date'=>$date,
             'camping'=>$camping,
             'packages'=>$packages,
-            'tickets'=>$tickets
+            'tickets'=>$tickets,
+            'bank'=>null
         ];
 
         // echo json_encode($request);
-        
+        // dd(json_encode($request));
 
         return $this->apiPost('/payments/cash',$request);
     }

@@ -16,7 +16,7 @@ class ControllerBerita extends Controller
     public function index()
     {
         $news = $this->repo->getAll();
-        return view('guest.pages.berita', ['news' => $news]);
+        return view('guest.pages.news.index', ['news' => $news]);
     }
 
     public function getConten($slug)

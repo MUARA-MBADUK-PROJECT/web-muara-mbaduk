@@ -17,6 +17,7 @@ module.exports = {
       },
       center: true
     },
+    
     extend: {
       colors:{
         'text-black':'#1E1E1E',
@@ -41,7 +42,11 @@ module.exports = {
       aspectRatio: {
         '5/2': '5 / 2',
       },
+      fontFamily: {
+        sans: ['poppin-Regular','sans-serif'],
+      },
     },
+
   },
   plugins: [
     require('flowbite/plugin'),

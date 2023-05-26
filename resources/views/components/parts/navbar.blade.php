@@ -1,7 +1,7 @@
 
 
-<nav class="bg-none border-gray-200 dark:bg-gray-900">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto mr-0 p-4" style="background-image: url()">
+<nav class="bg-none border-gray-200 dark:bg-gray-900 w-full">
+    <div class=" flex flex-wrap items-center justify-between p-4 w-full" style="background-image: url()">
         <a href="{{route('landing')}}"><img src="{{asset('resources\images\logo-muara-mbaduk.png')}}" alt=""></a>
         <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
             <span class="sr-only">Open main menu</span>

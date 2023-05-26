@@ -1,5 +1,5 @@
 {{-- explore --}}
-<div id="explore" class="container w-full bg-slate-50 p-[10%] flex flex-col md:flex-row  justify-center gap-20 ">
+<div id="explore" class="w-full bg-slate-50 p-[10%] flex flex-col md:flex-row  justify-center gap-20 ">
     <div class="flex-wrap w-full h-auto px-[5%]">
         <h3 class="text-left text-4xl text-text-black font-bold">Nikmati berbagai
             <span class="text-text-blue">pemandangan</span> yang indah</h3>

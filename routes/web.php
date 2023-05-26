@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerAuth;
 use App\Http\Controllers\ControllerBerita;
+use App\Http\Controllers\ControllerContact;
 use App\Http\Controllers\ControllerDashboard;
 use App\Http\Controllers\ControllerFAQ;
 use App\Http\Controllers\ControllerHistory;
@@ -58,9 +59,7 @@ Route::prefix('login')->name('login.')->group(
 Route::get('logout',[ControllerAuth::class,'logout'])->name('logout');
 
 Route::prefix('contact')->name('contact.')->group(function () {
-    Route::get('/', function () {
-        return view('guest.pages.kontak');
-    })->name('show');
+    Route::get('/', [ControllerContact::class,'index'])->name('show');
 
     Route::post('send', function (Request $request) {
         dd($request);

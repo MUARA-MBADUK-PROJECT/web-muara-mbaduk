@@ -1,5 +1,5 @@
 <div>
-    <div class="snap-normal snap-start cardsNews w-80 h-fit flex flex-col bg-white border rounded-md pb-8">
+    <div class=" ml-8 snap-center cardsNews w-80 h-fit flex flex-col bg-white border rounded-md pb-8">
         <img class="w-full h-full mx-0 rounded-t-md" src="{{$packetImg}}" alt="">
         <div class="mt-9 mx-7 pb-7 grid justify-items-center border-b-2 border-text-gray">
             <p class="font-bold text-xl text-text-black">{{$packetName}}</p>
