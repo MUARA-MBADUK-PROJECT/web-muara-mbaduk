@@ -11,21 +11,21 @@
     <div class="flex justify-center">
         <img src="{{$data->barcode}}" alt="barcode">
     </div>
-    <nav class="mt-16 flex w-full justify-center">
+    <nav class="mt-16 flex w-full justify-center flex-wrap">
         <button onclick="showDetail(this)">
-            <div class="bg-text-gray px-36 py-6">
-                <p class="text-white font-bold text-xl">Detail Pemesanan</p>
+            <div class="bg-text-gray px-10 md:px-36 py-6">
+                <p class="text-white font-bold md:text-xl">Detail Pemesanan</p>
             </div>
         </button>
         <button onclick="showIntruction(this)">
-            <div class="bg-text-blue px-36 py-6">
-                <p class="text-white font-bold text-xl">Instruksi Pembayaran</p>
+            <div class="bg-text-blue px-10 md:px-36 py-6">
+                <p class="text-white font-bold md:text-xl">Instruksi Pembayaran</p>
             </div>
         </button>
     </nav>
     <div class="my-16">
         <div id="Instruksi">
-            <div class="flex justify-between">
+            <div class="flex justify-between flex-wrap">
 
                 <div>
                     <h3 class="text-text-black text-xl font-bold">Kode Order</h3>
@@ -39,7 +39,7 @@
             <div class="mt-16">
                 {{-- {{dd($data->id)}} --}}
                 @if( $data->status == "settlement" )
-                @if($review == [])
+                @if($review->data == [])
                 <div class="max-w-md mx-auto">
                     <form method="POST" action="{{route('history.review')}}">
                         @csrf
@@ -64,6 +64,7 @@
                     </form>
                 </div>
                 @else
+                {{-- {{dd($review)}} --}}
                 <div class="max-w-md mx-auto">
                     <form method="POST" action="{{route('history.review.edit')}}">
                         @csrf
@@ -74,16 +75,16 @@
                         @endforeach
                         <div class="mb-4">
                             <div class="rating">
-                                <input type="radio" name="rating" value=1 class="mask mask-star-2 bg-orange-400 checked:bg-orange-400" {{$review->star==1?"checked":""}} />
-                                <input type="radio" name="rating" value=2 class="mask mask-star-2 bg-orange-400 checked:bg-orange-400"  {{$review->star==2?"checked":""}}/>
-                                <input type="radio" name="rating" value=3 class="mask mask-star-2 bg-orange-400 checked:bg-orange-400" {{$review->star==3?"checked":""}}/>
-                                <input type="radio" name="rating" value=4 class="mask mask-star-2 bg-orange-400 checked:bg-orange-400" {{$review->star==4?"checked":""}}/>
-                                <input type="radio" name="rating" value=5 class="mask mask-star-2 bg-orange-400 checked:bg-orange-400" {{$review->star==5?"checked":""}}/>
+                                <input type="radio" name="rating" value=1 class="mask mask-star-2 bg-orange-400 checked:bg-orange-400" {{$review->data[0]->star==1?"checked":""}} />
+                                <input type="radio" name="rating" value=2 class="mask mask-star-2 bg-orange-400 checked:bg-orange-400"  {{$review->data[0]->star==2?"checked":""}}/>
+                                <input type="radio" name="rating" value=3 class="mask mask-star-2 bg-orange-400 checked:bg-orange-400" {{$review->data[0]->star==3?"checked":""}}/>
+                                <input type="radio" name="rating" value=4 class="mask mask-star-2 bg-orange-400 checked:bg-orange-400" {{$review->data[0]->star==4?"checked":""}}/>
+                                <input type="radio" name="rating" value=5 class="mask mask-star-2 bg-orange-400 checked:bg-orange-400" {{$review->data[0]->star==5?"checked":""}}/>
                             </div>
                         </div>
                         <div class="mb-4">
                             <label for="review" class="block text-gray-700 text-sm font-bold mb-2">Review:</label>
-                            <textarea id="review" name="review" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-400" required>{{$review->description}}</textarea>
+                            <textarea id="review" name="review" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-400" required>{{$review->data[0]->description}}</textarea>
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
                     </form>
@@ -148,7 +149,7 @@
             </div>
         </div>
         <div id="detail" hidden>
-            <div class="flex justify-between">
+            <div class="flex justify-between flex-wrap">
                 <div>
                     <h3 class="text-text-black text-xl font-bold">Pemesan</h3>
                     <ul class="mt-4 text-xl">
@@ -156,7 +157,7 @@
                         <li>{{$profil->email}}</li>
                     </ul>
                 </div>
-                <div class="text-right">
+                <div class="text-left md:text-right">
                     <h3 class="text-text-black text-xl font-bold">Tanggal Kunjungan</h3>
                     <p class="mt-4 text-xl">{{$data->date}}</p>
                     <p class="  px-8 py-1 rounded text-text-white">{{$data->status}}</p>

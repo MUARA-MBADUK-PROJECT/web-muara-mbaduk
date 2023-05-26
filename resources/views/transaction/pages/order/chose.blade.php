@@ -3,7 +3,7 @@
 <x-parts.header>
     <h1>Detail Kunjungan</h1>
 </x-parts.header>
-<div class="h-auto w-screen bg-white flex p-28 justify-center flex-col">
+<div class="h-auto w-screen bg-white flex p-10 justify-center flex-col">
     <form action="{{route('order.chose.fill')}}" method="POST">
         @csrf
         <div class="text-left">
@@ -53,18 +53,6 @@
                     <tr id="{{$ticket->id}}" class="border-b-2">
                         <td>
                             <div class="flex items-center">
-                                <div class="w-24 aspect-square">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                        <g id="SVGRepo_iconCarrier">
-                                            <path d="M15 5V8" stroke="#323232" stroke-width="2" stroke-linecap="round"></path>
-                                            <path d="M15 16V19" stroke="#323232" stroke-width="2" stroke-linecap="round"></path>
-                                            <path d="M15 11V13" stroke="#323232" stroke-width="2" stroke-linecap="round"></path>
-                                            <path d="M4.4416 10.4557C3.79252 9.73379 2.96682 8.93468 3.07899 7.97035C3.35831 5.56902 4.46022 5 7.648 5H16.352C19.5398 5 20.6417 5.56902 20.921 7.97035C21.0332 8.93468 20.2075 9.73379 19.5584 10.4557C19.2424 10.8072 19 11.3037 19 12C19 12.6963 19.2424 13.1928 19.5584 13.5443C20.2075 14.2662 21.0332 15.0653 20.921 16.0296C20.6417 18.431 19.5398 19 16.352 19H7.648C4.46022 19 3.35831 18.431 3.07899 16.0296C2.96682 15.0653 3.79252 14.2662 4.4416 13.5443C4.75761 13.1928 5 12.6963 5 12C5 11.3037 4.75761 10.8072 4.4416 10.4557Z" stroke="#323232" stroke-width="2"></path>
-                                        </g>
-                                    </svg>
-                                </div>
                                 <div class="ml-6">
                                     <h3 class="text-text-black text-xl" data-id="title">{{$ticket->title}}</h3>
                                     <p class="text-text-blue text-xl">Rp. <span data-id="price">{{$isWeekDay?$ticket->weekend_day:$ticket->normal_day}}</span></p>
@@ -81,8 +69,8 @@
                         </td>
                         <td>
                             <div class="flex justify-end gap-5">
-                                <button type="button" onclick="decrease(this)" data-id="{{$ticket->id}}" class="bg-text-gray px-10 text-text-white text-3xl font-bold pb-1 rounded">-</button>
-                                <button type="button" onclick="increase(this)" data-id="{{$ticket->id}}" class="bg-text-blue px-10 text-text-white text-3xl pb-1 font-bold rounded">+</button>
+                                <button type="button" onclick="decrease(this)" data-id="{{$ticket->id}}" class="bg-text-gray px-2 text-text-white text-3xl font-bold pb-1 rounded">-</button>
+                                <button type="button" onclick="increase(this)" data-id="{{$ticket->id}}" class="bg-text-blue px-2 text-text-white text-3xl pb-1 font-bold rounded">+</button>
                                 {{-- <input hidden type="number" name="ticket[{{$ticket->id}}]"> --}}
                             </div>
                         </td>
@@ -104,7 +92,7 @@
                         <tr id="{{$package->id}}" class="border-b-2">
                             <td>
                                 <div class="flex items-center" onclick="getPackage(this)" data-slug="{{$package->slug}}" data-modal-target="package-modal" data-modal-toggle="package-modal">
-                                    <img src="{{$package->image}}" alt="" srcset="">
+                                    <img style="max-width: 40%" src="{{$package->image}}" alt="" srcset="">
                                     <div class="ml-6">
                                         <h3 class="text-text-black text-xl" data-id="title">{{$package->title}}</h3>
                                         <p class="text-text-blue text-xl">Rp. <span data-id="price">{{$package->price}}</span></p>
@@ -121,8 +109,8 @@
                             </td>
                             <td>
                                 <div class="flex justify-end gap-5">
-                                    <button type="button" onclick="decrease(this)" data-id="{{$package->id}}" class="bg-text-gray px-10 text-text-white text-3xl font-bold pb-1 rounded">-</button>
-                                    <button type="button" onclick="increase(this)" data-id="{{$package->id}}" class="bg-text-blue px-10 text-text-white text-3xl pb-1 font-bold rounded">+</button>
+                                    <button type="button" onclick="decrease(this)" data-id="{{$package->id}}" class="bg-text-gray px-2 text-text-white text-3xl font-bold pb-1 rounded">-</button>
+                                    <button type="button" onclick="increase(this)" data-id="{{$package->id}}" class="bg-text-blue px-2 text-text-white text-3xl pb-1 font-bold rounded">+</button>
                                     {{-- <input hidden type="number" name="package[{{$package->id}}]"> --}}
                                 </div>
                             </td>
@@ -133,7 +121,7 @@
                 </table>
 
             </div>
-            <div class="w-full flex justify-end">
+            <div class="w-full flex justify-end flex-wrap">
                 <tr>
                     <td class="">
                         <p class="text-text-gray text-xl font-bold flex-col justify-center">Estimasi Biaya</p>
@@ -143,12 +131,12 @@
             </div>
         </div>
         <div class="mt-12 border-2 rounded-sm border-text-gray p-14 px-12">
-            <div class="flex space-x-28">
+            <div class="flex gap-11 justify-center flex-col text-center">
                 <div>
                     <h1 class="text-xl font-bold">Belum menemukan paket yang sesuai dengan kebutuhanmu?</h1>
                     <h2 class="text-base font-normal">Tenang, kamu bisa membuat pesanan paket spesial sendiri</h2>
                 </div>
-                <div>
+                <div class="w-full flex justify-center">
                     <a href="{{route('packet.custom')}}">
                         <button type="button" class="flex justify-center h-14 w-52 bg-text-blue hover:bg-blue-700 text-white font-bold rounded py-4">
                             Buat Paket <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -163,42 +151,6 @@
             Berikutnya
         </button>
     </form>
-</div>
-
-
-<!-- Modal toggle -->
-<button data-modal-target="package-modal" data-modal-toggle="package-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-    Toggle modal
-</button>
-
-<!-- Main modal -->
-<div id="package-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative w-full max-w-2xl max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <!-- Modal header -->
-            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Detail package
-                </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="package-modal">
-                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
-            <!-- Modal body -->
-            <div  class="p-6 space-y-6">
-                <div id="modal-body"></div>
-            </div>
-            <!-- Modal footer -->
-            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="package-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
-                <button data-modal-hide="package-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
-            </div>
-        </div>
-    </div>
 </div>
 
 

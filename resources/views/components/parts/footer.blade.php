@@ -1,6 +1,6 @@
 
 {{-- footer --}}
-<div class="flex flex-col bg-footer pt-28 px-20 ">
+<div class="flex flex-col bg-footer md:pt-28 xl:pt-28 2xl:pt-28 pt-0 px-20 ">
     <div class="border-b-4 border-text-gray flex justify-between flex-wrap py-20 gap-7">
         <div class="flex flex-col max-w-xs ">
             <img class="shrink" src="{{asset('resources\images\logo-muara-mbaduk-foot.png')}}" alt="logo muara mbaduk">
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="py-4 flex justify-between">
+    <div class="py-4 flex justify-between flex-wrap">
         <p class="text-text-gray">Copyright © 2023 muarambaduk.info </p>
         <p class="text-text-gray">Powered By DKODE Creative</p>
     </div>

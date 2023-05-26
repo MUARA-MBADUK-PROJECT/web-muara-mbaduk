@@ -5,15 +5,15 @@
 </x-parts.header>
 
 <main class="container p-24">
-    <nav class="mt-16 flex w-full justify-center">
+    <nav class="mt-16 flex flex-wrap w-full justify-center">
         <button onclick="showDetail(this)">
-            <div class="bg-text-gray px-36 py-6">
-                <p class="text-white font-bold text-xl">Wisatawan Pengunjung</p>
+            <div class="bg-text-gray px-10  md:px-36 py-6">
+                <p class="text-white font-bold md:text-xl">Wisatawan Pengunjung</p>
             </div>
         </button>
         <button onclick="showIntruction(this)">
-            <div class="bg-text-blue px-36 py-6">
-                <p class="text-white font-bold text-xl">Kendaraan</p>
+            <div class="bg-text-blue px-10 md:px-36 py-6">
+                <p class="text-white font-bold text-base md:text-xl">Kendaraan</p>
             </div>
         </button>
     </nav>

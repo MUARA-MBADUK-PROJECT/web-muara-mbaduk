@@ -4,7 +4,7 @@
     <h1>Detail Wisatawan</h1>
 </x-parts.header>
 {{-- {{dd($ticket)}} --}}
-<div class="h-auto w-screen bg-white flex p-28 justify-center flex-col">
+<div class="h-auto w-screen bg-white flex p-10 justify-center flex-col">
     <form action="{{route('order.paymentMethod')}}" method="POST">
         @csrf
         @foreach($ticket as $key => $value)
@@ -12,7 +12,7 @@
         <div class="flex justify-between flex-row px-3 mt-20">
             <div class="text-left">
                 <h2 class="text-text-black font-bold text-xl">Detail {{$value['data']->category}} | {{$value['data']->title}}</h2>
-                <h3 class="text-text-gray text-base mt-2">Masukan beberapa informasi mengenai data diri kamu</h3>
+                <h3 class="text-text-gray text-base mt-2">Masukan beberapa informasi mengenai data diri {{$value['data']->category == 'tourist'?'kamu':'kendaraan kamu'}}</h3>
             </div>
             <div class="text-right">
                 <h2 class="text-xl font-bold">{{$value['count']}}</h2>
@@ -35,7 +35,7 @@
                     <h2><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][name]" placeholder="masukan nama" required class="border-0"></h2>
                     <h2 class="mt-1"><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][identity]" placeholder="masukan no NIK" required class="border-0"></h2>
                     @else
-                    <h2><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][name]" placeholder="masukan nama" required class="border-0"></h2>
+                    <h2><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][name]" value="Kendaraan" readonly required class="border-0"></h2>
                     <h2 class="mt-1"><input type="text" name="ticket[{{$value['data']->id}}][{{$i}}][identity]" placeholder="masukan Plat nomor" required class="border-0"></h2>
                     @endif
                 </div>

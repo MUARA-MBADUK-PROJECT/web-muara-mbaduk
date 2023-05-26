@@ -66,7 +66,7 @@ private RepositoryReviews $repoReviews;
             }
         }
 
-        $review = $this->repoReviews->getByPayment($payment->data->id)->data[0];
+        $review = $this->repoReviews->getByPayment($payment->data->id);
 
 
         $profil = $this->serviceAuth->getProfil(request());

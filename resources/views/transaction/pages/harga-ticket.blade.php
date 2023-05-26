@@ -9,13 +9,13 @@
 <article class="container p-24">
     <nav class="mt-16 flex w-full justify-center">
         <button onclick="showTransport(this)">
-            <div class="bg-text-gray px-36 py-6">
-                <p class="text-white font-bold text-xl">Transport</p>
+            <div class="bg-text-gray px-10 md:px-36 py-6">
+                <p class="text-white font-bold md:text-xl">Transport</p>
             </div>
         </button>
         <button onclick="showTourist(this)">
-            <div class="bg-text-blue px-36 py-6">
-                <p class="text-white font-bold text-xl">Tourist</p>
+            <div class="bg-text-blue px-10 md:px-36 py-6">
+                <p class="text-white font-bold md:text-xl">Tourist</p>
             </div>
         </button>
     </nav>

@@ -4,14 +4,14 @@
     <h1>Rincian Pemesanan</h1>
 </x-parts.header>
 {{-- {{dd($orders)}} --}}
-<div class="h-auto w-screen bg-white flex p-28 justify-center flex-col">
-    <div class="flex justify-between flex-row px-3">
+<div class="h-auto w-screen bg-white flex p-10 justify-center flex-col">
+    <div class="flex md:justify-between flex-row px-3 flex-wrap gap-7">
         <div class="text-left">
             <h2 class="text-text-black font-bold text-xl">Nama Pemesan</h2>
             <h3 class="text-text-black text-xl mt-4">{{$profil->fullname}}</h3>
             <h3 class="text-text-black text-xl">{{$profil->email}}</h3>
         </div>
-        <div class="text-right">
+        <div class=" text-left md:text-right">
             <h2 class="text-xl font-bold">Tanggal Kunjungan</h2>
             <h3 class="text-text-black text-xl mt-4">{{$orders['date']}}</h3>
         </div>
@@ -78,8 +78,8 @@
     </div>
     <form action="{{route('order.checkout')}}" method="POST">
         @csrf
-        <div class="flex justify-between items-center space-x-36">
-            <label for="payment-bank" class="flex items-center space-x-5 mx-3 px-8 mt-6 h-28 w-500 border-2 border-text-gray rounded">
+        <div class="flex justify-center items-center  flex-wrap">
+            <label for="payment-bank" class="flex items-center space-x-5 mx-3 px-8 mt-6 h-fit w-fit border-2 border-text-gray rounded">
                 <input onchange="isTransfer()" checked type="radio" id="payment-bank" class="form-radio" name="payment" value="bank">
                 <div>
                     <h2 class="text-xl">Bank Transfer VA </h2>
@@ -88,7 +88,7 @@
                 </div>
             </label>
 
-            <label for="payment-cash" class="flex items-center space-x-5 mx-3 px-8 mt-6 h-28 w-500 border-2 border-text-gray rounded">
+            <label for="payment-cash" class="flex items-center space-x-5 mx-3 px-8 mt-6 h-fit w-fit border-2 border-text-gray rounded">
                 <input onchange="isTransfer()" type="radio" id="payment-cash" class="form-radio" name="payment" value="cash">
                 <div>
                     <h2 class="text-xl">Bayar Ditempat </h2>
@@ -99,7 +99,7 @@
         </div>
 
         <div id="bank">
-            <div class="flex justify-start mt-16 px-3">
+            <div class="flex justify-start mt-16 px-3 flex-wrap">
                 <h2 class="text-text-black font-bold text-xl">Bank Pembayaran</h2>
             </div>
             <select id="" name="bank" class="mr-1 ml-3 px-3 border-2 border-text-gray rounded mt-5 flex felx-col justify-center h-14 w-auto text-text-black font-bold">

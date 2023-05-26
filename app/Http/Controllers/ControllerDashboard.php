@@ -24,7 +24,7 @@ class ControllerDashboard extends Controller
 
 
         $profil = $this->AuthService->getProfil($request);
-        return view('users.pages.dashboard',['profil'=>$profil]);
+        return view('users.pages.dashboard.index',['profil'=>$profil]);
 
         // dd($request);
 

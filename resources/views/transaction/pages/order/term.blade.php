@@ -3,12 +3,12 @@
 <x-parts.header>
     Syarat dan Ketentuan
 </x-parts.header>
-<div class="flex flex-col justify-center items-center py-24 px-28">
-    <img src="{{Vite::asset('resources\images\logo-hitam.png')}}" class="mx-auto w-80 h-40">
+<div class="flex flex-col justify-center items-center py-24 px-5 md:px-28 lg:px-28 xl:px-28 2xl:px-28">
+    <img src="{{asset('resources\images\logo-hitam.png')}}" class="mx-auto w-80 h-40">
     <h1 class="mt-20 flex flex-col text-center text-text-black font-bold text-2xl">
         Syarat dan Ketentuan
     </h1>
-    <ul class="mt-10 ml-64 mr-44 text-lg list-decimal">
+    <ul class="mt-10 flex justify-center flex-col p-5 text-lg list-decimal w-fit">
         <li class=" mt-1">
             Tetap menjaga kesehatan dan mengikuti protokol kesehatan
         </li>
