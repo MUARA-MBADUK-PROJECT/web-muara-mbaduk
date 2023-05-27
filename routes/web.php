@@ -113,3 +113,4 @@ Route::any('error500',function ()
 {
     return view('error.500error');
 })->name('error.500');
+ Route::view('view','users.pages.detail.instruction.review.post');

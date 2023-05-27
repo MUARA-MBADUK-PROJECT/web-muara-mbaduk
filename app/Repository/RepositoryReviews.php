@@ -32,8 +32,14 @@ class RepositoryReviews extends Repository
         return $this->apiGet("/reviews/payment/$idPayment");
     }
 
-    public function update($id,$description, $star)
+    public function putReview($id,$description, $star)
     {
-        # code...
+        $body = [
+            "star" => $star,
+            "description" =>$description,
+        ];
+
+        
+        return $this->apiPut("reviews/$id",$body);
     }
 }

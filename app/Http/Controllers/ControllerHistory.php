@@ -70,7 +70,7 @@ private RepositoryReviews $repoReviews;
 
 
         $profil = $this->serviceAuth->getProfil(request());
-        return view('users.pages.history.detail', ['data' => $payment->data, 'profil' => $profil, 'tickets' => $tickets, 'packages' => $packages, 'review' => $review]);
+        return view('users.pages.detail.index', ['data' => $payment->data, 'profil' => $profil, 'tickets' => $tickets, 'packages' => $packages, 'review' => $review]);
     }
 
     public function review(Request $request)
@@ -83,11 +83,11 @@ private RepositoryReviews $repoReviews;
         $review = $request->get('review');
         $payment = $request->get('payment');
 
-        // dd($payment);
+        // dd($star);
         $res = $this->repoReviews->post($packages, $profil->id,  $star, $review, $payment);
 
-        // dd($res);
-        return back()->with('message', $res->statu);
+        
+        return back()->with('message', $res->status);
     }
 
     public function updateReview(Request $request)
@@ -99,10 +99,9 @@ private RepositoryReviews $repoReviews;
         $review = $request->get('review');
         $payment = $request->get('payment');
 
-        // dd($payment);
-        $res = $this->repoReviews->post($packages, $profil->id,  $star, $review, $payment);
+        // dd($request);
+        $res = $this->repoReviews->putReview($payment, $review, $star);
 
-        // dd($res);
-        return back()->with('message', $res->statu);
+        return back()->with('message', $res->status);
     }
 }
