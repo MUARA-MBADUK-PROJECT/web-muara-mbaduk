@@ -7,7 +7,7 @@
     <h1>Harga Tiket</h1>
 </x-parts.header>
 <article class="container p-24">
-    <nav class="mt-16 flex w-full justify-center">
+    <nav class="mt-16 flex w-full justify-center rounded">
         <button onclick="showTransport(this)">
             <div class="bg-text-gray px-10 md:px-36 py-6">
                 <p class="text-white font-bold md:text-xl">Transport</p>

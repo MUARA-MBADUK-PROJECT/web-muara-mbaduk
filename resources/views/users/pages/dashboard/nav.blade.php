@@ -1,6 +1,6 @@
 <div class="my-28">
 
-    <div class="flex justify-center gap-1 shrink flex-wrap w-full">
+    <div class="justify-center inline-flex gap-1 shrink flex-wrap w-full">
 
         <a href="{{route('order.term.page')}}">
             <div class="rounded-sm border-gray-400 cursor-pointer hover:shadow-md w-52 shrink">

@@ -17,6 +17,6 @@ class ControllerFAQ extends Controller
     {
         $data = $this->repo->getAll();
 
-        return view('guest.pages.faq',['data'=>$data->data]);
+        return view('guest.pages.faq.index',['data'=>$data->data]);
     }
 }

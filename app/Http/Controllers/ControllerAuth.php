@@ -31,7 +31,7 @@ class ControllerAuth extends Controller
 
     public function index()
     {
-        return view('guest.pages.masuk');
+        return view('guest.pages.login.index');
     }
 
     public function googleRedirect()
