@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Http\Client\Request;
 
@@ -51,10 +52,8 @@ class Repository
         ));
         // var_dump($this->apiVer);
 
-        $response = curl_exec($curl);
+        return $this->isSuccess($curl);
 
-        curl_close($curl);
-        return json_decode($response);
     }
 
     public function apiPost(String $endPoint, array $body)
@@ -81,22 +80,7 @@ class Repository
             ),
         ));
 
-        $response = curl_exec($curl);
-
-        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        curl_close($curl);
-
-        if (300 > $httpCode && $httpCode >= 200 || true) {
-            return json_decode($response);
-        } else {
-            // dd($body);
-            echo redirect(route('error.500'))->with([
-                'status' => 'fail',
-                'message' => $response
-            ]);
-
-            return json_decode($response);
-        }
+        return $this->isSuccess($curl);
     }
 
     public function apiPut(String $endPoint, $body)
@@ -118,17 +102,38 @@ class Repository
             CURLOPT_POSTFIELDS => $body,
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/json',
-                'Authorization: '.$this->auth
+                'Authorization: ' . $this->auth
             ),
         ));
 
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-        return json_decode($response);
+        return $this->isSuccess($curl);
     }
 
-    public function isSeccess($curl)
+    public function isSuccess($curl)
     {
+        $response = curl_exec($curl);
+
+    if ($response === false) {
+        // An error occurred during the request
+        $error = curl_error($curl);
+        curl_close($curl);
+        // Log the error for debugging purposes
+        error_log('API PUT Request Error: ' . $error);
+        // Display a generic error message to the end user
+        return redirect()->back()->with('status', 'fail')->with('message', 'An error occurred during the API request. Please try again later or contact support.');
+    }
+
+    $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    curl_close($curl);
+
+    if ($httpCode >= 200 && $httpCode < 300) {
+        return json_decode($response);
+    } else {
+        // Invalid response code
+        // Log the error for debugging purposes
+        error_log('API PUT Request Failed. Response Code: ' . $httpCode . ', Response Body: ' . $response);
+        // Display a generic error message to the end user
+        return redirect()->back()->with('status', 'fail')->with('message', 'The API request failed. Please try again later or contact support.');
+    }
     }
 }

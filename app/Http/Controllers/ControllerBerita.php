@@ -22,7 +22,7 @@ class ControllerBerita extends Controller
     public function getConten($slug)
     {
         $data = $this->repo->getByOne($slug);
-        return view('guest.pages.detail-berita',['data'=>$data->data]);
+        return view('guest.pages.news.detail',['data'=>$data->data]);
     }
 
     public function getMoreNews($start)
